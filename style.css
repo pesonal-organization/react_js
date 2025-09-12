@@ -1,0 +1,246 @@
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #f0f4f8, #e0efff);
+  color: #333;
+  padding: 40px 0;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 50px 100px; /* ✅ 100px left/right padding for large screens */
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* Index Page */
+.main-heading {
+  text-align: center;
+  margin-bottom: 40px;
+   color: #222f3e; 
+   
+ 
+  font-size: 42px;
+  letter-spacing: 1px;
+}
+
+.lecture-list {
+  list-style: none;
+  padding: 0;
+}
+
+.lecture-list li {
+  margin: 20px 0;
+}
+
+.lecture-list a {
+  display: block;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  /* color: #ffffff; */
+  color:rgba(0, 0, 0, 0.699);
+  /* background: linear-gradient(135deg, #00c6ff, #0072ff); */
+  padding: 16px 24px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 114, 255, 0.3);
+}
+
+.lecture-list a:hover {
+  background: linear-gradient(135deg, #0072ff, #004ea2);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(122, 224, 155, 0.4);
+  color:white;
+}
+
+/* Class Page */
+.class-page {
+  background: #f0faff;
+}
+
+.lecture-heading {
+  margin-bottom: 30px;
+  font-size: 32px;
+  color: #1a2e66;
+  text-align: center;
+  border-bottom: 2px solid #00aaff;
+  padding-bottom: 10px;
+}
+
+/* Nav buttons */
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.nav-btn {
+  text-decoration: none;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 18px;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 114, 255, 0.3);
+}
+
+.nav-btn:hover {
+  background: linear-gradient(135deg, #0072ff, #004ea2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 114, 255, 0.4);
+}
+
+.nav-btn.next {
+  background: linear-gradient(135deg, #00b894, #00a06f);
+}
+
+.nav-btn.next:hover {
+  background: linear-gradient(135deg, #009f7a, #007f5a);
+}
+
+/* Cards */
+.card {
+  padding: 24px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.topics-card {
+    background: #e5fdeb;  
+  border-left: 6px solid #00b894;
+}
+
+.question-card {
+  background: #fff3e0;
+  border-left: 6px solid #e67e22;
+}
+
+.example1-card {
+  background: #e0f7ff;
+  font-size: 18px;
+  border-left: 6px solid #00aaff;
+}
+
+.example2-card {
+  background: #fff9e6;
+  
+  border-left: 6px solid #f1c40f;
+}
+
+.note-card {
+  background: #ffeaf0;
+  border-left: 6px solid #e84393;
+}
+
+/* Extra line spacing in examples */
+.example1-card p,
+.example1-card ul,
+.example2-card p,
+.example2-card ul {
+  line-height: 2;
+}
+
+.card h2 {
+  margin-bottom: 10px;
+  color: #222f3e;
+}
+
+.card p,
+.card ul {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+pre {
+  background: #f4f4f4;
+  padding: 12px;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: 'Courier New', monospace;
+  background: #eef2f7;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .container {
+    padding: 30px 40px; /* ✅ Tablets and small laptops */
+  }
+
+  .main-heading {
+    font-size: 32px;
+  }
+
+  .lecture-heading {
+    font-size: 28px;
+  }
+
+  .nav-btn {
+    font-size: 16px;
+    padding: 10px 16px;
+  }
+
+  .lecture-list a {
+    font-size: 18px;
+    padding: 14px 20px;
+  }
+
+  .card p,
+  .card ul {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px; /* ✅ Mobile */
+  }
+
+  .main-heading {
+    font-size: 28px;
+  }
+
+  .lecture-heading {
+    font-size: 24px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .lecture-list a {
+    font-size: 16px;
+    padding: 12px 18px;
+  }
+}
+/* interview  */
