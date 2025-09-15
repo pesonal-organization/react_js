@@ -62,74 +62,88 @@
        vite.dev/guide/
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 3 completed ----- -->
  <!----------------------------------- Question No 4 ---------------------->
     <div class="card question-card">
       <h2> Question 4❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is .jsx?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       .jsx stands for JavaScript XML.<br> 
+       it allows us to write JavaScript in HTML and HTML in JavaScript.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 4 completed ----- -->
  <!----------------------------------- Question No 5 ---------------------->
     <div class="card question-card">
       <h2> Question 5❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is App.jsx?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
-      </p>
+       App.jsx is the main component file of React application.<br>
+       App.jsx contains a component called App(usually written a function)<br>
+       This component is the root component of our application.<br>
+       All other components (like Header,Footer,Navbar,ProductList,etc)
+are usually imported and used in App.      </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
-
+       import React from "react";
+       import Header from "./components/header/header";
+       const MyReactComponent = ()=>{
+        return(<div>
+          <h1>I am App.jsx</h1>
+          <Header />
+        </div>)
+       }
+export default MyReactComponent;
             </code></pre>
     </div>
 <!------- question 5 completed ----- -->
  <!----------------------------------- Question No 6 ---------------------->
     <div class="card question-card">
       <h2> Question 6❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is main.jsx?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       main.jsx is the starting point of a React Project made with Vite<br>
+       It takes our App.jsx(main component) and shows it inside index.html.<br> 
+       Understand it like <br>
+       index.html has an empty box
+       <pre><div id='root'></div></pre>
+       <br>
+       main.jsx finds that box<br>
+       main.jsx puts 
+       <pre><App /></pre>
+       (from App.jsx) inside that box.<br>
+       Now whatever you write in App.jsx appears in the browser.<br> 
+       Note:<br> 
+       main.jsx connects App.jsx with index.html and than react app can appear in browser.
+
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       main.jsx 
+       import {createRoot} form 'react-dom/client';
+       import MyReactComponent form './App.jsx';
+       createRoot(document.getelementById('root'))
+       .render(<MyReactComponent/>)
 
             </code></pre>
     </div>
@@ -137,233 +151,182 @@
  <!----------------------------------- Question No 7 ---------------------->
     <div class="card question-card">
       <h2> Question 7❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is vite.config.js?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       vit.config.js is setting file of vite.<br> 
+       It tells the vite how to run and build our project.<br> 
+       In big projects we have to make some editing in it but not in small projects.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 7 completed ----- -->
  <!----------------------------------- Question No 8 ---------------------->
     <div class="card question-card">
       <h2> Question 8❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is README.md?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       we write Introduction of our project in README.md<br> 
+       How to install it<br>
+       How to run it<br>
+       Features of the project<br>
+       Any extra notes for users or developers is written inside README.md.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 8 completed ----- -->
  <!----------------------------------- Question No 9 ---------------------->
     <div class="card question-card">
       <h2> Question 9❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is ESLint?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       ESLint is a tool that checks our JavaScript/React code.<br> 
+       It helps us find and fix mistakes(like missing semicolons,unused variables or 
+       wrong code style).<br>
+       It makes our code clean, consitent and error-free.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 9 completed ----- -->
  <!----------------------------------- Question No 10 ---------------------->
     <div class="card question-card">
       <h2> Question 10❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is eslint.config.js?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       eslint.config.js is the rulebook that tells Eslint how to check our code.<br>
+       eslint.config.js is the file where we set the rules for checking.<br>
+       Example rules<br>
+       should we use semicolons or not<br>
+       should we use double quotes or single quotes<br>
+       should it warn if we don't use a variable.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 11 completed ----- -->
  <!----------------------------------- Question No 12 ---------------------->
     <div class="card question-card">
       <h2> Question 12❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is package.json?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       package.json is a file that stroes our project's details and the list of libraries(packages) 
+       it needs.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 12 completed ----- -->
  <!----------------------------------- Question No 13 ---------------------->
     <div class="card question-card">
       <h2> Question 13❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is package-lock.json?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       package-lock.json keeps the exact versions of all installed libraries/packages so our 
+       project always works the same everywhere.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 13 completed ----- -->
  <!----------------------------------- Question No 14 ---------------------->
     <div class="card question-card">
       <h2> Question 14❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is node_module?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       node_modules is the storage folder where all installed libraries for project live.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 14 completed ----- -->
  <!----------------------------------- Question No 15 ---------------------->
     <div class="card question-card">
       <h2> Question 15❓ </h2>
-      <p>Q:  </p>
+      <p>Q: Difference among node_modules, package.json and package-lock.json?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       1.node_modules<br>
+       A big storage box<br>
+       contains all the actual libraries(React, vite etc) that projects uses.<br>
+       2.package.json<br>
+       A shopping list<br>
+       says which libraries project needs(react,react-dom etc)<br>
+       3.pakage-lock.json<br>
+       A receipt<br>
+       Records the exact versions of installed libraries.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 15 completed ----- -->
  <!----------------------------------- Question No 15 ---------------------->
     <div class="card question-card">
       <h2> Question 15❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is webpack?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       webpack is a tool and it collects all files of our reactjs projects and make bundle of all 
+       files and run them on browser.<br>
+       It also converts modern js to old js that browser can understand easily.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 15 completed ----- -->
  <!----------------------------------- Question No 16 ---------------------->
     <div class="card question-card">
       <h2> Question 16❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is npm run dev?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       npm run dev collects all files and run them on browser so we can see our project on browser.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 16 completed ----- -->
  <!----------------------------------- Question No 17 ---------------------->
     <div class="card question-card">
       <h2> Question 17❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is Transpilation in react?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       conversion of advance js to old js by compiler is called Transpilation.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 17 completed ----- -->
  <!----------------------------------- Question No 18 ---------------------->
     <div class="card question-card">
