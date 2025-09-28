@@ -125,20 +125,28 @@ export default Practice;
  <!----------------------------------- Question No 3 ---------------------->
     <div class="card question-card">
       <h2> Question 3❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is side effects in reactJs?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       If myFunction() does something outside rendering (like console.log, API call, setting timer, changing DOM, etc.) → ✅ that IS a side effect.
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        function App() {
+  useEffect(() => {
+    console.log("I ran a function!"); // side effect
+  }, []);
+
+  return <h1>Hello World</h1>;
+}
+       </xmp>
 
             </code></pre>
     </div>
@@ -146,62 +154,92 @@ export default Practice;
  <!----------------------------------- Question No 4 ---------------------->
     <div class="card question-card">
       <h2> Question 4❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is hook in reactJs?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       A Hook in React is a special function that lets you use React features (like state or side effects) inside a functional component.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 4 completed ----- -->
  <!----------------------------------- Question No 5 ---------------------->
     <div class="card question-card">
       <h2> Question 5❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is useState( )? </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       useState( ) stores data and update it when need or according to condition that we have applied 
+       like counter example. <br>
+       useSatate = remember data + update it
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 5 completed ----- -->
  <!----------------------------------- Question No 6 ---------------------->
     <div class="card question-card">
       <h2> Question 6❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is useEffect( )?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       👉 useEffect is a React Hook that lets you run code when your component renders or when something changes.
+       <br>useEffect is used for side effects like fetching data, updating the DOM, running code when something changes, or cleaning up resources.
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        🔹 Uses of useEffect
+
+Run code when the component first shows up (like page load).
+
+useEffect(() => {
+  console.log("Component mounted");
+}, []);
+
+
+Fetch data from an API
+
+useEffect(() => {
+  fetch("https://api.example.com/data")
+    .then(res => res.json())
+    .then(data => console.log(data));
+}, []);
+
+
+Update something outside React (like page title or console)
+
+useEffect(() => {
+  document.title = "New Title";
+}, []);
+
+
+Run code when a value changes
+
+useEffect(() => {
+  console.log("Count changed");
+}, [count]); // runs when count changes
+
+
+Set up and clean up (timers, event listeners, etc.)
+
+useEffect(() => {
+  const timer = setInterval(() => console.log("Tick"), 1000);
+
+  return () => clearInterval(timer); // cleanup
+}, []);
+
+       </xmp>
 
             </code></pre>
     </div>
@@ -209,20 +247,41 @@ export default Practice;
  <!----------------------------------- Question No 7 ---------------------->
     <div class="card question-card">
       <h2> Question 7❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is cleanUp in useEffect?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       i make a useeffect for watch than i create a variable and i keep the setinterval in my variable that i have been created in useeffect,  now  after setinterval inside use effect i create a return call back function and in blocks of function i write clearinterval and inside its parameter i pass my variable  name, it is cancellation process
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+      <xmp>
+         import { useState, useEffect } from "react";
+
+function Watch() {
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    // start interval
+    const timer = setInterval(() => {
+      setTime((prev) => prev + 1);
+    }, 1000);
+
+    // cleanup (cancellation process)
+    return () => {
+      clearInterval(timer);
+    };
+  }, []); // empty array → runs only once
+
+  return <h1>{time} seconds</h1>;
+}
+
+      </xmp>
 
             </code></pre>
     </div>
@@ -230,20 +289,55 @@ export default Practice;
  <!----------------------------------- Question No 8 ---------------------->
     <div class="card question-card">
       <h2> Question 8❓ </h2>
-      <p>Q:  </p>
+      <p>Q: order of useState, functions,useEffect and return?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       first i create useState,than function that deals to useState ect , than 
+       useEffect and than return and inside return i show data on ui .<br>
+       👉 useState → function → useEffect → return (UI).
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        import { useState, useEffect } from "react";
+
+function MyComponent() {
+  // 1️⃣ useState → to store data
+  const [count, setCount] = useState(0);
+
+  // 2️⃣ function → to update state or do something
+  function increase() {
+    setCount(count + 1);
+  }
+
+  // 3️⃣ useEffect → to handle side effects
+  useEffect(() => {
+    console.log("Count is now:", count);
+
+    // cleanup (optional)
+    return () => {
+      console.log("Cleanup before next effect or unmount");
+    };
+  }, [count]); // runs when 'count' changes
+
+  // 4️⃣ return → to show UI
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={increase}>Increase</button>
+    </div>
+  );
+}
+
+export default MyComponent;
+
+       </xmp>
 
             </code></pre>
     </div>
@@ -251,41 +345,49 @@ export default Practice;
  <!----------------------------------- Question No 9 ---------------------->
     <div class="card question-card">
       <h2> Question 9❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what can i write in return in components?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+        only data that i have to show on DOM is written inside return<br>
+       👉 Inside return = only JSX (things to show on the DOM).<br>
+All logic (functions, effects, calculations) should be written before return, not inside it.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 9 completed ----- -->
  <!----------------------------------- Question No 10 ---------------------->
     <div class="card question-card">
       <h2> Question 10❓ </h2>
-      <p>Q:  </p>
+      <p>Q: if i write console.log('hello') in useEffect { } and i dont write any thing inside [ ] dependencies what 
+        will be happen?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
-      </p>
+       The console.log('hello') print only one time when page loads.<br> 
+      and if i write [count]
+like my counter example than when counter updates console also be rendered.      </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        import { useEffect } from "react";
+
+function App() {
+  useEffect(() => {
+    console.log("hello");
+  }, []);  // empty dependency array
+
+  return <h1>Welcome</h1>;
+}
+
+       </xmp>
 
             </code></pre>
     </div>
@@ -293,20 +395,53 @@ export default Practice;
  <!----------------------------------- Question No 12 ---------------------->
     <div class="card question-card">
       <h2> Question 12❓ </h2>
-      <p>Q:  </p>
+      <p>Q: if i dont pass dependencies[ ] in useEffect what will be happen?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+ the code or console that we have declared inside { } run again and 
+ again when page or state changes.<br>
+
+ useEffect(()=>{}) → runs after every render.<br>
+
+useEffect(()=>{}, []) → runs only once.<br>
+
+useEffect(()=>{}, [count]) → runs when count changes.
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        import { useState, useEffect } from "react";
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log("hello");
+  });
+
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={() => setCount(count + 1)}>Increase</button>
+    </div>
+  );
+}
+
+
+What happens here?
+
+Page load → "hello" logs.
+
+Click button → count changes → component re-renders → "hello" logs again.
+
+Every click = "hello" logged again.
+       </xmp>
 
             </code></pre>
     </div>
