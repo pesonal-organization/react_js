@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>routers in react</title>
+  <title>Class 1 – Introduction to JavaScript</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="class-page">
@@ -14,7 +14,7 @@
      
     </div>
 <!------ Write Topic Name here ------->
-    <h1 class="lecture-heading">routers in react</h1>
+    <h1 class="lecture-heading">Structure page</h1>
 
     <!-- Topics Covered -->
     <div class="card topics-card">
@@ -49,6 +49,82 @@
  <!----------------------------------- Question No 2 ---------------------->
     <div class="card question-card">
       <h2> Question 2❓ </h2>
+      <p>Q: syntax of useEffect?  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       see in example:
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       <xmp>
+        practice.jsx
+
+        
+        // practice 
+import React from "react";
+import { useState,useEffect } from "react";
+const Practice = ()=>{
+    const [counter,setCounter] = useState(0);
+    const [userName, setUserName] = useState('')
+    // state for watch
+const [date,setDate] = useState('');
+let timeHandler;
+
+
+    // updating counter 
+    const update = ()=>{
+        console.log('counter is updating')
+    }
+    // user name is update
+    const updating = ()=>{console.log('username is updating')}
+    
+    
+    // useEffect for counter updating
+    useEffect(()=>{update()},[counter])
+    // useEffect for userName 
+    useEffect(()=>{updating()},[userName])
+    // watch
+    useEffect(()=>{
+        timeHandler = setInterval(() => {
+            const current = new Date().toLocaleTimeString();
+            setDate(current)
+
+            
+        }, 1000);
+        // when un mount 
+        console.log('ok i stopped time');
+        return()=>{clearInterval(timeHandler)}
+    },[
+
+    ])
+    
+    return(
+    <div>
+
+    <h1>I am practice screen</h1>
+    <h1>counter : {counter ? counter :'No counter'}</h1>
+    <h1>userName : {userName?userName:'No user name available'}</h1>
+    <h1>{date}</h1>
+    <button onClick={()=>setCounter(counter + 1)}>Increment</button>
+    <button onClick={()=>setUserName('saqi')}>user Name</button>
+
+    </div>
+)}
+export default Practice;
+       </xmp>
+
+            </code></pre>
+    </div>
+<!------- question 2 completed ----- -->
+ <!----------------------------------- Question No 3 ---------------------->
+    <div class="card question-card">
+      <h2> Question 3❓ </h2>
       <p>Q:  </p>
     </div>
   <!----- answers ----->
@@ -62,229 +138,91 @@
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       router.jsx 
-       <xmp>
-        // Note : All routes are defined here
-import { Routes, Route} from "react-router-dom";
-// import {BrowserRouter} from "react-router";
-import Home from "../screens/home/home";
-import About from "../screens/about/about";
-import Contact from "../screens/contact/contact";
-
-const RoutesComponent = ()=>{
-    return(
-    
-        <Routes>
-            <Route path="/" Component={Home}/>
-            <Route path="/about" Component={About } />
-            <Route path="/contact" Component={Contact} />
-        </Routes>
        
-    )
-}
-export default RoutesComponent;
-       </xmp>
-______________________________________________________________
-       App.jsx 
-       <xmp>
-        
 
-import React from "react";
-
-import RoutesComponent from "./utils/routes";
- import {BrowserRouter} from "react-router";
-const App = ()=>{
-  return(
-  
-    <BrowserRouter>
-   <RoutesComponent />
-   </BrowserRouter>
-  )
-}
-export default App;
-       </xmp>
-______________________________________________________________
-       home.jsx 
-       <xmp>
-        // Note Home page....?
-import React from "react";
-const Home = ()=>{
-    return(
-        <h1>Home Screen!</h1>
-    )
-}
-export default Home;
-       </xmp>
-______________________________________________________________
-       contact.jsx 
-       <xmp>
-        // Note Contact page....?
-import React from "react";
-const Contact = ()=>{
-    return(
-        <h1>Contact Screen!</h1>
-    )
-}
-export default Contact;
-       </xmp>
-______________________________________________________________
-       about.jsx 
-       <xmp>// Note About page....?
-import React from "react";
-const About = ()=>{
-    return(
-        <h1>About Screen!</h1>
-    )
-}
-export default About;</xmp>
             </code></pre>
     </div>
-<!------- question 2 completed ----- -->
- <!----------------------------------- Question No 3 ---------------------->
-    <div class="card question-card">
-      <h2> Question 3❓ </h2>
-      <p>Q: what is screen in react-js?  </p>
-    </div>
-  <!----- answers ----->
-    <div class="card answer-card">
-      <h2>✅ Answer</h2>
-      <p>
-       screen is the name of a folder that is kept inside src in reactjs folder, and inside screen folder we make multiple components like home, about, contact etc
-      </p>
-    </div>
-
 <!------- question 3 completed ----- -->
  <!----------------------------------- Question No 4 ---------------------->
     <div class="card question-card">
       <h2> Question 4❓ </h2>
-      <p>Q: what is utiles?  </p>
+      <p>Q:  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       utils is just a folder that is created inside src, and in utiles we keep the file 
-       that we have to use multiple places in project, normally we keep router.jsx file in utiles.
-      </p>
-    </div>
-
-<!------- question 4 completed ----- -->
- <!----------------------------------- Question No 5 ---------------------->
-    <div class="card question-card">
-      <h2> Question 5❓ </h2>
-      <p>Q: what is react-router-dom?  </p>
-    </div>
-  <!----- answers ----->
-    <div class="card answer-card">
-      <h2>✅ Answer</h2>
-      <p>
-       it is a react-js library and the code for navingation among pages in our project all code is 
-       written inside this library.
-       <br>
-       we have to download react-router-dom for our react project by <br>
-       npm react-router-dom.
-      </p>
-    </div>
-
-<!------- question 5 completed ----- -->
- <!----------------------------------- Question No 6 ---------------------->
-    <div class="card question-card">
-      <h2> Question 6❓ </h2>
-      <p>Q: Navbar by reactJs?  </p>
-    </div>
-  <!----- answers ----->
-    <div class="card answer-card">
-      <h2>✅ Answer</h2>
-      <p>
-       see in example:
+       
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-        navbar.jsx 
-        ______________
-       <xmp>
-        import React from "react";
-import { Link } from "react-router";
-const Navbar = ()=>{
-    return(
-        <nav>
-        <ul>
-            <li><Link to={'/'}>Home</Link></li>
-            <li><Link to={'/about'}>About</Link></li>
-            <li><Link to={'/contact'}>Contact</Link></li>
-        </ul>
-    </nav>
-    )
-}
-export default Navbar;
-       </xmp>
-       ______________
-       App.jsx 
-        we import Navbar in App.jsx 
+       
 
-        <xmp>
-          import { useState } from 'react'
-import { BrowserRouter } from 'react-router-dom';
-import MyRoutes from './utils/router';
-import Navbar from './MyComponents/navbar/navbar';
-const App = ()=>{
-  return(
-    <BrowserRouter>
-    <Navbar/>
-    <MyRoutes/>
-    </BrowserRouter>
-  )
-}
-export default App;
-        </xmp>
+            </code></pre>
+    </div>
+<!------- question 4 completed ----- -->
+ <!----------------------------------- Question No 5 ---------------------->
+    <div class="card question-card">
+      <h2> Question 5❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 5 completed ----- -->
+ <!----------------------------------- Question No 6 ---------------------->
+    <div class="card question-card">
+      <h2> Question 6❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
             </code></pre>
     </div>
 <!------- question 6 completed ----- -->
  <!----------------------------------- Question No 7 ---------------------->
     <div class="card question-card">
       <h2> Question 7❓ </h2>
-      <p>Q: Make a function in React-Js?  </p>
+      <p>Q:  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       see in example:
+       
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       <xmp>// About Page
-import React from "react";
-import { useState } from "react";
-let count = 0;
-const About = ()=>{
-    // we make state here
-    let [count,setCount] = useState(0);
-    // now we make function for increment count
-    const countHandler = ()=>{
-        setCount(count + 1)
-    }
-    // now make another function for decrement
-    const decrementCount = ()=>{
-        setCount(count - 1)
-    }
-    return(
-        <div>
-            <h1>About page</h1>
-            <h1>count : {count}</h1>
-
-            <button onClick={countHandler} disabled={count >=10}>Increment</button>
-            <button onClick={decrementCount} disabled={count == 0}>Decrement</button>
-        </div>
-    )
-}
-export default About;</xmp>
+       
 
             </code></pre>
     </div>
@@ -292,62 +230,20 @@ export default About;</xmp>
  <!----------------------------------- Question No 8 ---------------------->
     <div class="card question-card">
       <h2> Question 8❓ </h2>
-      <p>Q: Render a list in React_js?  </p>
+      <p>Q:  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       see in example:
+       
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       <xmp>
-        first we make a list or any data in date file 
-        data.js 
-
-        // data.js
-let fruits = ['mango','grapes','banana','orange','lemon'];
-export default fruits;
-
-Now we import it in required file 
-
-// About Page
-import React from "react";
-import { useState } from "react";
-import fruits from "../../MyComponents/data/data";
-let count = 0;
-const About = ()=>{
-    // we make state here
-    let [count,setCount] = useState(0);
-    // now we make function for increment count
-    const countHandler = ()=>{
-        setCount(count + 1)
-    }
-    // now make another function for decrement
-    const decrementCount = ()=>{
-        setCount(count - 1)
-    }
-    return(
-        <div>
-            <h1>About page</h1>
-            <h1>count : {count}</h1>
-            <button onClick={countHandler} disabled={count >=10}>Increment</button>
-            <button onClick={decrementCount} disabled={count == 0}>Decrement</button>
-          
-          <ul>
-            {fruits.map((item,index)=>{
-                return(<li key={index}>{index+1} - {item}</li>)
-            })}
-          </ul>
-        </div>
-    )
-}
-export default About;
-       </xmp>
+       
 
             </code></pre>
     </div>
@@ -355,36 +251,20 @@ export default About;
  <!----------------------------------- Question No 9 ---------------------->
     <div class="card question-card">
       <h2> Question 9❓ </h2>
-      <p>Q: Apply css on react_js files? </p>
+      <p>Q:  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       see in example:
+       
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       <xmp>
-        first we create css file 
-        contact-style.css 
-
-        /* css file */
-.contact-h{color: red;
-text-decoration: underline;}
-
-now we import this file in our required location 
-// Contact Page
-import React from "react";
-import "./contact-style.css";
-const Contact = ()=>{
-    return(<h1 className="contact-h">Contact page</h1>)
-}
-export default Contact;
-       </xmp>
+       
 
             </code></pre>
     </div>
@@ -392,35 +272,34 @@ export default Contact;
  <!----------------------------------- Question No 10 ---------------------->
     <div class="card question-card">
       <h2> Question 10❓ </h2>
-      <p>Q: what is Reconciliation in react?  </p>
+      <p>Q:  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       Reconciliation is react's smart algorithm that compares the old and new virtual DOM finds 
-       the minimal differences and applies only those change to the real DOM, it is called Reconciliation in 
-       react-js. <br> 
-       means our actual DOM complete new page does not load only loads the virtual dom small area that is changed by functionality 
-       that we have given.
+       
       </p>
     </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
 
+            </code></pre>
+    </div>
 <!------- question 11 completed ----- -->
  <!----------------------------------- Question No 12 ---------------------->
     <div class="card question-card">
       <h2> Question 12❓ </h2>
-      <p>Q: what is Link in react?  </p>
+      <p>Q:  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       Link is a component from the library react-router-dom.<br>
-
-It is used for navigation between pages in a React app (Single Page Application).<br>
-
-Unlike <xmp><a href="..."></a></xmp>, it does not reload the page. It just changes the URL and shows the correct component.
+       
       </p>
     </div>
 <!-------- example -------->
