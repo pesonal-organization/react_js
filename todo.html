@@ -97,20 +97,69 @@ export default TodoScreenTwo;
  <!----------------------------------- Question No 2 ---------------------->
     <div class="card question-card">
       <h2> Question 2❓ </h2>
-      <p>Q:  </p>
+      <p>Q: todo list additem and delete item?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       see in example:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
+       <xmp>
+        // todoone.jsx
+import { useLayoutEffect, useState } from "react";
+import Header from '../MyComponents/header/header';
+const TodoScreenTwo = ()=>{
+    const [todoInput,setTodoInput] = useState('');
+    const [todoData,setTodoData] = useState([]);
+    // i declare function below
+    const addItem = ()=>{
+        console.log(todoInput);
        
+        const todoClone = [...todoData];
+        todoClone.push(todoInput);
+        setTodoData(todoClone);
+ setTodoInput('');
+    }
+//  function deleteHandler
+const deleteHandler = (index)=>{
+    console.log(index);
+    const todoClone = [...todoData];
+    todoClone.splice(index,1);
+    setTodoData(todoClone);
+}
+
+
+    // below is return
+    return(
+        <div>
+            <h1>To do two screen</h1>
+           <input type="text"
+           value={todoInput}
+           onChange={(e)=>{setTodoInput(e.target.value)}}
+           
+           
+           />
+
+           <button onClick={addItem}
+           disabled={todoInput.trim().length <1}>add Item</button>
+           <ul>
+            {todoData.map((item,index)=>{
+                return(<li>{item}
+                <button onClick={()=>deleteHandler(index)}>Delete Item</button></li>)
+            })}
+           </ul>
+               
+        </div>
+    )
+}
+export default TodoScreenTwo;
+       </xmp>
 
             </code></pre>
     </div>
@@ -118,20 +167,95 @@ export default TodoScreenTwo;
  <!----------------------------------- Question No 3 ---------------------->
     <div class="card question-card">
       <h2> Question 3❓ </h2>
-      <p>Q:  </p>
+      <p>Q: complete todo List?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       see in example:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
+       <xmp>
+        // todoone.jsx
+import { useLayoutEffect, useState } from "react";
+import Header from '../MyComponents/header/header';
+const TodoScreenTwo = ()=>{
+    const [todoInput,setTodoInput] = useState('');
+    const [todoData,setTodoData] = useState([]);
+    const [isEdit,setIsEdit] = useState(false);
+    const [targetIndex,setTargetIndex] = useState('');
+    // i declare function below
+    const addItem = ()=>{
+        console.log(todoInput);
        
+        const todoClone = [...todoData];
+        todoClone.push(todoInput);
+        setTodoData(todoClone);
+ setTodoInput('');
+    }
+//  function deleteHandler
+const deleteHandler = (index)=>{
+    console.log(index);
+    const todoClone = [...todoData];
+    todoClone.splice(index,1);
+    setTodoData(todoClone);
+}
+
+// function for edit 
+const editItemHandler = (index,item)=>{
+    console.log(index,item);
+    setTodoInput(item);
+    setTargetIndex(index);
+    setIsEdit(true)
+}
+// function updateItem
+const updateItem = ()=>{
+    console.log('hello');
+    const todoClone = [...todoData];
+    todoClone.splice(targetIndex,1,todoInput);
+    setTodoData(todoClone);
+    setTodoInput('');
+    setIsEdit(false);
+    setTargetIndex('');
+    
+}
+    // below is return
+    return(
+        <div>
+            <h1>To do two screen</h1>
+           <input type="text"
+           value={todoInput}
+           onChange={(e)=>{setTodoInput(e.target.value)}}
+           
+           
+           />
+           
+           {(isEdit)
+           ?
+           (<button onClick={updateItem}
+           disabled={todoInput.trim().length <1}>update Item</button>)
+           :
+           (<button onClick={addItem}
+           disabled={todoInput.trim().length <1}>add Item</button>)}
+           <ul>
+            {todoData.map((item,index)=>{
+                return(<li key={index}>{item}
+                <button onClick={()=>deleteHandler(index)}>Delete Item</button>
+                <button onClick={()=>editItemHandler(index,item)}>Edit Item</button>
+                </li>)
+            })}
+           </ul>
+               
+        </div>
+    )
+}
+export default TodoScreenTwo;
+       </xmp>
 
             </code></pre>
     </div>
@@ -139,20 +263,108 @@ export default TodoScreenTwo;
  <!----------------------------------- Question No 4 ---------------------->
     <div class="card question-card">
       <h2> Question 4❓ </h2>
-      <p>Q:  </p>
+      <p>Q: TodoList with cancel button?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       see in example:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
+       <xmp>
+        // todoone.jsx
+import { useLayoutEffect, useState } from "react";
+import Header from '../MyComponents/header/header';
+const TodoScreenTwo = ()=>{
+    const [todoInput,setTodoInput] = useState('');
+    const [todoData,setTodoData] = useState([]);
+    const [isEdit,setIsEdit] = useState(false);
+    const [targetIndex,setTargetIndex] = useState('');
+    // i declare function below
+    const addItem = ()=>{
+        console.log(todoInput);
        
+        const todoClone = [...todoData];
+        todoClone.push(todoInput);
+        setTodoData(todoClone);
+ setTodoInput('');
+    }
+//  function deleteHandler
+const deleteHandler = (index)=>{
+    console.log(index);
+    const todoClone = [...todoData];
+    todoClone.splice(index,1);
+    setTodoData(todoClone);
+}
+
+// function for edit 
+const editItemHandler = (index,item)=>{
+    console.log(index,item);
+    setTodoInput(item);
+    setTargetIndex(index);
+    setIsEdit(true)
+}
+// function updateItem
+const updateItem = ()=>{
+    console.log('hello');
+    const todoClone = [...todoData];
+    todoClone.splice(targetIndex,1,todoInput);
+    setTodoData(todoClone);
+    setTodoInput('');
+    setIsEdit(false);
+    setTargetIndex('');
+    
+}
+// cancel edit function 
+const cancel = ()=>{
+    setIsEdit(false);
+    setTargetIndex('');
+    setTodoInput('');
+    
+}
+    // below is return
+    return(
+        <div>
+            <h1>To do two screen</h1>
+           <input type="text"
+           value={todoInput}
+           onChange={(e)=>{setTodoInput(e.target.value)}}
+           
+           
+           />
+           
+           {(isEdit)
+           ?
+           (
+            <div>
+                <button onClick={updateItem}
+           disabled={todoInput.trim().length <1}>update Item</button>
+
+           <button onClick={cancel}>Cancel Edit</button>
+            </div>
+        )
+           :
+           (<button onClick={addItem}
+           disabled={todoInput.trim().length <1}>add Item</button>)}
+           <ul>
+            {todoData.map((item,index)=>{
+                return(<li key={index}>{item}
+                <button onClick={()=>deleteHandler(index)}>Delete Item</button>
+                <button onClick={()=>editItemHandler(index,item)}>Edit Item</button>
+                </li>)
+            })}
+           </ul>
+               
+        </div>
+    )
+}
+export default TodoScreenTwo;
+       </xmp>
 
             </code></pre>
     </div>
