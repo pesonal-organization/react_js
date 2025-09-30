@@ -423,32 +423,36 @@ It is used for navigation between pages in a React app (Single Page Application)
 Unlike <xmp><a href="..."></a></xmp>, it does not reload the page. It just changes the URL and shows the correct component.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 12 completed ----- -->
  <!----------------------------------- Question No 13 ---------------------->
     <div class="card question-card">
       <h2> Question 13❓ </h2>
-      <p>Q:  </p>
+      <p>Q: Create oop/class ?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       see in example:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        / using oop /class 
+import React , {Component} from "react";
+ class UserScreen extends Component{
+    render(){
+        return(
+            <h1>Oop in React</h1>
+        )
+    }
+ }
+ export default UserScreen;
+       </xmp>
 
             </code></pre>
     </div>
@@ -456,20 +460,70 @@ Unlike <xmp><a href="..."></a></xmp>, it does not reload the page. It just chang
  <!----------------------------------- Question No 14 ---------------------->
     <div class="card question-card">
       <h2> Question 14❓ </h2>
-      <p>Q:  </p>
+      <p>Q: apiCall in react?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       see in example:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        // users.jsx 
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useSearchParams } from "react-router-dom";
+const UserScreen = ()=>{
+//     const apiCall = async()=>{
+//         const apiUrl = "https://jsonplaceholder.typicode.com/users";
+//         try{
+            
+// const res = await fetch(apiUrl);
+// const targetData = await res.json();
+// console.log(targetData)
+//         }
+//         catch(errors){console.log('some thing went wrong :',errors)}
+//     }
+const [userList,setUserList] = useState([]);
+const [loading,setLoading] = useState(false);
+ const apiCall = async()=>{
+  setLoading(true);
+        const apiUrl = "https://jsonplaceholder.typicode.com/users";
+        try{
+            
+const res = await axios.get(apiUrl);
+
+console.log(res);
+// res && setUserList(res?.data)
+if(res){setUserList(res?.data);
+  setLoading(false)
+}
+        }
+        catch(errors){console.log('some thing went wrong :',errors)}
+    }
+    useEffect(()=>{apiCall()},[])
+    return(
+        <div>
+          <h1>user list</h1>
+          {/* loading section */}
+          {loading && <h3>Data is loading</h3>}
+
+          {/* maping user data */}
+          <ul>
+            {userList.map((item,index)=>{
+                return(<li key={item?.id}>{item?.name}</li>)
+            })}
+          </ul>
+        </div>
+    )
+}
+export default UserScreen;
+       </xmp>
 
             </code></pre>
     </div>
@@ -477,23 +531,17 @@ Unlike <xmp><a href="..."></a></xmp>, it does not reload the page. It just chang
  <!----------------------------------- Question No 15 ---------------------->
     <div class="card question-card">
       <h2> Question 15❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is this 
+        <pre>loading && <h3>Data is loading</h3></pre>  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       if left side is working or available run after && side another not
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 15 completed ----- -->
  <!----------------------------------- Question No 15 ---------------------->
     <div class="card question-card">
