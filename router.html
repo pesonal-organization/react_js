@@ -546,20 +546,56 @@ export default UserScreen;
  <!----------------------------------- Question No 15 ---------------------->
     <div class="card question-card">
       <h2> Question 15❓ </h2>
-      <p>Q:  </p>
+      <p>Q: correct apiCall and render data on dom by map?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       see in example:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        import React, { useEffect, useState } from "react";
+
+const ApiPractice = () => {
+  const [users, setUsers] = useState([]);
+
+  // apiCall function
+  const apiCall = async () => {
+    const apiUrl = "https://jsonplaceholder.typicode.com/users";
+    try {
+      const res = await fetch(apiUrl);
+      const targetData = await res.json();
+      setUsers(targetData);
+    } catch (error) {
+      console.log("something went wrong: ", error);
+    }
+  };
+
+  useEffect(() => {
+    apiCall();
+  }, []);
+
+  return (
+    <div>
+      <h1>User List</h1>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default ApiPractice;
+
+       </xmp>
 
             </code></pre>
     </div>
@@ -567,20 +603,57 @@ export default UserScreen;
  <!----------------------------------- Question No 16 ---------------------->
     <div class="card question-card">
       <h2> Question 16❓ </h2>
-      <p>Q:  </p>
+      <p>Q: get api data with axios?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       see in example:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+const ApiPractice = () => {
+  const [users, setUsers] = useState([]);
+
+  // by axios
+  const apiCall = async () => {
+    const apiUrl = "https://jsonplaceholder.typicode.com/users";
+    try {
+      const res = await axios.get(apiUrl);
+      setUsers(res.data); // ✅ FIX
+    } catch (error) {
+      console.log("something went wrong: ", error);
+    }
+  };
+
+  useEffect(() => {
+    apiCall();
+  }, []);
+
+  return (
+    <div>
+      <h1>User List</h1>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default ApiPractice;
+
+
+       </xmp>
 
             </code></pre>
     </div>
