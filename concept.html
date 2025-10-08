@@ -1,0 +1,662 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class 1 – Introduction to JavaScript</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="class-page">
+  <div class="container">
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-btn">← Back to Index</a>
+     
+    </div>
+<!------ Write Topic Name here ------->
+    <h1 class="lecture-heading">Structure page</h1>
+
+    <!-- Topics Covered -->
+    <div class="card topics-card">
+      <h2>📋 Topics Covered</h2>
+      <ul>
+        <li>write here first question that you are studying in this file</li>
+        
+        </ul>
+    </div>
+   
+    <!----------------------------------- Question No 1 ---------------------->
+    <div class="card question-card">
+      <h2> Question 1❓ </h2>
+      <p>Q: component of react? </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       see in example:
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       <xmp>
+        // Contact.jsx
+import React from "react";
+const Contact = ()=>{
+    return(
+        <h1>I am Contact page</h1>
+    )
+}
+export default Contact;
+       </xmp>
+
+            </code></pre>
+    </div>
+<!------- question 1 completed ----- -->
+ <!----------------------------------- Question No 2 ---------------------->
+    <div class="card question-card">
+      <h2> Question 2❓ </h2>
+      <p>Q: routes.jsx?  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       see code in example:
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       <xmp>
+        // all routes we make here
+import {Routes,Route} from 'react-router';
+import Home from '../screen/home/home';
+import About from '../screen/about/about';
+import Contact from '../screen/contact/contact';
+const MyRoutes = ()=>{
+    return(
+        <Routes>
+<Route path='/' element={<Home/>}/>
+<Route path='/about' element={<About/>}/>
+<Route path='/contact' element={<Contact/>}/>
+
+
+        </Routes>
+    )
+}
+export default MyRoutes;
+       </xmp>
+
+            </code></pre>
+    </div>
+<!------- question 2 completed ----- -->
+ <!----------------------------------- Question No 3 ---------------------->
+    <div class="card question-card">
+      <h2> Question 3❓ </h2>
+      <p>Q: navbar.jsx? </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       see in example:
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       <xmp>
+        // navbar.jsx
+import React from "react";
+import { Link } from "react-router";
+const Navbar = ()=>{
+    return(
+        <nav>
+            <ul>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
+            </ul>
+        </nav>
+    )
+}
+export default Navbar;
+       </xmp>
+
+            </code></pre>
+    </div>
+<!------- question 3 completed ----- -->
+ <!----------------------------------- Question No 4 ---------------------->
+    <div class="card question-card">
+      <h2> Question 4❓ </h2>
+      <p>Q: Example of useState( )?  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       see in example:
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       <xmp> 
+        
+
+import React, { useEffect, useState } from "react";
+const Home = ()=>{
+    // first make state for counter 
+    const [count,setCount] = useState(0);
+    // make increment function to increase in count 
+    const increment = ()=>{
+        setCount(count + 1)
+    }
+    // make decrement function to decrease in count 
+    const decrement = ()=>{
+        setCount(count - 1)
+    }
+    // make use effect for show data on console
+    useEffect(()=>{
+        console.log('count: ', count)
+    },[count])
+    return(
+        <div> 
+            <h1>Couter App</h1>
+            <h2>count : {count}</h2>
+            <button onClick={increment}>Increase</button>
+            <button onClick={decrement}>decrease</button>
+        </div>
+    )
+}
+export default Home;
+       </xmp>
+
+            </code></pre>
+    </div>
+<!------- question 4 completed ----- -->
+ <!----------------------------------- Question No 5 ---------------------->
+    <div class="card question-card">
+      <h2> Question 5❓ </h2>
+      <p>Q: cleanup in reactJs?  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       it is required when we leave page our function must stop and when we come 
+       back funtion should start working .
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       <xmp>
+        import React, { useEffect, useState } from "react";
+function Home(){
+    const [count,setCount] = useState(0);
+    useEffect(()=>{
+        console.log('timer started');
+        const timer = setInterval(() => {
+            
+            setCount(count + 1)
+        }, 1000);
+        // cleanup runs when page mounts 
+        return()=>{
+            console.log('timer stopped');
+            clearInterval(timer)
+        }
+    },[])
+    return(
+        <div>
+            <h1>
+                Timer
+            </h1>
+            <h2>{count}</h2>
+        </div>
+    )
+}
+       </xmp>
+
+            </code></pre>
+    </div>
+<!------- question 5 completed ----- -->
+ <!----------------------------------- Question No 6 ---------------------->
+    <div class="card question-card">
+      <h2> Question 6❓ </h2>
+      <p>Q: apicall and show data on dom by fetch? </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       see in example:
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       <xmp>import React, { useEffect, useState } from "react";
+const Home = ()=>{
+    const [datat,setData] = useState([]);
+    
+    const apiCall = async ()=>{
+        const apiUrl = 'https://jsonplaceholder.typicode.com/users';
+        try{const get = await fetch(apiUrl);
+            const jsonData = await get?.json();
+            console.log(jsonData);
+            setData(jsonData)
+           
+         }
+        catch(error){console.log(error.name)}
+
+    }
+    // useeffect 
+    useEffect(()=>{
+        apiCall();
+        
+    },[])
+    return(
+        <div>
+            <ul>
+                {datat.map((item,index)=>{
+                    return(
+                        <li key={index}>{item.id} : {item.name}</li>
+                    )
+                })}
+            </ul>
+        </div>
+    )
+}
+export default Home;</xmp>
+
+            </code></pre>
+    </div>
+<!------- question 6 completed ----- -->
+ <!----------------------------------- Question No 7 ---------------------->
+    <div class="card question-card">
+      <h2> Question 7❓ </h2>
+      <p>Q: apicall by axios and show data on dom?  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       see in example:
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+<xmp>
+  import React, { useEffect, useState } from "react";
+import axios from "axios";
+const Home = ()=>{
+    // create use state for showing data in dom 
+    const [list,setList] = useState([])
+    const apiCall = async ()=>{
+        const apiUrl = 'https://jsonplaceholder.typicode.com/users';
+        try{const data  = await axios.get(apiUrl);
+           
+            console.log(data);
+            setList(data.data)
+        }
+        catch(error){console.log(error)}
+    }
+
+    // useEffect 
+    useEffect(()=>{
+        apiCall();
+    },[])
+    return(
+        <div>
+        <h1>User List by axios</h1>
+        <ul>
+            {list.map((item,index)=>{
+                return(
+                    <li key={index}>{item.name}</li>
+                )
+            })}
+        </ul>
+        </div>
+    )
+}
+export default Home;
+</xmp>
+            </code></pre>
+    </div>
+<!------- question 7 completed ----- -->
+ <!----------------------------------- Question No 8 ---------------------->
+    <div class="card question-card">
+      <h2> Question 8❓ </h2>
+      <p>Q: use of loading/loader in apicall?  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       see in example:
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+<xmp>
+  import React, { useEffect, useState } from "react";
+import axios from "axios";
+const Home = ()=>{
+    // create use state for showing data in dom 
+    const [list,setList] = useState([])
+    // create a loading usestate
+    const [loading,isLoading] = useState(false)
+    const apiCall = async ()=>{
+        isLoading(true)
+        const apiUrl = 'https://jsonplaceholder.typicode.com/users';
+        try{const data  = await axios.get(apiUrl);
+           
+            console.log(data.data);
+           
+          
+            if(data.data){
+                setList(data.data);
+                isLoading(false);
+            }
+        }
+        catch(error){console.log(error)}
+    }
+
+    // useEffect 
+    useEffect(()=>{
+        apiCall();
+    },[])
+    return(
+        <div>
+        <h1>User List by axios</h1>
+      {  loading && <h3>data is loading</h3>}
+        <ul>
+            {list.map((item,index)=>{
+                return(
+                    <li key={index}>{item.name}</li>
+                )
+            })}
+        </ul>
+        </div>
+    )
+}
+export default Home;
+</xmp>
+            </code></pre>
+    </div>
+<!------- question 8 completed ----- -->
+ <!----------------------------------- Question No 9 ---------------------->
+    <div class="card question-card">
+      <h2> Question 9❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 9 completed ----- -->
+ <!----------------------------------- Question No 10 ---------------------->
+    <div class="card question-card">
+      <h2> Question 10❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 11 completed ----- -->
+ <!----------------------------------- Question No 12 ---------------------->
+    <div class="card question-card">
+      <h2> Question 12❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 12 completed ----- -->
+ <!----------------------------------- Question No 13 ---------------------->
+    <div class="card question-card">
+      <h2> Question 13❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 13 completed ----- -->
+ <!----------------------------------- Question No 14 ---------------------->
+    <div class="card question-card">
+      <h2> Question 14❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 14 completed ----- -->
+ <!----------------------------------- Question No 15 ---------------------->
+    <div class="card question-card">
+      <h2> Question 15❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 15 completed ----- -->
+ <!----------------------------------- Question No 15 ---------------------->
+    <div class="card question-card">
+      <h2> Question 15❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 15 completed ----- -->
+ <!----------------------------------- Question No 16 ---------------------->
+    <div class="card question-card">
+      <h2> Question 16❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 16 completed ----- -->
+ <!----------------------------------- Question No 17 ---------------------->
+    <div class="card question-card">
+      <h2> Question 17❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 17 completed ----- -->
+ <!----------------------------------- Question No 18 ---------------------->
+    <div class="card question-card">
+      <h2> Question 18❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question completed ----- -->
+ <!----------------------------------- Question No 19 ---------------------->
+    <div class="card question-card">
+      <h2> Question 19❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 19 completed ----- -->
+ <!----------------------------------- Question No 20 ---------------------->
+    <div class="card question-card">
+      <h2> Question 20❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 20 completed ----- -->
+
+    
+
+    
+<!---- main div closed below--- -->
+  </div>
+</body>
+</html> 
