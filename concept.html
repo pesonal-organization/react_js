@@ -403,20 +403,44 @@ export default Home;
  <!----------------------------------- Question No 9 ---------------------->
     <div class="card question-card">
       <h2> Question 9❓ </h2>
-      <p>Q:  </p>
+      <p>Q: Throw on pagenotfound if enters wrong path?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       First make a page if user write wrong path and than you should direct user to this page 
+       import this page to the routes.jsx  and in the last of routes define its route with ptah='*' <br>
+       more see in example:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        routes.jsx file 
+
+        // all routes we make here
+import {Routes,Route} from 'react-router';
+import Home from '../screen/home/home';
+import About from '../screen/about/about';
+import Contact from '../screen/contact/contact';
+import Notfoundpage from '../screen/notfound-page/notfound-page';
+const MyRoutes = ()=>{
+    return(
+        <Routes>
+<Route path='/' element={<Home/>}/>
+<Route path='/about' element={<About/>}/>
+<Route path='/contact' element={<Contact/>}/>
+<Route path='*' element={<Notfoundpage/>}/>
+
+
+        </Routes>
+    )
+}
+export default MyRoutes;
+       </xmp>
 
             </code></pre>
     </div>
@@ -424,13 +448,22 @@ export default Home;
  <!----------------------------------- Question No 10 ---------------------->
     <div class="card question-card">
       <h2> Question 10❓ </h2>
-      <p>Q:  </p>
+      <p>Q: come back on home page auto and by button if user enter wrong path?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       To come back home page first import useNavigate from react-router in notfound page and 
+       make a const navigate = useNavigate() <br>
+       in component and than pass this naviage in button by onclick and in button create a call backfunction and 
+       in functions block keep navigate and give it path like 
+       <br>
+       navigate('/')<br> 
+       we keep throw our page auto by useEffect using settimeout <br> 
+       create a useEffect and in useEffect create a settimeout function and in function block 
+       write navigate('/') and define time also<br> 
+       more details see in example:
       </p>
     </div>
 <!-------- example -------->
@@ -438,27 +471,72 @@ export default Home;
       <h2>💡 Example</h2>
       <pre><code>
        
+<xmp>
+  notfound-page.jsx 
 
+  // notfound-page.jsx 
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router";
+const Notfoundpage = ()=>{
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        setTimeout(() => {
+            navigate('/')
+            
+        }, 3000);
+    },[])
+    return(
+        <div>
+            <h1>i am not found page</h1>
+            <button onClick={()=>{navigate('/')}}>Move to Home</button>
+        </div>
+    )
+}
+export default Notfoundpage;
+</xmp>
             </code></pre>
     </div>
 <!------- question 11 completed ----- -->
  <!----------------------------------- Question No 12 ---------------------->
     <div class="card question-card">
       <h2> Question 12❓ </h2>
-      <p>Q:  </p>
+      <p>Q: Get pathname of page on which you are now?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       first import useLocation from react-router and than make a const and than console pathname in useeffect<br> 
+       see in example:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+// navbar.jsx
+import React, { useEffect } from "react";
+import { Link } from "react-router";
+import { useLocation } from "react-router";
+const Navbar = ()=>{
+    const {pathname} = useLocation();
+    useEffect(()=>{
+        console.log(pathname)
+    },[])
+    return(
+        <nav>
+            <ul>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
+            </ul>
+        </nav>
+    )
+}
+export default Navbar;
+       </xmp>
 
             </code></pre>
     </div>
@@ -466,20 +544,77 @@ export default Home;
  <!----------------------------------- Question No 13 ---------------------->
     <div class="card question-card">
       <h2> Question 13❓ </h2>
-      <p>Q:  </p>
+      <p>Q: Get the data of an object by click on view user button?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       First create a function viewUser and pass a parameter in this funciton like userData and 
+       console this parameter in blocks of function <br> 
+       now pass this function in view user button by onclick and in { } make a  
+       callback function and in its block call the function viewUser and in viewUser ( ) pass item or any 
+       data that we want show on console.<br> 
+       see details in example:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
+const Home = ()=>{
+    
+    // create use state for showing data in dom 
+    const [list,setList] = useState([])
+    // create a loading usestate
+    const [loading,isLoading] = useState(false)
+    
+    const apiCall = async ()=>{
+        isLoading(true)
+        const apiUrl = 'https://jsonplaceholder.typicode.com/users';
+        try{const data  = await axios.get(apiUrl);
+           
+            console.log(data.data);
+           
+          
+            if(data.data){
+                setList(data.data);
+                isLoading(false);
+            }
+        }
+        catch(error){console.log(error)}
+    }
+    // funciton for getting data
+    const viewUser = (userData)=>{
+        console.log(userData)
+    }
+
+    // useEffect 
+    useEffect(()=>{
+        apiCall();
+    },[])
+    
+    return(
+        <div>
+        <h1>User List by axios</h1>
+      {  loading && <h3>data is loading</h3>}
+        <ul>
+            {list.map((item,index)=>{
+                return(
+                    <li key={index}>{item.name}{' '}
+                    <button onClick={()=>{viewUser(item.id)}}>view user</button></li>
+                )
+            })}
+        </ul>
+        </div>
+    )
+}
+export default Home;
+       </xmp>
 
             </code></pre>
     </div>
@@ -487,20 +622,149 @@ export default Home;
  <!----------------------------------- Question No 14 ---------------------->
     <div class="card question-card">
       <h2> Question 14❓ </h2>
-      <p>Q:  </p>
+      <p>Q: show dynamic id of an object on another page: </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       when i click on  view user button i must go to another page ,and i must see written 
+       id of user on another page dynamic like1,2,/3 etc<br> 
+       first make a new folder and a new file in new folder <br>
+       make a route of this file <br> 
+       <pre><Route path='/newpage/:id' element= {<Newpage/>}/></pre><br>
+       import useNavigate in apilist from react-router<br>
+       make<br>
+       const navigate = useNavigate();
+       <br>
+       pass this navigate in viewUser function<br>
+
+       show dynamic id on dom <br>
+       import useParams in newpage from react-router <br>
+       make a hook <br>
+       const {id} = useParams()<br>
+       console.log(id);
+       return<br>
+       <pre><h1>{id}</h1></pre>
+       <br> 
+       see details in example:
+
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        ______________________
+        home.jsx 
+        ______________________
+
+        
+
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router";
+const Home = ()=>{
+    
+    // create use state for showing data in dom 
+    const [list,setList] = useState([])
+    // create a loading usestate
+    const [loading,isLoading] = useState(false);
+    // navigation to newpage
+    const  navigate = useNavigate()
+    
+    const apiCall = async ()=>{
+        isLoading(true)
+        const apiUrl = 'https://jsonplaceholder.typicode.com/users';
+        try{const data  = await axios.get(apiUrl);
+           
+            console.log(data.data);
+           
+          
+            if(data.data){
+                setList(data.data);
+                isLoading(false);
+            }
+        }
+        catch(error){console.log(error)}
+    }
+    // funciton for getting data
+    const viewUser = (userData)=>{
+        console.log(userData);
+        navigate(`newpage/${userData.id}`)
+    }
+
+    // useEffect 
+    useEffect(()=>{
+        apiCall();
+    },[])
+    
+    return(
+        <div>
+        <h1>User List by axios</h1>
+      {  loading && <h3>data is loading</h3>}
+        <ul>
+            {list.map((item,index)=>{
+                return(
+                    <li key={index}>{item.name}{' '}
+                    <button onClick={()=>{viewUser(item)}}>view user</button></li>
+                )
+            })}
+        </ul>
+        </div>
+    )
+}
+export default Home;
+______________________
+newpage.jsx 
+______________________
+// newpage.jsx
+import React from "react";
+import { useParams } from "react-router";
+const Newpage = ()=>{
+    
+     const {id} = useParams();
+     console.log(id)
+    return(
+        <div>
+            <h1>I am new page</h1>
+            { <h1>newid: {id}</h1> }
+        </div>
+    )
+}
+export default Newpage;
+
+
+
+
+routes.jsx 
+______________________
+// all routes we make here
+import {Routes,Route} from 'react-router';
+import Home from '../screen/home/home';
+import About from '../screen/about/about';
+import Contact from '../screen/contact/contact';
+import Notfoundpage from '../screen/notfound-page/notfound-page';
+import Newpage from '../newpage/newpage';
+
+
+const MyRoutes = ()=>{
+    return(
+        <Routes>
+<Route path='/' element={<Home/>}/>
+<Route path='/about' element={<About/>}/>
+<Route path='/contact' element={<Contact/>}/>
+<Route path='/newpage/:id' element={<Newpage/>}/>
+<Route path='*' element={<Notfoundpage/>}/>
+
+
+        </Routes>
+    )
+}
+export default MyRoutes;
+       </xmp>
 
             </code></pre>
     </div>
