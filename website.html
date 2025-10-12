@@ -1,0 +1,653 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class 1 – Introduction to JavaScript</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="class-page">
+  <div class="container">
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-btn">← Back to Index</a>
+     
+    </div>
+<!------ Write Topic Name here ------->
+    <h1 class="lecture-heading">Structure page</h1>
+
+    <!-- Topics Covered -->
+    <div class="card topics-card">
+      <h2>📋 Topics Covered</h2>
+      <ul>
+        <li>write here first question that you are studying in this file</li>
+        
+        </ul>
+    </div>
+   
+    <!----------------------------------- Question No 1 ---------------------->
+    <div class="card question-card">
+      <h2> Question 1❓ </h2>
+      <p>Q: My first reactJs web by bootstrap?  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       install bootstrap by 
+       <br>
+       <pre>npm i bootstrap react-router-dom</pre>
+       <br>
+       than import bootstrap in main.jsx <br> 
+       <pre>import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'</pre>
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+      <xmp>
+         App.jsx 
+       ______________________
+       import React from "react";
+import {Routes,Route} from 'react-router';
+import Navbar from "./components/navbar/navbar";
+import Home from './pages/home';
+import About from './pages/about';
+import Services from './pages/services';
+import Contact from './pages/contact';
+const App = ()=>{
+  return(
+    <>
+    <Navbar/>
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/about" element={<About/>}/>
+      <Route path="/services" element={<Services/>}/>
+      <Route path="/contact" element={<Contact/>}/>
+    </Routes>
+    </>
+  )
+}
+export default App;
+______________________
+main.jsx 
+
+import React from 'react';
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx';
+import { BrowserRouter } from 'react-router';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+
+createRoot(document.getElementById('root')).render(
+  
+   <BrowserRouter>
+    <App />
+   </BrowserRouter>
+
+)
+______________________
+navbar.jsx 
+
+import React from "react";
+import { Link,NavLink } from "react-router";
+const Navbar = ()=>
+{
+    return (
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+  <div className="container-fluid">
+    <a className="navbar-brand" href="#">Navbar</a>
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul className="navbar-nav ms-auto mb-2">
+        <li className="nav-item">
+         
+          <NavLink className='nav-link active me-3' to='/'>Home</NavLink>
+        </li>
+        <li className="nav-item">
+         <NavLink className='nav-link me-3' to='/about'>About</NavLink>
+        </li>
+       
+        <li className="nav-item">
+         <NavLink className='nav-link me-3' to='/services'>Services</NavLink>
+        </li>
+        <li className="nav-item">
+         <NavLink className='nav-link' to='/contact'>Contact</NavLink>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+)}
+export default Navbar;
+______________________
+home.jsx 
+
+import React from "react";
+const Home = ()=>{
+    return(
+        <div className="text-center py-5 bg-light">
+            <div className="container">
+                <h1 className="disply-4 fw-bold">Welcome to my website</h1>
+                <p className="lead mt-3">This is created by bootstrap and react</p>
+                <button className="btn btn-primary mt-3">Learn more</button>
+            </div>
+        </div>
+    )
+}
+
+export default Home;
+______________________
+about.jsx 
+
+import React from "react";
+
+const About = ()=>{
+    return(
+        <div className="container">
+            <h1 className="text-center mb-4">About us</h1>
+            <p className="text-center text-muted">We are a small team learning frontend development. This dummy site helps us practice React, Bootstrap, and routing.</p>
+            <div className='row mt-5'>
+                <div className="col-md-6">
+ <img
+            // src="https://via.placeholder.com/500x300"
+            src= "data:image/jpeg;base64,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"
+            alt="about"
+            className="img-fluid rounded shadow ms-5"
+          />
+                </div>
+<div className="col-md-6 d-flex align-item-center">
+    <p className="py-5">Our goal is to build clean, modern, and responsive web pages using React components.
+            With every project, we aim to learn something new.</p>
+</div>
+            </div>
+          
+        </div>
+    )
+}
+export default About;
+______________________
+contact.jsx 
+
+import React from "react";
+const Contact = ()=>{
+    return(
+        <div className="container py-5">
+          <h2 className="text-center mb-4">Contact Us</h2>
+          <div className="row justify-content-center">
+            <div className="col-md-6">
+                <form className="shadow p-4 rounded bg-light">
+                    <div className="mb-3">
+                        <label  className="form-label">Name</label>
+                        <input type="text" className="form-control" placeholder="Enter your name" />
+                    </div>
+                     <div className="mb-3">
+                        <label htmlFor="" className="form-label">Email</label>
+                        <input type="email" className="form-control" placeholder="Enter your Email" />
+                    </div>
+                     <div className="mb-3">
+                        <label htmlFor="" className="form-label">Message</label>
+<textarea name="" className="form-control" row="4" id="" placeholder="Enter your Message"></textarea>    </div>
+<button className="btn btn-primary w-100">Send Message</button>
+                </form>
+            </div>
+          </div>
+        </div>
+    )
+}
+export default Contact;
+______________________
+services.jsx 
+
+import React from "react";
+const Services = ()=>{
+    return(
+        <div className="bg-light py-5">
+          <div className="container">
+            <h2 className="text-center mb-4">Our Services</h2>
+            <div className="row">
+                {
+                    [
+                        {title : 'web design ',text : "Creative and responsive designs for all devices."},
+                        {title : 'web development' , text : "Clean, efficient code with React.js and Bootstrap." },
+                        {title : 'SEO optimization', text : "Boost your website ranking and visibility." }
+                    ].map((services,index)=>{
+                        return(
+                            <div className="col-md-4">
+                                <div className="card shadow-sm border-0">
+                                    <div className="card-body text-center">
+                                        <h5 className="card-title">{services.title}</h5>
+                                        <p className="card-text text-muted">{services.text}</p>
+                                        <button className="btn btn-outline-primary">Read More</button>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+
+          </div>
+        </div>
+    )
+}
+export default Services;
+______________________
+
+      </xmp>
+            </code></pre>
+    </div>
+<!------- question 1 completed ----- -->
+ <!----------------------------------- Question No 2 ---------------------->
+    <div class="card question-card">
+      <h2> Question 2❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 2 completed ----- -->
+ <!----------------------------------- Question No 3 ---------------------->
+    <div class="card question-card">
+      <h2> Question 3❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 3 completed ----- -->
+ <!----------------------------------- Question No 4 ---------------------->
+    <div class="card question-card">
+      <h2> Question 4❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 4 completed ----- -->
+ <!----------------------------------- Question No 5 ---------------------->
+    <div class="card question-card">
+      <h2> Question 5❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 5 completed ----- -->
+ <!----------------------------------- Question No 6 ---------------------->
+    <div class="card question-card">
+      <h2> Question 6❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 6 completed ----- -->
+ <!----------------------------------- Question No 7 ---------------------->
+    <div class="card question-card">
+      <h2> Question 7❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 7 completed ----- -->
+ <!----------------------------------- Question No 8 ---------------------->
+    <div class="card question-card">
+      <h2> Question 8❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 8 completed ----- -->
+ <!----------------------------------- Question No 9 ---------------------->
+    <div class="card question-card">
+      <h2> Question 9❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 9 completed ----- -->
+ <!----------------------------------- Question No 10 ---------------------->
+    <div class="card question-card">
+      <h2> Question 10❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 11 completed ----- -->
+ <!----------------------------------- Question No 12 ---------------------->
+    <div class="card question-card">
+      <h2> Question 12❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 12 completed ----- -->
+ <!----------------------------------- Question No 13 ---------------------->
+    <div class="card question-card">
+      <h2> Question 13❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 13 completed ----- -->
+ <!----------------------------------- Question No 14 ---------------------->
+    <div class="card question-card">
+      <h2> Question 14❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 14 completed ----- -->
+ <!----------------------------------- Question No 15 ---------------------->
+    <div class="card question-card">
+      <h2> Question 15❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 15 completed ----- -->
+ <!----------------------------------- Question No 15 ---------------------->
+    <div class="card question-card">
+      <h2> Question 15❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 15 completed ----- -->
+ <!----------------------------------- Question No 16 ---------------------->
+    <div class="card question-card">
+      <h2> Question 16❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 16 completed ----- -->
+ <!----------------------------------- Question No 17 ---------------------->
+    <div class="card question-card">
+      <h2> Question 17❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 17 completed ----- -->
+ <!----------------------------------- Question No 18 ---------------------->
+    <div class="card question-card">
+      <h2> Question 18❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question completed ----- -->
+ <!----------------------------------- Question No 19 ---------------------->
+    <div class="card question-card">
+      <h2> Question 19❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 19 completed ----- -->
+ <!----------------------------------- Question No 20 ---------------------->
+    <div class="card question-card">
+      <h2> Question 20❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 20 completed ----- -->
+
+    
+
+    
+<!---- main div closed below--- -->
+  </div>
+</body>
+</html> 
