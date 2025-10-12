@@ -772,20 +772,50 @@ export default MyRoutes;
  <!----------------------------------- Question No 15 ---------------------->
     <div class="card question-card">
       <h2> Question 15❓ </h2>
-      <p>Q:  </p>
+      <p>Q: Make props( ) in header and receive in home?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       see in example:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        header.jsx 
+
+       // // header.jsx
+import React from "react";
+
+const Header = ({ title }) => {
+  console.log(title); // or console.log(props) if you prefer
+  return (
+    <h1>{title?.charAt(0).toUpperCase()+ title?.slice(1).toLowerCase()}</h1>
+  );
+};
+
+export default Header;
+
+
+home.jsx 
+
+// home.jsx
+import React from "react";
+import Header from "../../components/header/header";
+const Home = ()=>{
+    return(
+       <>
+       <Header title='home'/>
+       </>
+    )
+}
+export default Home;
+
+       </xmp>
 
             </code></pre>
     </div>
@@ -793,13 +823,18 @@ export default MyRoutes;
  <!----------------------------------- Question No 15 ---------------------->
     <div class="card question-card">
       <h2> Question 15❓ </h2>
-      <p>Q:  </p>
+      <p>Q: Get input in console and apply onfocus( ) on input?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       First we import {useRef} from react<br> 
+       we make a const for saving useRef( )<br> 
+       we make a function for consoling and cheking our result <br> 
+       we pass variable name in button in onclick event<br> 
+       we pass keyword ref in input and its value we pass variable name <br> 
+       see detail in example:
       </p>
     </div>
 <!-------- example -------->
@@ -807,7 +842,29 @@ export default MyRoutes;
       <h2>💡 Example</h2>
       <pre><code>
        
-
+<xmp>
+  // about.jsx
+import React from "react";
+import { use } from "react";
+import { useRef } from "react";
+const About = ()=>{
+    const inputRef = useRef();
+    const divRef = useRef();
+    const submitForm = ()=>{
+        console.log('submitted');
+        console.log(inputRef?.current);
+        inputRef?.current?.focus()
+    }
+    return(
+       <>
+       <h1>accessing dom elements in React</h1>
+       <input ref={inputRef} type='text' placeholder="abcxysz"/>
+       <button onClick={submitForm}>submitForm</button>
+       </>
+    )
+}
+export default About;
+</xmp>
             </code></pre>
     </div>
 <!------- question 15 completed ----- -->
