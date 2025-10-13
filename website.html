@@ -247,20 +247,289 @@ ______________________
  <!----------------------------------- Question No 2 ---------------------->
     <div class="card question-card">
       <h2> Question 2❓ </h2>
-      <p>Q:   </p>
+      <p>Q: website by react bootstrap?   </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       see below
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-      
+      <xmp>
+        App.jsx 
+
+        import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavigationBar from "./components/Navbar";
+import Home from "./pages/Home";
+import Services from "./pages/Services";
+import Contact from "./pages/Contact";
+import Other from "./pages/other";
+
+const App = () => {
+  return (
+    <Router>
+      <NavigationBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/other" element={<Other/>}/>
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
+______________________
+main.jsx 
+
+
+import { createRoot } from 'react-dom/client'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import './index.css'
+import App from './App.jsx'
+
+createRoot(document.getElementById('root')).render(
+  
+    <App />
+  
+)
+______________________
+Navbar.jsx 
+
+
+import React from "react";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+
+const NavigationBar = () => {
+  return (
+    <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+      <Container>
+        <Navbar.Brand as={NavLink} to="/">MyWebsite</Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbar-nav" />
+        <Navbar.Collapse id="navbar-nav">
+          <Nav className="ms-auto">
+            <Nav.Link as={NavLink} to="/" end>
+              Home
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/services">
+              Services
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/contact">
+              Contact
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/other">
+              Other
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
+
+export default NavigationBar;
+______________________
+home.jsx 
+
+import React from "react";
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
+
+const Home = () => {
+  return (
+    
+    <Row xs={1} md={2} className="g-4">
+      {Array.from({ length: 4 }).map((_, idx) => (
+        <Col key={idx}>
+          <Card>
+            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Body>
+              <Card.Title>Card title</Card.Title>
+              <Card.Text>
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      ))}
+    </Row>
+  );
+  
+};
+
+export default Home;
+______________________
+other.jsx 
+
+import React from "react";
+import './other.css';
+import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
+import Table from 'react-bootstrap/Table';
+
+const Other = ()=>{
+    return(
+        <div className="container">
+            <div className="row">
+                <div className="col-md-3">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam qui cum voluptatum possimus! Asperiores, molestias tempore, iste odio quod qui placeat excepturi, quam a fuga debitis accusamus laborum cum tenetur.</p>
+                </div>
+                <div className="col-md-3">                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam qui cum voluptatum possimus! Asperiores, molestias tempore, iste odio quod qui placeat excepturi, quam a fuga debitis accusamus laborum cum tenetur.</p>
+</div>
+                <div className="col-md-3">                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam qui cum voluptatum possimus! Asperiores, molestias tempore, iste odio quod qui placeat excepturi, quam a fuga debitis accusamus laborum cum tenetur.</p>
+</div>
+                <div className="col-md-3">                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam qui cum voluptatum possimus! Asperiores, molestias tempore, iste odio quod qui placeat excepturi, quam a fuga debitis accusamus laborum cum tenetur.</p>
+</div>
+            </div>
+            <div className="row">
+                <div className="col-md-12">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi illo commodi et facilis numquam, porro mollitia consectetur nesciunt nulla excepturi eius suscipit! Maiores quidem, totam tenetur asperiores nihil necessitatibus ex.
+                Eius, iste neque. At enim vero nulla debitis iste et incidunt, id laboriosam neque. Earum odit, inventore ab velit eum provident eos debitis, atque nostrum ipsum, nisi illo laborum repudiandae.
+                Repellendus commodi aliquid nulla quas ea assumenda vel quidem facere accusantium soluta architecto iste sint atque illum totam saepe dignissimos, est exercitationem reprehenderit asperiores molestias. Modi nemo quaerat iusto aliquam?
+                Maxime voluptates earum id incidunt ipsa consequatur porro, harum recusandae labore esse rem inventore quaerat doloribus aspernatur eligendi dicta error adipisci dignissimos dolore! Sint accusamus reprehenderit, in tempore eveniet quo.
+                Asperiores quae soluta aliquam suscipit possimus rerum laudantium amet, quos minus molestias autem quas voluptatem culpa facere at, tenetur nesciunt non cupiditate nobis beatae reiciendis illum? Quis facere exercitationem esse.
+                Illo, rem. Officia vero esse et dolor neque beatae iusto dolorem mollitia commodi, minima similique? Cum cumque consequuntur error ad magni placeat at nisi, et quae exercitationem soluta officiis obcaecati.
+                Debitis beatae ex provident tempore vero deserunt, consectetur quaerat aliquam est error dolores eveniet nisi sapiente blanditiis hic odio ipsa, illo voluptatibus assumenda voluptas dicta. Delectus quaerat praesentium minus ea!
+                Illum aliquid accusamus nulla amet ea ducimus a nihil ratione. Eius provident, incidunt suscipit sint voluptatum possimus minus vitae tempore magnam totam ex molestiae aliquam ullam sequi a quam officiis!</div>
+            </div>
+            <CardGroup>
+      <Card>
+        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Body>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-muted">Last updated 3 mins ago</small>
+        </Card.Footer>
+      </Card>
+      <Card>
+        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Body>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+            This card has supporting text below as a natural lead-in to
+            additional content.
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-muted">Last updated 3 mins ago</small>
+        </Card.Footer>
+      </Card>
+      <Card>
+        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Body>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This card has even longer content than the
+            first to show that equal height action.
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-muted">Last updated 3 mins ago</small>
+        </Card.Footer>
+      </Card>
+    </CardGroup>
+
+
+     <Table responsive>
+      <thead>
+        <tr>
+          <th>#</th>
+          {Array.from({ length: 12 }).map((_, index) => (
+            <th key={index}>Table heading</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          {Array.from({ length: 12 }).map((_, index) => (
+            <td key={index}>Table cell {index}</td>
+          ))}
+        </tr>
+        <tr>
+          <td>2</td>
+          {Array.from({ length: 12 }).map((_, index) => (
+            <td key={index}>Table cell {index}</td>
+          ))}
+        </tr>
+        <tr>
+          <td>3</td>
+          {Array.from({ length: 12 }).map((_, index) => (
+            <td key={index}>Table cell {index}</td>
+          ))}
+        </tr>
+      </tbody>
+    </Table>
+        </div>
+    )
+}
+export default Other;
+______________________
+services.jsx 
+
+import React from "react";
+import { Container } from "react-bootstrap";
+
+const Services = () => {
+  return (
+    <Container className="mt-4">
+      <h1>Our Services</h1>
+      <p>We provide frontend development and React.js training.</p>
+    </Container>
+  );
+};
+
+export default Services;
+______________________
+contact.jsx 
+
+import React from "react";
+import { Container, Form, Button } from "react-bootstrap";
+
+const Contact = () => {
+  return (
+    <Container className="mt-4">
+      <h1>Contact Us</h1>
+      <Form>
+        <Form.Group className="mb-3">
+          <Form.Label>Name</Form.Label>
+          <Form.Control type="text" placeholder="Enter your name" />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Email</Form.Label>
+          <Form.Control type="email" placeholder="Enter your email" />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Message</Form.Label>
+          <Form.Control as="textarea" rows={3} placeholder="Type your message" />
+        </Form.Group>
+        <Button variant="primary" type="submit">Submit</Button>
+      </Form>
+    </Container>
+  );
+};
+
+export default Contact;
+
+      </xmp>
             </code></pre>
     </div>
 <!------- question 2 completed ----- -->
