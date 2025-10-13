@@ -871,7 +871,7 @@ export default About;
  <!----------------------------------- Question No 16 ---------------------->
     <div class="card question-card">
       <h2> Question 16❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is usememo?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
@@ -884,7 +884,46 @@ export default About;
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
+        <xmp>
+        import React, { useState,useMemo } from "react";
+const users = [
+    {id: 1, name : 'john'},
+    {id: 2 , name : 'ahmed'},
+    {id: 3 , name : 'skhi'},
+    {id: 4, name : 'abid'},
+    {id: 5 , name : 'Munawar'}
+]
+const About = ()=>{
+    const [searchInput,setSearchInput] = useState("");
+    const filetered = useMemo(()=>{
+         console.log('hello')
+return(users?.filter((item)=>{
        
+        return(item.name.toLowerCase().includes(searchInput.toLocaleLowerCase()))
+    }))
+
+    },[searchInput,users])
+    return(
+    <div>
+        <h1>search bar in react</h1>
+        <input type="text" placeholder="search" name="" id=""
+        value={searchInput}
+        onChange={(e)=>{setSearchInput(e.target.value)}} />
+        <ul>
+            {filetered.map((item,key)=>{
+                return(
+                    <li key={item.id}>{item.name}</li>
+                )
+            })}
+        </ul>
+    </div>
+)
+}
+
+
+export default About;
+       </xmp>
+
 
             </code></pre>
     </div>
