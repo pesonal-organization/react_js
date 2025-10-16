@@ -931,20 +931,55 @@ export default About;
  <!----------------------------------- Question No 17 ---------------------->
     <div class="card question-card">
       <h2> Question 17❓ </h2>
-      <p>Q:  </p>
+      <p>Q: Stunning Annimation?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       see code in example:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        import React, { useEffect, useState } from "react";
+import './home-style.css';
+const arr = ['S','t','u','n','n','i','n','g'];
+const Home = ()=>{
+    const [animationTest,setAnimationTest] = useState(arr);
+    const [count,setCount] = useState(0);
+
+    useEffect(()=>{
+        
+       setTimeout(() => {
+        const counter = count + 1;
+        setCount(counter);
+        console.log(count)
+        if(count === animationTest.length - 1){setCount(0)}
+        
+       },1000);
+    },[count])
+    return(
+        <div className="container">
+           
+    {/* <span>Stunning</span> */}
+    {animationTest?.map((item,index)=>{
+        // console.log(index)
+        return(
+            <span key={index}
+            style={{
+                color: (count === index)?('white'):('darkslategray')}}>{item}</span>
+        )
+    })}
+        
+        </div>
+    )
+}
+export default Home;
+       </xmp>
 
             </code></pre>
     </div>
