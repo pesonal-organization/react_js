@@ -987,20 +987,73 @@ export default Home;
  <!----------------------------------- Question No 18 ---------------------->
     <div class="card question-card">
       <h2> Question 18❓ </h2>
-      <p>Q:  </p>
+      <p>Q: footer setting in reactjs? </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       see in example:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        function App() {
+  return (
+    
+     <>
+      <Navbar />
+
+   
+      
+       <div className="page-container">
+         <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+       </div>
+     
+
+      <Footer />
+     </>
+    
+  );
+}
+
+export default App;
+______________________
+App.css 
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* This wrapper ensures the footer is pushed down */
+.page-container {
+  min-height: calc(100vh - 100px); /* adjust 100px to your navbar + footer height */
+  box-sizing: border-box;
+  padding-bottom: 60px; /* same as footer height */
+}
+______________________
+footer
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+  position: relative; /* not fixed! */
+  bottom: 0;
+}
+
+       </xmp>
 
             </code></pre>
     </div>
@@ -1008,20 +1061,115 @@ export default Home;
  <!----------------------------------- Question No 19 ---------------------->
     <div class="card question-card">
       <h2> Question 19❓ </h2>
-      <p>Q:  </p>
+      <p>Q: filter search input in react?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       see in example:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+ <xmp>
+
+      App.jsx 
+
+      import React from "react";
+
+import Search from "./components/search";
+function App(){
+  return(
+     <div>
+      <Search/>
+     </div>
+  )
+}
+export default App;
+_____________________________________________
+main.jsx 
+
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+_____________________________________________
+data.jsx 
+
+const Data = [
+    {name : 'Pizza',
+        brand : 'Dominoss'
+    },
+    {name : 'Burger',
+        brand : 'KFC'
+    },
+    {name : 'Dosa',
+        brand :'Anna'
+    },
+    {name : 'Biryani',
+        brand : 'Nawab'
+    },
+    {name : 'Panner',
+        brand : 'Shahi'
+    },
+    {name : 'Cake',
+        brand : 'SoftCake'
+    }
+    
+]
+export default Data;
+_____________________________________________
+search.jsx 
+
+import React, { useState } from "react";
+import Data from "./data";
+const Search = ()=>{
+    const [store,setStore] =useState(Data)
+    const [data,setData] = useState('')
+    const getData = (e)=>{
+        console.log(e.target.value)
+        setData(e.target.value)
+
+    }
+   let filterOut = store.filter((curValue)=>{
+    
+        return(
+         
+            curValue.name.toLowerCase().includes(data)||curValue.brand.toLowerCase().includes(data)
+         
+        )
+    })
+    return(
+        <div>
+<input type="text" placeholder="search here" 
+onChange={getData} value={data}  onKeyDown={getData}/>
+<div> <h3>Name</h3>
+<h3>Brand</h3>
+</div>
+{filterOut.map((cur)=>{
+    
+    return(
+        <div key={cur.name}>
+            {cur.name}{'  '}
+            {cur.brand}
+        </div>
+    )
+})}
+        </div>
+    )
+}
+export default Search;
+       </xmp>
+
 
             </code></pre>
     </div>
