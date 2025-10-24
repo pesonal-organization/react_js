@@ -1177,23 +1177,43 @@ export default Search;
  <!----------------------------------- Question No 20 ---------------------->
     <div class="card question-card">
       <h2> Question 20❓ </h2>
-      <p>Q:Mdb bootstrap installation?  </p>
+      <p>Q: useMemo hook and example: </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       <pre>
-        first 
-        npm i mdb-ui-kit
-       </pre>
+      useMemo remember a value ,so React does not  calculate it again and again. <br> 
+      It is used for performance optimization
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+<xmp>
+  import React, { useState ,useMemo} from "react";
+const Home = ()=>{
+    const [count,setCount] = useState(0);
+    const [data,setData] = useState(2)
+    const multiply = useMemo(function multi(){
+      console.log('calls for count state')
+      return(count * 2)
+    },[count])
+    
+    return(
+<div>
+  <h3>count: {count}</h3>
+  <h3>{multiply}</h3>
+<h3>data: {data}</h3>
+<button onClick={()=>setCount(count + 1)}>Increment</button>
+<button onClick={()=>setData(data *2)}>data</button>
+
+</div>
+    )
+}
+export default Home;
+</xmp>
 
             </code></pre>
     </div>
