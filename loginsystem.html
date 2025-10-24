@@ -1,0 +1,656 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class 1 – Introduction to JavaScript</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="class-page">
+  <div class="container">
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-btn">← Back to Index</a>
+     
+    </div>
+<!------ Write Topic Name here ------->
+    <h1 class="lecture-heading">Structure page</h1>
+
+    <!-- Topics Covered -->
+    <div class="card topics-card">
+      <h2>📋 Topics Covered</h2>
+      <ul>
+        <li>write here first question that you are studying in this file</li>
+        
+        </ul>
+    </div>
+   
+    <!----------------------------------- Question No 1 ---------------------->
+    <div class="card question-card">
+      <h2> Question 1❓ </h2>
+      <p>Q:login system?  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       see in example:
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       <xmp>
+        App.jsx 
+
+        import React from "react";
+import { BrowserRouter } from "react-router";
+import AppRoutes from "./routes/routes";
+const App = ()=>{
+  return(
+   <BrowserRouter>
+   <AppRoutes/>
+   </BrowserRouter>
+  )
+}
+export default App;
+______________________
+main.jsx 
+
+
+import { createRoot } from 'react-dom/client'
+// import './index.css'
+import App from './App.jsx'
+
+createRoot(document.getElementById('root')).render(
+    <App />
+
+)
+______________________
+home.jsx 
+
+// home screen
+import React from "react";
+import Header from "../../components/header/header";
+const Home = ()=>{
+    return(
+    <>
+        <Header title= 'Home'/>
+    </>
+    )
+}
+export default Home; 
+______________________
+signup.jsx 
+
+// signup screen
+import React from "react";
+import Header from "../../components/header/header";
+const SignUp = ()=>{
+    return(
+        <>
+        <Header title='sign up'/>
+        </>
+    )
+}
+export default SignUp;
+______________________
+login.jsx 
+
+// login screen
+import React, { useState } from "react";
+import Header from "../../components/header/header";
+import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from "react-router";
+const Login = ()=>{
+    const [email,setEmail] = useState();
+    const [password,setPassword] = useState();
+    const navigate = useNavigate();
+
+    const submitForm = ()=>{
+        const user = {email,
+            password,
+            uid:uuidv4()
+        }
+        console.log('user: ',user)
+        localStorage.setItem('AuthState',JSON.stringify(user))
+        alert('You have logged in successfully');
+        window.location.reload();
+    };
+    return(
+    <>
+    <label htmlFor="">Email</label>
+    <input type="email" name="" placeholder="enter your email" id=""value={email}
+    onChange={(e)=>setEmail(e.target.value)}/>
+    <label htmlFor="">password</label>
+    <input type="password" value={password} 
+    onChange={(e)=>setPassword(e.target.value)} />
+    <button  onClick={submitForm}
+    >sign in</button>
+    </>
+    )
+}
+export default Login;
+______________________
+unprotectedRoutes.jsx 
+
+// all public routes are defined here
+import React from "react";
+
+import {Routes,Route} from 'react-router';
+
+import Login from "../pages/login/login";
+import SignUp from "../pages/signup/signup";
+
+
+const PublicRoutes = ()=>{
+    
+    return( 
+        <Routes>
+
+<Route path='/login' element={<Login/>}/>
+<Route path='signup' element={<SignUp/>}/>
+
+
+        </Routes>
+    )
+}
+export default PublicRoutes;__________________
+__________________
+protected-routes.jsx 
+
+// all protected routes are defined here
+import React from 'react';
+import {Routes,Route} from 'react-router';
+import Home from "../pages/home/home";
+
+
+
+const ProtectedRotes = ()=>{
+   
+    return( 
+        <Routes>
+<Route path='/' element={<Home/>}/>
+
+
+        </Routes>
+    )
+}
+export default ProtectedRotes;
+__________________
+routes.js 
+
+// routes.js 
+const publicRoutes = ['/signup','/login'];
+const protectedRoutes = ['/'];
+export {publicRoutes,protectedRoutes};
+__________________
+routes.jsx 
+
+// all routes are defined here
+
+
+
+import { useEffect, useState } from 'react';
+import PublicRoutes from './unprotected-routes';
+import ProtectedRotes from './protected-routes';
+import { useLocation ,useNavigate} from 'react-router';
+import { publicRoutes,protectedRoutes } from '../utils/routes';
+
+const auth = null;
+const AppRoutes = ()=>{
+    const [authStatus,setAuthStatus] = useState(null)
+    const navigate = useNavigate();
+    const {pathname} = useLocation();
+    // authStatus checker hook
+    useEffect(()=>{
+        console.log('authstaus: ',authStatus);
+        console.log('path: ',pathname)
+        if(authStatus == null && protectedRoutes.includes(pathname)){
+            navigate(publicRoutes[1])
+        }
+        // note getting AuthStats from local stroage
+        const auth = localStorage.getItem('AuthState')
+        const jsonAuth = JSON.parse(auth);
+        console.log(jsonAuth);
+        if(!jsonAuth){if(!authStatus && protectedRoutes.includes(pathname)) navigate(publicRoutes[1])}
+        else if(jsonAuth){setAuthStatus(jsonAuth)
+            navigate('/')
+        }
+    },[])
+    return( 
+        <>
+       { (authStatus)
+        ?
+        (<ProtectedRotes/>)
+        :
+        (<PublicRoutes/>)}
+        </>
+    )
+}
+export default AppRoutes;
+__________________
+header.jsx 
+
+// header screen
+import React from "react";
+const Header = (props)=>{
+ const {title} = props;
+    return(
+        <h1>{title?.charAt(0).toUpperCase() + title.slice(1).toLowerCase()}</h1>
+    )
+}
+export default Header;
+       </xmp>
+
+            </code></pre>
+    </div>
+<!------- question 1 completed ----- -->
+ <!----------------------------------- Question No 2 ---------------------->
+    <div class="card question-card">
+      <h2> Question 2❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 2 completed ----- -->
+ <!----------------------------------- Question No 3 ---------------------->
+    <div class="card question-card">
+      <h2> Question 3❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 3 completed ----- -->
+ <!----------------------------------- Question No 4 ---------------------->
+    <div class="card question-card">
+      <h2> Question 4❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 4 completed ----- -->
+ <!----------------------------------- Question No 5 ---------------------->
+    <div class="card question-card">
+      <h2> Question 5❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 5 completed ----- -->
+ <!----------------------------------- Question No 6 ---------------------->
+    <div class="card question-card">
+      <h2> Question 6❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 6 completed ----- -->
+ <!----------------------------------- Question No 7 ---------------------->
+    <div class="card question-card">
+      <h2> Question 7❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 7 completed ----- -->
+ <!----------------------------------- Question No 8 ---------------------->
+    <div class="card question-card">
+      <h2> Question 8❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 8 completed ----- -->
+ <!----------------------------------- Question No 9 ---------------------->
+    <div class="card question-card">
+      <h2> Question 9❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 9 completed ----- -->
+ <!----------------------------------- Question No 10 ---------------------->
+    <div class="card question-card">
+      <h2> Question 10❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 11 completed ----- -->
+ <!----------------------------------- Question No 12 ---------------------->
+    <div class="card question-card">
+      <h2> Question 12❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 12 completed ----- -->
+ <!----------------------------------- Question No 13 ---------------------->
+    <div class="card question-card">
+      <h2> Question 13❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 13 completed ----- -->
+ <!----------------------------------- Question No 14 ---------------------->
+    <div class="card question-card">
+      <h2> Question 14❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 14 completed ----- -->
+ <!----------------------------------- Question No 15 ---------------------->
+    <div class="card question-card">
+      <h2> Question 15❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 15 completed ----- -->
+ <!----------------------------------- Question No 15 ---------------------->
+    <div class="card question-card">
+      <h2> Question 15❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 15 completed ----- -->
+ <!----------------------------------- Question No 16 ---------------------->
+    <div class="card question-card">
+      <h2> Question 16❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 16 completed ----- -->
+ <!----------------------------------- Question No 17 ---------------------->
+    <div class="card question-card">
+      <h2> Question 17❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 17 completed ----- -->
+ <!----------------------------------- Question No 18 ---------------------->
+    <div class="card question-card">
+      <h2> Question 18❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question completed ----- -->
+ <!----------------------------------- Question No 19 ---------------------->
+    <div class="card question-card">
+      <h2> Question 19❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 19 completed ----- -->
+ <!----------------------------------- Question No 20 ---------------------->
+    <div class="card question-card">
+      <h2> Question 20❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 20 completed ----- -->
+
+    
+
+    
+<!---- main div closed below--- -->
+  </div>
+</body>
+</html> 
