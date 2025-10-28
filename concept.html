@@ -1220,6 +1220,585 @@ export default Home;
 <!------- question 20 completed ----- -->
 
     
+ <!----------------------------------- Question No 1 ---------------------->
+    <div class="card question-card">
+      <h2> Question 21❓ </h2>
+      <p>Q: what is useRef hook? <br>and how can we apply focus on input? </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       useRef hook is used to get the access of dom element in react. <br> 
+       in js we use getElementById and in react we use useRef( )getting access of dom elements.<br> 
+       after accessing dom element we can apply focus on it.
+
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       <xmp>import React,{useRef} from "react";
+const Use = ()=>{
+    const inputRef = useRef();
+    const submitForm =()=>{
+        console.log(inputRef?.current)
+        <!-- auto focus -->
+         inputRef?.current?.focus()
+    }
+return(
+    <>
+    <input type="text"  ref={inputRef}/>
+    <button onClick={submitForm}>submit</button>
+    </>
+)
+}
+export default Use;</xmp>
+
+            </code></pre>
+    </div>
+<!------- question 1 completed ----- -->
+ <!----------------------------------- Question No 2 ---------------------->
+    <div class="card question-card">
+      <h2> Question 2❓ </h2>
+      <p>Q: what is memo( )?  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       when we pass a props in a component and any state updates in component our props rerender again and again even props is not change but it rerender again and 
+       again on the updating of state, so to stop props rerendering we wrap it in memo( ) like 
+       export default memo(Prop)
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       <xmp>
+        home.jsx 
+
+        import React, { useMemo, useState } from "react";
+import Prop from "../component/prop";
+const Home  = ()=>{
+  const [count,setCount] = useState(0)
+  const [data,setData] = useState(2)
+
+   const stop = useMemo(function check (){
+    console.log('ok')
+    return(count *2)
+  },[count])
+  return(
+    <div>
+      <Prop title='hello'/>
+<h3>count : {count}</h3>
+<h3>data : {data}</h3>
+<button onClick={()=>setCount(count + 1)}>Increment</button>
+<button onClick={()=>setData(data *2)}>data</button>
+<button>{stop}</button>
+
+    </div>
+  )
+}
+export default Home;
+______________________
+prop.jsx 
+
+import React,{memo} from "react";
+const Prop = ({title})=>{
+    console.log(title)
+    return(
+        <>
+        <h1>{title}- component</h1>
+        </>
+    )
+}
+export default memo(Prop);
+       </xmp>
+
+            </code></pre>
+    </div>
+<!------- question 2 completed ----- -->
+ <!----------------------------------- Question No 3 ---------------------->
+    <div class="card question-card">
+      <h2> Question 3❓ </h2>
+      <p>Q: what is controlled component in reactJs?  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       we have one thing same in controlled and uncontrolled components, input<br> 
+       by using useState getting the access of dom element (input) is called controlled components.
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       <xmp>
+        import React, { useState } from "react";
+const Use = ()=>{
+    const [item,setItem] = useState()
+    return(
+        <>
+        <h1>Controlled Components</h1>
+        <input type="text" value={item} onChange={(e)=>setItem(e.target.value)} />
+        <h3>{item}</h3>
+        </>
+    )
+}
+export default Use;
+       </xmp>
+
+            </code></pre>
+    </div>
+<!------- question 3 completed ----- -->
+ <!----------------------------------- Question No 4 ---------------------->
+    <div class="card question-card">
+      <h2> Question 4❓ </h2>
+      <p>Q: what is uncontrolled components?  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+      Access  the dom elements direct by useRef or by getElementById, is called uncontrolled components.<br> 
+
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+        <xmp>
+        import {useRef}from 'react'
+
+const Use = ()=>{
+    const myRef = useRef(null)
+     
+    function myForm(e){
+        e.preventDefault();
+        console.log('My first input ' + myRef?.current?.value);
+       let val = document.getElementById('dom').value;
+        console.log('second input ' + val)
+
+    }
+    
+    return(
+        <>
+        <h1>UnControlled Components</h1>
+        <form action="" onSubmit={myForm}>
+<input type="text" ref={myRef} />
+<input type="text" id='dom' />
+<button>submit</button>
+
+
+        </form>
+        
+        </>
+    )
+}
+export default Use;
+       </xmp>
+
+            </code></pre>
+    </div>
+<!------- question 4 completed ----- -->
+ <!----------------------------------- Question No 5 ---------------------->
+    <div class="card question-card">
+      <h2> Question 5❓ </h2>
+      <p>Q: If in one component we are accessing dom by usestate and also by useRef or getElementById than what is called this component?  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       It is called uncontrolled component.
+      </p>
+    </div>
+
+<!------- question 5 completed ----- -->
+ <!----------------------------------- Question No 6 ---------------------->
+    <div class="card question-card">
+      <h2> Question 6❓ </h2>
+      <p>Q: what is useNavigate( ) and conditional navigation?  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       useNavigate( ) is a hook of react-router-dom and it is used for the navigation among pages. <br> 
+       first we import useNavigate( ) from react-router-dom and than save it in variable and than use.
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       <xmp>
+        import React from "react";
+import { useNavigate } from "react-router-dom";
+const Contact = ()=>{
+    const navigate = useNavigate()
+    const handleClick = ()=>{
+        let bool = false;
+        if(bool){navigate('/')}
+        else{navigate('/about')}
+    }
+    return(
+       <>
+        <h1>contact</h1>
+        {/* <button onClick={()=>navigate('/')}>Go Home</button>
+        <button onClick={()=>navigate('/about')}>Go About</button> */}
+        <button onClick={()=>handleClick()}>Go Home</button>
+        <button onClick={()=>handleClick()}>Go About</button>
+       </>
+    )
+}
+export default Contact;
+       </xmp>
+
+            </code></pre>
+    </div>
+<!------- question 6 completed ----- -->
+ <!----------------------------------- Question No 7 ---------------------->
+    <div class="card question-card">
+      <h2> Question 7❓ </h2>
+      <p>Q: what is useLocation( ) hook?</p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+useLocation( ) is a react-router-dom hook and it is used to know that path of page on which we are standing.
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       <xmp>
+        import React from "react";
+import { use } from "react";
+import { useLocation } from "react-router-dom";
+const Location = ()=>{
+    const location = useLocation();
+    console.log(location)
+    return(
+        <h1>location hook</h1>
+    )
+}
+export default Location;
+       </xmp>
+
+            </code></pre>
+    </div>
+<!------- question 7 completed ----- -->
+ <!----------------------------------- Question No 8 ---------------------->
+    <div class="card question-card">
+      <h2> Question 8❓ </h2>
+      <p>Q: what is props?  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       Props is derived from properties.<br> 
+       In reactjs to pass data from parent component to child component we use props.<br> 
+       first we make child component in which we want to receive data and than we import this child component in parent component and in parent componet we 
+       we pass any data that we want to receive in child component and now in child component function parameter we pass props and in return we get that data by {props.name}
+etc.      </p>
+    </div>
+
+<!------- question 8 completed ----- -->
+ <!----------------------------------- Question No 9 ---------------------->
+    <div class="card question-card">
+      <h2> Question 9❓ </h2>
+      <p>Q: How can we know the path name of page where are we standing now?{useLocation}  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       we will go in navbar or navigation page where we have defined nav<br> 
+       we import useLocation hook from react-router-dom <br> 
+       before return we make const <br> 
+       <pre>const {pathname} = useLocation( );</pre>and 
+       console it <br> 
+       we must console it in useeffect not in air and we define pathname in useeffect dependecy also so 
+       when our path change we see new path of page on which we are standing know.
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       <xmp>
+        import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+const Navbar = ()=>{
+    const {pathname} = useLocation();
+    // console.log('pathname : ',window.location.pathname)
+    useEffect(()=>{
+        console.log(pathname)
+    },[pathname])
+    return(
+       <nav>
+        <ul>
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/about'>About</Link></li>
+            <li><Link to='/contact'>Contact</Link></li>
+            <li><Link to='/useref'>use ref</Link></li>
+            <li><Link to='/uselocation'>use location hook</Link></li>
+            <li><Link to='/login'>login</Link></li>
+            <li><Link to='/reactfragment'>React Fragment</Link></li>
+            <li><Link to='/getInputFieldValues'>Input Values</Link></li>
+            <li><Link to='/employee'>Employee</Link></li>
+        </ul>
+       </nav>
+    )
+}
+export default Navbar;
+       </xmp>
+
+            </code></pre>
+    </div>
+<!------- question 9 completed ----- -->
+ <!----------------------------------- Question No 10 ---------------------->
+    <div class="card question-card">
+      <h2> Question 10❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 11 completed ----- -->
+ <!----------------------------------- Question No 12 ---------------------->
+    <div class="card question-card">
+      <h2> Question 12❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 12 completed ----- -->
+ <!----------------------------------- Question No 13 ---------------------->
+    <div class="card question-card">
+      <h2> Question 13❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 13 completed ----- -->
+ <!----------------------------------- Question No 14 ---------------------->
+    <div class="card question-card">
+      <h2> Question 14❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 14 completed ----- -->
+ <!----------------------------------- Question No 15 ---------------------->
+    <div class="card question-card">
+      <h2> Question 15❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 15 completed ----- -->
+ <!----------------------------------- Question No 15 ---------------------->
+    <div class="card question-card">
+      <h2> Question 15❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 15 completed ----- -->
+ <!----------------------------------- Question No 16 ---------------------->
+    <div class="card question-card">
+      <h2> Question 16❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 16 completed ----- -->
+ <!----------------------------------- Question No 17 ---------------------->
+    <div class="card question-card">
+      <h2> Question 17❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 17 completed ----- -->
+ <!----------------------------------- Question No 18 ---------------------->
+    <div class="card question-card">
+      <h2> Question 18❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question completed ----- -->
+ <!----------------------------------- Question No 19 ---------------------->
+    <div class="card question-card">
+      <h2> Question 19❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 19 completed ----- -->
+ <!----------------------------------- Question No 20 ---------------------->
+    <div class="card question-card">
+      <h2> Question 20❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 20 completed ----- -->
 
     
 <!---- main div closed below--- -->
