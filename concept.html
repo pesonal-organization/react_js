@@ -1571,20 +1571,106 @@ export default Navbar;
  <!----------------------------------- Question No 10 ---------------------->
     <div class="card question-card">
       <h2> Question 10❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is dynamic routing in reactjs? </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
-      </p>
+       Changing the path of url by parameter(id,name etc) is called dynamic routing . 
+       <br> 
+       first we create a file where we want to show page/file<br> 
+       than creates it file routes like <pre><Route path='useridpage/:id' element={<UserId/>}/></pre>
+       <br> now we go in apicall or button click page ,<br> 
+       we import useNavigation hook in apicall page<br> 
+       and in view user button called function we put <pre>navigate(`/userid/${item?.id}`</pre>
+<br> 
+now we go in the page where we want to show dynamic id<br> 
+we import useParams( ) hook in this page <br> 
+make a variable const {id} = useParams( );
+<br> 
+and now we show id in return.      </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        home.jsx(apicall page)
+
+        import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+const Home = ()=>{
+    const navigate = useNavigate()
+    const [list,setList] = useState([])
+    const apiCall = async ()=>{
+        const apiUrl = 'https://jsonplaceholder.typicode.com/users';
+        try{const data = await fetch(apiUrl);
+            const jsonData = await data.json();
+            console.log(jsonData);
+           if(jsonData){setList(jsonData)}
+        }
+        catch(error){console.log(error)}
+    }
+    // view user 
+    const viewUserFunction = (item)=>{
+        console.log(item);
+        navigate(`/idpage/${item?.id}`)
+
+    }
+    useEffect(()=>{
+apiCall()
+    },[])
+    return(
+        <>
+        <h1>Home page</h1>
+        <ul>
+            {list.map((item)=>{
+                return(
+                    <li>{item?.name}{' '}
+                    <button onClick={()=>viewUserFunction(item)}>view user</button></li>
+                )
+            })}
+        </ul>
+        </>
+    )
+}
+export default Home;
+______________________
+routes.jsx 
+
+import {Routes,Route}from 'react-router-dom';
+import Home from '../pages/home';
+import About from '../pages/about';
+import Contact from '../pages/contact';
+import IdPage from '../pages/idpage';
+const MyRoutes = ()=>{
+    return(
+        <Routes>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/about' element={<About/>}/>
+            <Route path='/contact' element={<Contact/>}/>
+            <Route path='/idpage/:id' element={<IdPage/>}/>
+        </Routes>
+    )
+}
+export default MyRoutes;
+--___________________________
+userid page 
+
+import React from "react";
+import { useParams } from "react-router-dom";
+const IdPage = ()=>{
+    const {id} = useParams()
+    return(
+        <>
+        <h1>user id page</h1>
+        <h2>{id}</h2>
+        </>
+    )
+}
+export default IdPage;
+       </xmp>
 
             </code></pre>
     </div>
