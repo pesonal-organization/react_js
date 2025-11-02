@@ -1678,20 +1678,48 @@ export default IdPage;
  <!----------------------------------- Question No 12 ---------------------->
     <div class="card question-card">
       <h2> Question 12❓ </h2>
-      <p>Q:  </p>
+      <p>Q: Make a responsive navbar by reactjs tailwind css?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       example:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>const App = ()=>{
+  const [isOpen,setIsOpen] = useState(false)
+  return(
+    <nav className="bg-zinc-300">
+      <div className="flex h-20 justify-between items-center px-10">
+        <div className="text-[35px] font-bold">Logo</div>
+        <div className="hidden sm:block ">
+          {/* button */}
+          <a href="" className="text-[20px] px-5 text-red-800">Home</a>
+          <a href="" className="text-[20px] px-5 text-red-800">About</a>
+          <a href="" className="text-[20px] px-5 text-red-800">Contact</a>
+          <a href="" className="text-[20px] px-5 text-red-800">Services</a>
+          <a href="" className="text-[20px] px-5 text-red-800">Help</a>
+        </div>
+        <button className="block sm:hidden"onClick={()=>setIsOpen(!isOpen)}>open</button>
+      </div>
+<div className={`${isOpen? 'block' : 'hidden'} sm:hidden space-y-2 px-5`}>
+          {/* button */}
+          <a href="" className="text-[20px] px-5 text-red-800 block">Home</a>
+          <a href="" className="text-[20px] px-5 text-red-800 block">About</a>
+          <a href="" className="text-[20px] px-5 text-red-800 block">Contact</a>
+          <a href="" className="text-[20px] px-5 text-red-800 block">Services</a>
+          <a href="" className="text-[20px] px-5 text-red-800 block">Help</a>
+        </div>
+    </nav>
+
+  )
+ }
+ export default App;</xmp>
 
             </code></pre>
     </div>

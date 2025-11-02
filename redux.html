@@ -1,0 +1,610 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class 1 – Introduction to JavaScript</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="class-page">
+  <div class="container">
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-btn">← Back to Index</a>
+     
+    </div>
+<!------ Write Topic Name here ------->
+    <h1 class="lecture-heading">Structure page</h1>
+
+    <!-- Topics Covered -->
+    <div class="card topics-card">
+      <h2>📋 Topics Covered</h2>
+      <ul>
+        <li>write here first question that you are studying in this file</li>
+        
+        </ul>
+    </div>
+   
+    <!----------------------------------- Question No 1 ---------------------->
+    <div class="card question-card">
+      <h2> Question 1❓ </h2>
+      <p>Q: what is redux?  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       Redux is a library of state management.<br> 
+       Redux ak bhot bri almari hy<br>
+       almarti mai multiple khanny/store bniy jaty hain vo khanny Reducer kehlaty hain. Reducer almari ka andr rkhty hain.<br>
+       frz krain hamari web mai 5 module hain , auth,chat, rider, ecommerce and selling.<br> 
+       auth aor chat vala data baqi components mai bar bar use ho rha hy to hr component mai hamin api call krni ho ge aor state k zreey data use krna ho hmain jahan bhe 
+       data use krna ho api call aor state hr component main krni ho ge <br> 
+       This all work will be handled by redux.<br> 
+       <h1 style="font-size: 40px;font-weight:bold;">Action Dispatch</h1><br> 
+       redux valy action/function ko call krna Action dispatch kehlata hy.<br> 
+       jis componet mai data chahiy os sy hm action ko request send krain gy , action reducer k pass jay ga aor reducer store mai ja k daikhy ga k data hy ya nai age 
+       data store mai ho ga to data component mai send kia jay ga.<br>
+       reducer api vala data apny pass store krta hy os time tk jb tk web refresh na ho jay.<br> 
+       <br> 
+      <h1 style="font-size: 40px;font-weight:bold;">core concept of redux</h1> <br>
+       A store that holds the state of our application.<br>
+       An action tells what kind of change we have to make in the state.
+       Gives instructions increase,decrease etc.<br>
+       A reducer is a function that looks at the action and updates the state according to what the action is asking.
+<br> 
+<h1 style="font-size: 40px;font-weight:bold;">Actions</h1><br> 
+Actions are plain JavaScript objects<br>
+Action has a type field<br>
+Action only tell what to do, but they dont tell how to do<br>
+Increment and decrement are actions<br> 
+
+<h1 style="font-size: 40px;font-weight:bold;">Action creator</h1><br> 
+Action creator is simply an arrow function in which we define action's object and its type<br>
+
+<h1 style="font-size: 40px;font-weight:bold;">Reducer</h1><br> 
+A reducer is a function that takes the current state and an action, and gives back a new updated state.<br>
+<br> 
+we can create multiple reducers in our application.<br> 
+Each reducer perform a specific task.<br> 
+we have to register all the reducers inside a single Root Reducer.<br> 
+
+<h1 style="font-size: 40px;font-weight:bold;">store</h1><br>
+
+The Redux store  combine the state,actions and reducers.<br> 
+We have only a single store in a redux application.<br> 
+
+<h1 style="font-size: 40px;font-weight:bold;">Root Reducer</h1><br> 
+All the reducers we collect inside Root Reducer and than we import root reducer inside our store.
+       installation: <br> 
+       <pre>npm i redux react-redux</pre>
+       redux and react-redux both have been installed
+       <br>
+       <h1 style="font-size: 40px;font-weight:bold;">Provider</h1><br> 
+       Provider wraps our App<br>
+       It makes the redux store to available inside all components<br> 
+       without Provider , our components can't use redux.<br> 
+       <h1 style="font-size: 40px;font-weight:bold;">useSelector</h1><br> 
+       useSelector is used to get current state inside App.jsx<br>
+       <h1>useDispatch</h1><br>
+       useDispatch is a React-Redux hook that lets you send (dispatch) an action to the Redux store.
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       <xmp>
+        Basic example of redux
+
+        main.jsx 
+
+        
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+import store from './store.js';
+import { Provider } from 'react-redux';
+
+createRoot(document.getElementById('root')).render(
+
+   <Provider store={store}>
+     <App />
+   </Provider>
+
+)
+______________________________
+App.jsx 
+
+import { useSelector,useDispatch } from "react-redux";
+import { increase,decrease } from "./actions";
+const App =()=>{
+  const myState = useSelector((state)=>state.ind_dec)
+  const dispatch = useDispatch()
+  return(
+    <div>
+   <h1>Welcome to react redux</h1>
+   <input type="text" value={myState} /><br/>
+   <button onClick={()=>dispatch(increase())}>Add</button><br/>
+   <button onClick={()=>dispatch(decrease())}>Minus</button>
+    </div>
+  )
+}
+export default App;
+______________________________
+action index.js 
+
+// actions index.js 
+const increase = ()=>{
+    return{
+        type : 'INCREMENT'
+    }
+}
+
+const decrease = ()=>{
+    return{
+        type : 'DECREMENT'
+    }
+}
+export {increase,decrease} 
+______________________________
+reducer.js 
+
+
+// reducer ind_dec.js 
+
+const initialState = 0;
+const ind_dec = (state = initialState,action)=>{
+    switch(action.type){
+        case 'INCREMENT':
+            return state + 1;
+            case 'DECREMENT':
+                return state - 1;
+                default :return state
+    }
+
+}
+export default ind_dec
+______________________________
+
+RootReducer file 
+
+
+// rootReducer all reducers are combined here with combineReducer 
+
+import ind_dec from "./inc_dec";
+import { combineReducers } from "redux";
+const rootReducer = combineReducers({ind_dec})
+export default rootReducer;
+______________________________
+store.js 
+
+// store.js
+// rootReducter is defined here
+import { configureStore } from "@reduxjs/toolkit";
+import rootReducer from "./reducers";
+const store = configureStore({
+    reducer:rootReducer
+})
+export default store;
+
+       </xmp>
+
+            </code></pre>
+    </div>
+<!------- question 1 completed ----- -->
+ <!----------------------------------- Question No 2 ---------------------->
+    <div class="card question-card">
+      <h2> Question 2❓ </h2>
+      <p>Q: Principles of react redux? </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       The store keeps all your app’s state in one place — like a big box that holds every piece of data your app needs.<br>
+       We save our all states of App in a single object and we store single object in redux store.<br> 
+       <h1>State is read only(immutable)</h1><br>
+      You can’t change the state directly — you must dispatch (send) an action that tells what change to make.<br>
+      You can’t change the state yourself — you inform Redux through an action, and Redux updates it for you.<br>
+      Changes are done inside reducers<br>
+      Reducer take two thing in parameter,inititalState and action and return us newState<br>
+      <h1>Data flow of redux</h1>
+      Applicaton to Action to Reducer to RootReducer to Redux Store to Application
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 2 completed ----- -->
+ <!----------------------------------- Question No 3 ---------------------->
+    <div class="card question-card">
+      <h2> Question 3❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 3 completed ----- -->
+ <!----------------------------------- Question No 4 ---------------------->
+    <div class="card question-card">
+      <h2> Question 4❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 4 completed ----- -->
+ <!----------------------------------- Question No 5 ---------------------->
+    <div class="card question-card">
+      <h2> Question 5❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 5 completed ----- -->
+ <!----------------------------------- Question No 6 ---------------------->
+    <div class="card question-card">
+      <h2> Question 6❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 6 completed ----- -->
+ <!----------------------------------- Question No 7 ---------------------->
+    <div class="card question-card">
+      <h2> Question 7❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 7 completed ----- -->
+ <!----------------------------------- Question No 8 ---------------------->
+    <div class="card question-card">
+      <h2> Question 8❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 8 completed ----- -->
+ <!----------------------------------- Question No 9 ---------------------->
+    <div class="card question-card">
+      <h2> Question 9❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 9 completed ----- -->
+ <!----------------------------------- Question No 10 ---------------------->
+    <div class="card question-card">
+      <h2> Question 10❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 11 completed ----- -->
+ <!----------------------------------- Question No 12 ---------------------->
+    <div class="card question-card">
+      <h2> Question 12❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 12 completed ----- -->
+ <!----------------------------------- Question No 13 ---------------------->
+    <div class="card question-card">
+      <h2> Question 13❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 13 completed ----- -->
+ <!----------------------------------- Question No 14 ---------------------->
+    <div class="card question-card">
+      <h2> Question 14❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 14 completed ----- -->
+ <!----------------------------------- Question No 15 ---------------------->
+    <div class="card question-card">
+      <h2> Question 15❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 15 completed ----- -->
+ <!----------------------------------- Question No 15 ---------------------->
+    <div class="card question-card">
+      <h2> Question 15❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 15 completed ----- -->
+ <!----------------------------------- Question No 16 ---------------------->
+    <div class="card question-card">
+      <h2> Question 16❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 16 completed ----- -->
+ <!----------------------------------- Question No 17 ---------------------->
+    <div class="card question-card">
+      <h2> Question 17❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 17 completed ----- -->
+ <!----------------------------------- Question No 18 ---------------------->
+    <div class="card question-card">
+      <h2> Question 18❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question completed ----- -->
+ <!----------------------------------- Question No 19 ---------------------->
+    <div class="card question-card">
+      <h2> Question 19❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 19 completed ----- -->
+ <!----------------------------------- Question No 20 ---------------------->
+    <div class="card question-card">
+      <h2> Question 20❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 20 completed ----- -->
+
+    
+
+    
+<!---- main div closed below--- -->
+  </div>
+</body>
+</html> 
