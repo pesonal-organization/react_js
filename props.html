@@ -277,19 +277,61 @@ export default ArraysData
  <!----------------------------------- Question No 6 ---------------------->
     <div class="card question-card">
       <h2> Question 6❓ </h2>
-      <p>Q:  </p>
+      <p>Q: Send useState by props?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       Exmaple :
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
+        <xmp>
+            App.jsx 
+
+            import { useState } from 'react'
+import './App.css'
+import ArraysData from './prop'
+import StateProps from './prop'
+function App() {
+  const [empName,setEmpName] = useState('')
+  
+  return (
+    <>
+{/* <StateProps emp = {empName}/> */}
+{/* if name is empty */}
+<h1>useState by Props</h1>
+{
+  empName && <StateProps emp = {empName}/>
+}
+<button onClick={()=>setEmpName('Amir')}>Change Name</button>
+    </>
+  )
+}
+
+export default App
+______________________________
+useStateProps.jsx 
+
+function StateProps({emp}) {
+    console.log(emp)
+  return (
+   <div>
+
+   <h1>Name : {emp}</h1>
+   
+   </div>
+  )
+}
+
+export default StateProps
+
+
+        </xmp>
        
 
             </code></pre>
