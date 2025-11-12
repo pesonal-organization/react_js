@@ -14,13 +14,19 @@
      
     </div>
 <!------ Write Topic Name here ------->
-    <h1 class="lecture-heading">useState in react</h1>
+    <h1 class="lecture-heading">Hooks, useState and useEffect in react</h1>
 
     <!-- Topics Covered -->
     <div class="card topics-card">
       <h2>📋 Topics Covered</h2>
       <ul>
-        <li>write here first question that you are studying in this file</li>
+        <li>hooks</li>
+        <li>useState hook</li>
+        <li>useEffect hook</li>
+        <li>useRef hook</li>
+        <li></li>
+        <li></li>
+        <li></li>
         
         </ul>
     </div>
@@ -205,20 +211,52 @@ export default StateInReact
  <!----------------------------------- Question No 8 ---------------------->
     <div class="card question-card">
       <h2> Question 8❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is useEffect hook?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       useEffect is a Hook in React that allows you to run side effects in your functional components.
+       <br> 
+       syntax of useEffect<br> 
+       <pre>useEffect((function(),[dependencies]))</pre>
+       dependencies are optional<br> 
+       <pre>useEffect(()=>{
+        code for side effects},[dependencies])</pre>
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        useeffect.jsx 
+
+        import React, { useEffect, useState } from 'react'
+
+const Effects = () => {
+  const [count,setCount ] = useState(1);
+  const [data,setData] = useState(5)
+  function oneCall(){
+    console.log('counter: ',count, '\t','data : ',data)
+  }
+useEffect(()=>{
+    oneCall();
+},[])
+  return (
+  <>
+  <h1>useEffect in reactJs</h1>
+  <h1>counter : {count}</h1>
+  <h1>data: {data}</h1>
+  <button onClick={()=>setCount(count + 1)}>counter</button>
+  <button onClick={()=>setData(data + 5)}>update data</button>
+  </>
+  )
+}
+
+export default Effects
+       </xmp>
 
             </code></pre>
     </div>
@@ -226,41 +264,84 @@ export default StateInReact
  <!----------------------------------- Question No 9 ---------------------->
     <div class="card question-card">
       <h2> Question 9❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is sideEffects? </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       Side effects are actions that happen outside the main function of rendering UI.<br> 
+       These actions don't directly  return UI but affect the app's behaviour or system.
       </p>
-    </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
-
-            </code></pre>
     </div>
 <!------- question 9 completed ----- -->
  <!----------------------------------- Question No 10 ---------------------->
     <div class="card question-card">
       <h2> Question 10❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is useRef hook?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       useRef hook is use to accessing any DOM element and for controlling any html element by react component.<br> 
+       <br> 
+       first we import useRef from react <br> 
+       than we make a variable like <br> 
+       <pre>const inputName = useRef( )</pre>
+       <br> 
+       Now we write this inputName inside our html element in ref like <br> 
+       <pre><input ref={inputName}/></pre><br> 
+       we can get access or control any html/DOM element by react by useRef, we can apply focuse and can change style etc
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        import React, { useRef } from 'react'
+
+
+const UseRefHook = () => {
+  const inputName = useRef();
+  const para = useRef()
+
+  const nameHandler = ()=>{
+    console.log(inputName);
+    inputName.current.placeholder = 'enter name';
+    inputName.current.focus()
+    inputName.current.style.color = 'green';
+    inputName.current.value = 'Hameed'
+  }
+  // hide show function 
+  const hideShow = ()=>{
+    if(inputName.current.style.display == 'none'){
+      inputName.current.style.display = 'inline'
+    }
+    else{
+      inputName.current.style.display = 'none'
+    }
+  }
+// para
+const paragraphAccessing = ()=>{
+  console.log(para.current)
+} 
+
+  return (
+    <>
+    <h1>useRef hook in reactJs</h1>
+    <input type="text" ref={inputName} />
+    <p ref={para}>I am learning reactjs</p>
+    <button onClick={nameHandler}>Enter Name</button>
+    <button onClick={hideShow}>Hide</button>
+    <button onClick={paragraphAccessing}>get para</button>
+    </>
+  )
+}
+
+export default UseRefHook
+       </xmp>
 
             </code></pre>
     </div>
