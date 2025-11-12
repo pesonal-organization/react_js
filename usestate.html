@@ -349,20 +349,61 @@ export default UseRefHook
  <!----------------------------------- Question No 12 ---------------------->
     <div class="card question-card">
       <h2> Question 12❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is controlled component in react?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+      controlled are <br> 
+      have input fields<br>
+      we control input field by useState<br>
+      their values also can be assigned by useState.
+
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        import React, { useState } from 'react'
+import { use } from 'react';
+
+const ControlledComponent = () => {
+  const [name,setName] = useState('');
+  const [password,setPassword] = useState('');
+  const [phone,setPhoneNumber] = useState('');
+  // clear data function 
+  // const clearData = ()=>{
+  //   setName('');
+  //   setPassword('');
+  //   setPhoneNumber('');
+  // }
+  return (
+ <>
+ <h1>controlled component in reactJs</h1>
+ <form>
+  <input type="text" placeholder='Enter your name' onChange={(event)=>setName(event.target.value)} />
+  <br/><br/>
+  <input type="password" placeholder='Enter your password' onChange={(event)=>setPassword(event.target.value)} />
+  <br/><br/>
+  <input type="tel" placeholder='Enter your phone number' onChange={(event)=>setPhoneNumber(event.target.value)} />
+  <br/>
+  <button>submit</button>
+  <button onClick={()=>{setName(''),setPassword(''),setPhoneNumber('')}}>clear data</button>
+  <h2> {name}</h2>
+  <h2> {password}</h2>
+  <h2> {phone}</h2>
+
+
+ </form>
+ </>
+  )
+}
+
+export default ControlledComponent
+       </xmp>
 
             </code></pre>
     </div>
@@ -370,13 +411,15 @@ export default UseRefHook
  <!----------------------------------- Question No 13 ---------------------->
     <div class="card question-card">
       <h2> Question 13❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what are uncontrolled components?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       All components whose data we controll without useState another method are called uncontrolled components.<br> 
+       The data of uncontrolled components is handled by DOM  not by react useState or another hook.<br> 
+       we can get data of uncontrolled components by queryselector,useRef or any another mehtod except react state.
       </p>
     </div>
 <!-------- example -------->
