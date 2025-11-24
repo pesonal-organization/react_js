@@ -1,0 +1,570 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Context API</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="class-page">
+  <div class="container">
+
+    <div class="nav-links">
+      <a href="index.html" class="nav-btn">← Back to Index</a>
+     
+    </div>
+<!------ Write Topic Name here ------->
+    <h1 class="lecture-heading">Context API</h1>
+
+    <!-- Topics Covered -->
+    <div class="card topics-card">
+      <h2>📋 Topics Covered</h2>
+      <ul>
+        <li>write here first question that you are studying in this file</li>
+        
+        </ul>
+    </div>
+   
+    <!----------------------------------- Question No 1 ---------------------->
+    <div class="card question-card">
+      <h2> Question 1❓ </h2>
+      <p>Q: what is context API?  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       Context API is a way to send data to many components where is needed without props dirlling.<br>
+       The react context API has three main parts:<br> 
+       1.<h1>createContext</h1>
+       <br>
+       createContext is used to create a shared place (like a board) where data can be kept so any component can read it without props.<br>
+       2. <h1>Provider</h1><br>
+       Provides gives data to all component that are wrapped inside it.<br>
+       3. <h1>useContext</h1><br> 
+       by using useContext( ) any component can use data of usecontex api.
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       <xmp>
+        Detailed example of usecontex API 
+
+        first we create a data file where data is kept 
+
+        // datafile 
+
+const siteData = {
+  homeHeading: "Welcome to Home Page",
+  aboutHeading: "About Us - Learn More",
+  contactHeading: "Contact Us Anytime",
+};
+
+export default siteData; 
+_________________________________________________
+second we make createContext( ) 
+like 
+
+// createContex.js file
+import { createContext } from "react";
+const DataContext = createContext(null)
+export default DataContext; 
+_________________________________________________
+
+Than we create provider 
+
+
+import { BrowserRouter } from "react-router-dom"
+import MyRoutes from "./components/routes/routes"
+import Navbar from "./components/routes/navbar/navbar"
+import DataContext from "./datafolder/createContextFolder/createContext"
+import siteData from "./datafolder/datafile"
+function App() {
+ 
+
+  return (
+   <DataContext.Provider value={siteData}>
+    
+    <BrowserRouter>
+    <Navbar/>
+    <MyRoutes/>
+    
+    </BrowserRouter>
+   </DataContext.Provider>)
+   
+}
+
+export default App
+
+than we can use data any component we want 
+
+home.jsx 
+
+import React from 'react'
+import { useContext } from 'react';
+import DataContext from '../datafolder/createContextFolder/createContext';
+
+const Home = () => {
+    const data = useContext(DataContext)
+  return (
+    <div>
+        <h1>{data.homeHeading}</h1>
+        <p>This is homepage</p>
+    </div>
+  )
+}
+
+export default Home 
+_________________________________________________
+
+
+about.jsx 
+
+import React from 'react'
+import { useContext } from 'react'
+import DataContext from '../datafolder/createContextFolder/createContext'
+
+const About = () => {
+    const dataOne = useContext(DataContext)
+  return (
+    <div>
+        <h1>{dataOne.aboutHeading}</h1>
+        <p>This is about page</p>
+    </div>
+  )
+}
+
+export default About 
+_________________________________________________
+
+contact.jsx 
+
+import React from 'react'
+import { useContext } from 'react'
+import DataContext from '../datafolder/createContextFolder/createContext'
+const Contact = () => {
+    const dataThree = useContext(DataContext)
+  return (
+    <div>
+        <h1>{dataThree. contactHeading}</h1>
+        <p>I am contact page</p>
+    </div>
+  )
+}
+
+export default Contact
+
+       </xmp>
+
+            </code></pre>
+    </div>
+<!------- question 1 completed ----- -->
+ <!----------------------------------- Question No 2 ---------------------->
+    <div class="card question-card">
+      <h2> Question 2❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 2 completed ----- -->
+ <!----------------------------------- Question No 3 ---------------------->
+    <div class="card question-card">
+      <h2> Question 3❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 3 completed ----- -->
+ <!----------------------------------- Question No 4 ---------------------->
+    <div class="card question-card">
+      <h2> Question 4❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 4 completed ----- -->
+ <!----------------------------------- Question No 5 ---------------------->
+    <div class="card question-card">
+      <h2> Question 5❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 5 completed ----- -->
+ <!----------------------------------- Question No 6 ---------------------->
+    <div class="card question-card">
+      <h2> Question 6❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 6 completed ----- -->
+ <!----------------------------------- Question No 7 ---------------------->
+    <div class="card question-card">
+      <h2> Question 7❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 7 completed ----- -->
+ <!----------------------------------- Question No 8 ---------------------->
+    <div class="card question-card">
+      <h2> Question 8❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 8 completed ----- -->
+ <!----------------------------------- Question No 9 ---------------------->
+    <div class="card question-card">
+      <h2> Question 9❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 9 completed ----- -->
+ <!----------------------------------- Question No 10 ---------------------->
+    <div class="card question-card">
+      <h2> Question 10❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 11 completed ----- -->
+ <!----------------------------------- Question No 12 ---------------------->
+    <div class="card question-card">
+      <h2> Question 12❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 12 completed ----- -->
+ <!----------------------------------- Question No 13 ---------------------->
+    <div class="card question-card">
+      <h2> Question 13❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 13 completed ----- -->
+ <!----------------------------------- Question No 14 ---------------------->
+    <div class="card question-card">
+      <h2> Question 14❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 14 completed ----- -->
+ <!----------------------------------- Question No 15 ---------------------->
+    <div class="card question-card">
+      <h2> Question 15❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 15 completed ----- -->
+ <!----------------------------------- Question No 15 ---------------------->
+    <div class="card question-card">
+      <h2> Question 15❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 15 completed ----- -->
+ <!----------------------------------- Question No 16 ---------------------->
+    <div class="card question-card">
+      <h2> Question 16❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 16 completed ----- -->
+ <!----------------------------------- Question No 17 ---------------------->
+    <div class="card question-card">
+      <h2> Question 17❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 17 completed ----- -->
+ <!----------------------------------- Question No 18 ---------------------->
+    <div class="card question-card">
+      <h2> Question 18❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question completed ----- -->
+ <!----------------------------------- Question No 19 ---------------------->
+    <div class="card question-card">
+      <h2> Question 19❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 19 completed ----- -->
+ <!----------------------------------- Question No 20 ---------------------->
+    <div class="card question-card">
+      <h2> Question 20❓ </h2>
+      <p>Q:  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       
+      </p>
+    </div>
+<!-------- example -------->
+    <div class="card example1-card">
+      <h2>💡 Example</h2>
+      <pre><code>
+       
+
+            </code></pre>
+    </div>
+<!------- question 20 completed ----- -->
+
+    
+
+    
+<!---- main div closed below--- -->
+  </div>
+</body>
+</html> 
