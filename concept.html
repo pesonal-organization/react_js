@@ -662,109 +662,102 @@ export default Home;
 
         
 
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+<xmp>
+  import React from "react";
 import axios from "axios";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 const Home = ()=>{
-    
-    // create use state for showing data in dom 
-    const [list,setList] = useState([])
-    // create a loading usestate
+    const [list,setList] = useState([]);
     const [loading,isLoading] = useState(false);
-    // navigation to newpage
-    const  navigate = useNavigate()
-    
+    const navigate = useNavigate()
+
+    // apicall function 
     const apiCall = async ()=>{
-        isLoading(true)
-        const apiUrl = 'https://jsonplaceholder.typicode.com/users';
-        try{const data  = await axios.get(apiUrl);
-           
-            console.log(data.data);
-           
-          
+         const apiUrl = 'https://jsonplaceholder.typicode.com/users';
+         isLoading(true)
+         try{
+            const data = await axios.get(apiUrl)
+            // console.log(data.data)
             if(data.data){
-                setList(data.data);
-                isLoading(false);
+                setList(data.data)
+                 console.log(list);
+                 isLoading(false)
             }
-        }
-        catch(error){console.log(error)}
+         }
+         catch(error){
+            console.log(error)
+         }
     }
-    // funciton for getting data
+    // user data getting function 
     const viewUser = (userData)=>{
         console.log(userData);
-        navigate(`newpage/${userData.id}`)
+        navigate(`/about/${userData.id}`)
     }
 
     // useEffect 
     useEffect(()=>{
         apiCall();
+       
     },[])
-    
     return(
         <div>
-        <h1>User List by axios</h1>
-      {  loading && <h3>data is loading</h3>}
-        <ul>
-            {list.map((item,index)=>{
-                return(
-                    <li key={index}>{item.name}{' '}
-                    <button onClick={()=>{viewUser(item)}}>view user</button></li>
-                )
-            })}
-        </ul>
-        </div>
-    )
-}
-export default Home;
-______________________
-newpage.jsx 
-______________________
-// newpage.jsx
-import React from "react";
-import { useParams } from "react-router";
-const Newpage = ()=>{
-    
-     const {id} = useParams();
-     console.log(id)
-    return(
-        <div>
-            <h1>I am new page</h1>
-            { <h1>newid: {id}</h1> }
-        </div>
-    )
-}
-export default Newpage;
+            <h1>axios data list</h1>
+            {loading && <h2>Data is loading</h2>}
+            {
+                list.map((item,index)=>{
+                    return(
+                        <li key={index}>{item.name} <button style={{marginLeft:10}} onClick={()=>viewUser(item)}>view user</button></li>
+                    )
+                })
+            }
 
+        </div>
+    )
+}
+export default Home
+</xmp>
+______________________
+about.jsx 
+______________________
+// about.jsx
+<xmp>
+  import React from "react";
+import { useParams } from "react-router-dom";
+const About = ()=>{
+  const {id} = useParams();
+  console.log(id)
+  return(
+   <div>
+     <h1>I am about page</h1>
+     {<h2>newid: {id}</h2>}
+   </div>
+  )
+}
+export default About;
+</xmp>
 
 
 
 routes.jsx 
 ______________________
-// all routes we make here
-import {Routes,Route} from 'react-router';
-import Home from '../screen/home/home';
-import About from '../screen/about/about';
-import Contact from '../screen/contact/contact';
-import Notfoundpage from '../screen/notfound-page/notfound-page';
-import Newpage from '../newpage/newpage';
 
-
+      <xmp>
+        // routes 
+import {Routes, Route} from 'react-router-dom';
+import Home from './home';
+import About from './about';
+import Contact from './contact';
 const MyRoutes = ()=>{
     return(
         <Routes>
-<Route path='/' element={<Home/>}/>
-<Route path='/about' element={<About/>}/>
-<Route path='/contact' element={<Contact/>}/>
-<Route path='/newpage/:id' element={<Newpage/>}/>
-<Route path='*' element={<Notfoundpage/>}/>
-
-
+            <Route path='/' element={<Home/>}/>
+            <Route path='/about/:id' element={<About/>}/>
+            <Route path='/contact' element={<Contact/>}/>
         </Routes>
     )
 }
 export default MyRoutes;
-       </xmp>
+      </xmp>
 
             </code></pre>
     </div>
@@ -1239,22 +1232,68 @@ export default Home;
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       <xmp>import React,{useRef} from "react";
-const Use = ()=>{
-    const inputRef = useRef();
-    const submitForm =()=>{
-        console.log(inputRef?.current)
-        <!-- auto focus -->
-         inputRef?.current?.focus()
-    }
-return(
-    <>
-    <input type="text"  ref={inputRef}/>
-    <button onClick={submitForm}>submit</button>
-    </>
-)
+      <xmp>
+        import React from "react";
+import { useRef } from "react";
+const About = ()=>{
+  const inputOne = useRef();
+  const inputTwo = useRef();
+ 
+  // myForm 
+  const myForm = ()=>{
+    event.preventDefault();
+    console.log(inputOne.current.value);
+    console.log(inputTwo?.current?.value);
+    inputOne.current.value = '';
+    inputTwo.current.value = '';
+
+  }
+  return(
+    <div>
+<form action="" onSubmit={myForm}>
+  <input type="text" placeholder="enter name" ref={inputOne} /><br/>
+  <input type="password" placeholder="enter password" ref={inputTwo} />
+  <button>submit</button>
+</form>
+    </div>
+  )
 }
-export default Use;</xmp>
+export default About;
+      </xmp>
+
+
+example2 ;
+import { useRef } from "react";
+
+const About = () => {
+  let ref1 = useRef();
+  let ref2 = useRef();
+
+  const myForm = (e) => {
+    e.preventDefault();
+
+    console.log(ref1.current.value);
+    console.log(ref2.current.value);
+
+    // ✅ clear the input values
+    ref1.current.value = "";
+    ref2.current.value = "";
+  };
+
+  return (
+    <>
+      <h1>UnControlled components</h1>
+      <form onSubmit={myForm}>
+        <input type="text" id="dom1" ref={ref1} />
+        <input type="text" id="dom" ref={ref2} />
+        <button>submit</button>
+      </form>
+    </>
+  );
+};
+
+export default About;
+
 
             </code></pre>
     </div>
@@ -1365,7 +1404,8 @@ export default Use;
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-      Access  the dom elements direct by useRef or by getElementById, is called uncontrolled components.<br> 
+      Access  the dom elements direct by useRef or by getElementById, is called uncontrolled components.<br>
+      Accessing the dom element except state by any method is called uncontrolled component. 
 
       </p>
     </div>
@@ -1727,20 +1767,76 @@ export default IdPage;
  <!----------------------------------- Question No 13 ---------------------->
     <div class="card question-card">
       <h2> Question 13❓ </h2>
-      <p>Q:  </p>
+      <p>Q: use of loading in finally?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       see in exmaple:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        import React, { useEffect, useState } from "react";
+
+const About = () => {
+  const [apiData, setApiData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  // API calling function
+  const apiCallingFunction = async () => {
+    const apiUrl = "https://jsonplaceholder.typicode.com/users";
+    setLoading(true); // start loading
+
+    try {
+      const res = await fetch(apiUrl);
+      const realData = await res.json();
+      console.log(realData);
+
+      if (realData) {
+        setApiData(realData);
+      }
+    } catch (error) {
+      console.log("Error while fetching:", error);
+    } finally {
+      // ye hamesha chalega: success ho ya error
+      setLoading(false);
+    }
+  };
+
+  // useEffect
+  useEffect(() => {
+    apiCallingFunction();
+  }, []);
+
+  return (
+    <>
+      <div>
+        <div>
+          {loading && <h1>data is loading...</h1>}
+        </div>
+
+        <ul>
+          {apiData.map((item) => {
+            return (
+              <li key={item.id}>
+                {item.id} : {item.name}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </>
+  );
+};
+
+export default About;
+
+       </xmp>
 
             </code></pre>
     </div>
