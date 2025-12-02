@@ -89,20 +89,67 @@ export default Contact
  <!----------------------------------- Question No 3 ---------------------->
     <div class="card question-card">
       <h2> Question 3❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is useEffect hook?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       useEffect hook run when a component renders.<br>
+       useEffect is used to handle sideEffects <br> 
+       like <br>
+       API Call krna<br>
+       Data Fetch krna<br>
+       SetInterval setTimeout use krna <br> 
+       if we want that some code render when our state changes like counter than we write same code 
+       inside useEffect,<br>
+       The code that we write inside useEffect runs one time must when page loads.
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        import React, { useEffect, useState } from 'react'
+
+const Contact = () => {
+ const [counter,setCounter] = useState(0)
+ const [username,setUserName] = useState('')
+ 
+//  updating counter function 
+const updatingCounter = ()=>{
+  console.log('counter is updating')
+}
+  // updating name function
+const updatingName = ()=>{
+  console.log('name is updating')
+}
+   
+// useEffect for updatingCounter 
+useEffect(()=>{
+  updatingCounter();
+},[counter])
+  
+  // useEffect for updatingName 
+  useEffect(()=>{
+    updatingName()
+  },[username])
+
+  return (
+  <div>
+    <h1>use effect</h1>
+    <h1>{(counter)?(counter) : ('No counter')}</h1>
+    <h2>username : {username?username : 'No username existing'}</h2>
+    
+    <button onClick={()=>setCounter(counter + 1)}>Increment</button>
+    <button onClick={()=>setUserName('Abid')}>update UserName</button>
+  </div>
+  )
+}
+
+export default Contact
+       </xmp>
 
             </code></pre>
     </div>
@@ -110,20 +157,65 @@ export default Contact
  <!----------------------------------- Question No 4 ---------------------->
     <div class="card question-card">
       <h2> Question 4❓ </h2>
-      <p>Q:  </p>
+      <p>Q:what is useReducer Hook? </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+        useState for simple state management<br>
+        useReducer for complex state management<br>
+
+       useReducer hook is same like useState Hook <br>
+       in small website we should use useState hook but it is highly 
+       recommended that in complex website we must use useReducer hook.<br>
+       useReducer works with reducer and reducers are pure function 
+       <br> 
+       useReducer is mostly used with react-redux libaray.<br>
+       It is a hook that is used for stateManagement<br>
+       It is an alternate of useState<br>
+       useState is built using useReducer<br>
+       Every task that we can perfom by useState we can also do it by useReducer<br>
+
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        // reducer.jsx
+import React, { act } from "react";
+import { useReducer } from "react";
+ const Reducer = ()=>{
+    const initialState = 0;
+    const reducer = (state,action)=>{
+    
+        switch(action){
+            case 'increment':
+                return state + 1
+                case 'decrement':
+                    return state - 1
+                    case 'reset' :
+                        return initialState 
+                        default : 
+                        return state
+        }
+
+    }
+    const [count,dispatch] = useReducer(reducer,initialState);
+    return(
+        <div><h1>Reducer</h1>
+        <h1>count = {count}</h1>
+        <button onClick={()=>dispatch('increment')}>Increment</button>
+        <button onClick={()=>dispatch('decrement')}>Decrement</button>
+        <button onClick={()=>dispatch('reset')}>Reset</button>
+        
+        </div>
+    )
+ }
+ export default Reducer;
+       </xmp>
 
             </code></pre>
     </div>
@@ -131,20 +223,69 @@ export default Contact
  <!----------------------------------- Question No 5 ---------------------->
     <div class="card question-card">
       <h2> Question 5❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is custom Hooks in reactJs?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+        The hooks that we creates ourselves are called custom hooks.<br> 
+       Rules for creating custom hooks<br> 
+       1. prefix with use<br> 
+       custom hook is starts with the word of use<br> 
+       2. use Built in hooks <br> 
+       we can use built in hooks inside custom hook like useState hook, useEffect hook or 
+       useContext hook , we mostly use built-in-hooks inside our custom hook 90% .<br> 
+
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        import React from "react"; 
+import useToggle from "./customhooks";
+const Contact = ()=>{
+  const [data,toggle] = useToggle();
+  return(
+    
+    
+    <div>
+<button onClick={toggle}>Toggle Data</button>
+<button onClick={()=>toggle(true)}>show Data</button>
+<button onClick={()=>toggle(false)}>hide Data</button>
+<h1>{data ? 'yes visible' : null}</h1>
+    </div>
+    
+   
+  )
+}
+export default Contact; 
+
+
+__________________________________
+
+import React, { useState } from "react";
+const useToggle = ()=>{
+    const [data,setData] = useState(true);
+    function toggle(val){
+        // if(typeof val === 'boolean'){
+        //     setData(val)
+        // }
+        // else{setData(!data)}
+        if(val === true)
+        {setData(true)}
+        else if(val === false){
+            setData(false)
+        }
+        else{setData(!data)}
+    }
+    return [data,toggle]
+
+}
+export default useToggle;
+       </xmp>
 
             </code></pre>
     </div>
