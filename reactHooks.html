@@ -244,6 +244,50 @@ import { useReducer } from "react";
       <h2>💡 Example</h2>
       <pre><code>
        <xmp>
+        Example one 
+        __________________________________
+        import { useState } from "react";
+
+// ownHooks.jsx
+const useOwnHooks = ()=>{
+    const [count,setCount] = useState(0);
+    // increase 
+    const increase = ()=>{
+        setCount(count + 1)
+    }
+    // decrease 
+    const decrease = ()=>{
+        (count >0)?(setCount(count-1)):(setCount(0))
+    }
+// reset 
+const reset = ()=>{
+    setCount(0)
+}
+return [count,increase,decrease,reset]
+}
+
+export default useOwnHooks;
+
+
+// counter2.jsx 
+import useOwnHooks from "./ownHooks";
+const Counter2 = ()=>{
+    const [count,increase,decrease,reset] = useOwnHooks()
+
+    return(
+
+        <>
+        <h1>{count}</h1>
+        <button onClick={increase}>Increase</button>
+        <button onClick={decrease}>Decrease</button>
+        <button onClick={reset}>Reset</button>
+        </>
+    )
+}
+export default Counter2;
+        __________________________________
+        Example 2 
+        __________________________________
         import React from "react"; 
 import useToggle from "./customhooks";
 const Contact = ()=>{
@@ -293,23 +337,23 @@ export default useToggle;
  <!----------------------------------- Question No 6 ---------------------->
     <div class="card question-card">
       <h2> Question 6❓ </h2>
-      <p>Q:  </p>
+      <p>Q: Why do we create custom hooks in reactJs?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       custom hooks is a function consisting of reuseable logic and code and 
+       we can use it multiple components by importing it, 
+       <br>
+       For example , <br>
+       we have to use a counter (increase,decrease and reset ) in 
+       our react App in multiple components than we create a custom hook useCounter and 
+       we can import it in every where we need.<br>
+       custom Hook is a reuseable function of react js.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 6 completed ----- -->
  <!----------------------------------- Question No 7 ---------------------->
     <div class="card question-card">

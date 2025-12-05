@@ -190,8 +190,11 @@ export default Home;
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
+        when we leave our page and go to next page we must stop all activities of ex page so we 
+        use cleanup concept in reactJs, <br>
+        we run our code that need us in useEffect and also clean up inside useeffect.
        it is required when we leave page our function must stop and when we come 
-       back funtion should start working .
+       back function should start working .
       </p>
     </div>
 <!-------- example -------->
@@ -199,6 +202,24 @@ export default Home;
       <h2>💡 Example</h2>
       <pre><code>
        <xmp>
+        Example One 
+
+        import React, { useEffect, useState } from "react";
+function Home(){
+    
+    useEffect(() => {
+  const timer = setInterval(() => {
+    console.log("running...");
+  }, 1000);
+
+  return () => clearInterval(timer); // cleanup
+}, []);
+}
+       
+export default Home;
+        ______________________
+        Example Two 
+
         import React, { useEffect, useState } from "react";
 function Home(){
     const [count,setCount] = useState(0);
@@ -870,7 +891,9 @@ export default About;
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       If we have a function and we have two states, normally when any state changes the function runs again. But we don’t want the function to run on every state change because this affects performance.
+So we wrap the function inside useMemo.
+Now the function will run only when the states inside the dependency array change, and it will not run on other state changes.
       </p>
     </div>
 <!-------- example -------->
@@ -1176,6 +1199,10 @@ export default Search;
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
+        If we have a function and we have two states, normally when any state changes the function runs again. But we don’t want the function to run on every state change because this affects performance.
+So we wrap the function inside useMemo.
+Now the function will run only when the states inside the dependency array change, and it will not run on other state changes.
+        <br>
       useMemo remember a value ,so React does not  calculate it again and again. <br> 
       It is used for performance optimization
       </p>
@@ -1185,27 +1212,29 @@ export default Search;
       <h2>💡 Example</h2>
       <pre><code>
 <xmp>
-  import React, { useState ,useMemo} from "react";
-const Home = ()=>{
-    const [count,setCount] = useState(0);
-    const [data,setData] = useState(2)
-    const multiply = useMemo(function multi(){
-      console.log('calls for count state')
-      return(count * 2)
-    },[count])
-    
-    return(
-<div>
-  <h3>count: {count}</h3>
-  <h3>{multiply}</h3>
-<h3>data: {data}</h3>
-<button onClick={()=>setCount(count + 1)}>Increment</button>
-<button onClick={()=>setData(data *2)}>data</button>
+ import { useMemo, useState } from "react";
 
-</div>
-    )
+function UseMemo() {
+  const [number, setNumber] = useState(0);
+  const [count, setCount] = useState(0);
+
+  const doubleNumber = useMemo(() => {
+    console.log("Calculating...");
+    return number * 2;
+  }, [number]);   // Only re-run when "number" changes
+
+  return (
+    <div>
+      <h1>Number: {number}</h1>
+      <h2>Double: {doubleNumber}</h2>
+
+      <button onClick={() => setNumber(number + 1)}>Increase Number</button>
+      <button onClick={() => setCount(count + 1)}>Increase Count</button>
+    </div>
+  );
 }
-export default Home;
+
+export default UseMemo;
 </xmp>
 
             </code></pre>
@@ -1307,6 +1336,8 @@ export default About;
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
+        memo is used to stop a component from rerendering again and again unnecessarily.
+        <br>
        when we pass a props in a component and any state updates in component our props rerender again and again even props is not change but it rerender again and 
        again on the updating of state, so to stop props rerendering we wrap it in memo( ) like 
        export default memo(Prop)
@@ -1317,44 +1348,33 @@ export default About;
       <h2>💡 Example</h2>
       <pre><code>
        <xmp>
-        home.jsx 
+       child 
+       ______________________
+       import { useState } from "react"
+import Child from "./child"
+const UseMemo = ()=>{
 
-        import React, { useMemo, useState } from "react";
-import Prop from "../component/prop";
-const Home  = ()=>{
-  const [count,setCount] = useState(0)
-  const [data,setData] = useState(2)
-
-   const stop = useMemo(function check (){
-    console.log('ok')
-    return(count *2)
-  },[count])
-  return(
-    <div>
-      <Prop title='hello'/>
-<h3>count : {count}</h3>
-<h3>data : {data}</h3>
-<button onClick={()=>setCount(count + 1)}>Increment</button>
-<button onClick={()=>setData(data *2)}>data</button>
-<button>{stop}</button>
-
-    </div>
-  )
-}
-export default Home;
-______________________
-prop.jsx 
-
-import React,{memo} from "react";
-const Prop = ({title})=>{
-    console.log(title)
+    const [count,setCount]  = useState(0)
     return(
-        <>
-        <h1>{title}- component</h1>
-        </>
+        <div>
+            <h1>Count : {count}</h1>
+            <button onClick={()=>setCount(count + 1)}>Increment</button>
+            <Child name='Azizullah'/>
+        </div>
     )
 }
-export default memo(Prop);
+export default UseMemo;
+______________________
+parent 
+
+// child.jsx
+import { memo } from "react";
+function Child({name}){
+    console.log('child rendered');
+    return <h2>Hello {name}</h2>
+}
+export default memo(Child);
+
        </xmp>
 
             </code></pre>
