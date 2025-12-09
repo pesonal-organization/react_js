@@ -1204,7 +1204,16 @@ So we wrap the function inside useMemo.
 Now the function will run only when the states inside the dependency array change, and it will not run on other state changes.
         <br>
       useMemo remember a value ,so React does not  calculate it again and again. <br> 
-      It is used for performance optimization
+      It is used for performance optimization<br>
+      if we have a component and we have two states in components, and one state we are updating inside a 
+      funtion , now when we update or change any state our function is running, we want that our function should 
+      run on our order, because running of function on every state changing effect the performance of our component, 
+      so we use useMemo hook and keep the function inside useMemo hook and we can order to run 
+      our function according to the state change that we give inside useMemo hook dependecy. 
+      <br>
+      useMemo hook takes a callback function inside its parameter,and a dependency array, we write functionality inside 
+      funciton blocks { } and in dependecy array we write the state on which we want to run 
+      our function.
       </p>
     </div>
 <!-------- example -------->
@@ -1253,7 +1262,8 @@ export default UseMemo;
       <p>
        useRef hook is used to get the access of dom element in react. <br> 
        in js we use getElementById and in react we use useRef( )getting access of dom elements.<br> 
-       after accessing dom element we can apply focus on it.
+       after accessing dom element we can apply focus on it.<br>
+       we use input.current.value  (current) for giving the reference of input tag
 
       </p>
     </div>
@@ -1271,10 +1281,12 @@ const About = ()=>{
   // myForm 
   const myForm = ()=>{
     event.preventDefault();
-    console.log(inputOne.current.value);
+    console.log(inputOne?.current?.value);
     console.log(inputTwo?.current?.value);
     inputOne.current.value = '';
     inputTwo.current.value = '';
+    inputOne.current.focus();
+    inputTwo.current.focus();
 
   }
   return(
@@ -1329,7 +1341,7 @@ export default About;
 <!------- question 1 completed ----- -->
  <!----------------------------------- Question No 2 ---------------------->
     <div class="card question-card">
-      <h2> Question 2❓ </h2>
+      <h2> Question 22❓ </h2>
       <p>Q: what is memo( )?  </p>
     </div>
   <!----- answers ----->
@@ -1382,7 +1394,7 @@ export default memo(Child);
 <!------- question 2 completed ----- -->
  <!----------------------------------- Question No 3 ---------------------->
     <div class="card question-card">
-      <h2> Question 3❓ </h2>
+      <h2> Question 23❓ </h2>
       <p>Q: what is controlled component in reactJs?  </p>
     </div>
   <!----- answers ----->
@@ -1417,7 +1429,7 @@ export default Use;
 <!------- question 3 completed ----- -->
  <!----------------------------------- Question No 4 ---------------------->
     <div class="card question-card">
-      <h2> Question 4❓ </h2>
+      <h2> Question 24❓ </h2>
       <p>Q: what is uncontrolled components?  </p>
     </div>
   <!----- answers ----->
@@ -1462,6 +1474,39 @@ const Use = ()=>{
     )
 }
 export default Use;
+______________________
+example 2 
+ by id 
+
+ import React from "react";
+import { useRef } from "react";
+const UseState  = ()=>{
+    const first = useRef();
+    const second = useRef();
+    // functon 
+    const myForm = ()=>{
+        event.preventDefault();
+        let inputOne = document.getElementById('firstInput').value;
+        let inputTwo = document.getElementById('secondInput').value;
+        console.log(inputOne);
+        console.log(inputTwo);
+        first.current.value = '';
+        second.current.value = '';
+        first.current.focus();
+        second.current.focus();
+    }
+
+    return(
+        <>
+        <form action="" onSubmit={myForm}>
+            <input type="text" id='firstInput' ref={first} /><br/>
+            <input type="text" id= 'secondInput' ref={second}/><br/>
+            <button>submit</button>
+        </form>
+        </>
+    )
+}
+export default UseState;
        </xmp>
 
             </code></pre>
@@ -1469,7 +1514,7 @@ export default Use;
 <!------- question 4 completed ----- -->
  <!----------------------------------- Question No 5 ---------------------->
     <div class="card question-card">
-      <h2> Question 5❓ </h2>
+      <h2> Question 25❓ </h2>
       <p>Q: If in one component we are accessing dom by usestate and also by useRef or getElementById than what is called this component?  </p>
     </div>
   <!----- answers ----->
@@ -1483,7 +1528,7 @@ export default Use;
 <!------- question 5 completed ----- -->
  <!----------------------------------- Question No 6 ---------------------->
     <div class="card question-card">
-      <h2> Question 6❓ </h2>
+      <h2> Question 26❓ </h2>
       <p>Q: what is useNavigate( ) and conditional navigation?  </p>
     </div>
   <!----- answers ----->
@@ -1526,7 +1571,7 @@ export default Contact;
 <!------- question 6 completed ----- -->
  <!----------------------------------- Question No 7 ---------------------->
     <div class="card question-card">
-      <h2> Question 7❓ </h2>
+      <h2> Question 27❓ </h2>
       <p>Q: what is useLocation( ) hook?</p>
     </div>
   <!----- answers ----->
@@ -1559,7 +1604,7 @@ export default Location;
 <!------- question 7 completed ----- -->
  <!----------------------------------- Question No 8 ---------------------->
     <div class="card question-card">
-      <h2> Question 8❓ </h2>
+      <h2> Question 28❓ </h2>
       <p>Q: what is props?  </p>
     </div>
   <!----- answers ----->
@@ -1576,7 +1621,7 @@ etc.      </p>
 <!------- question 8 completed ----- -->
  <!----------------------------------- Question No 9 ---------------------->
     <div class="card question-card">
-      <h2> Question 9❓ </h2>
+      <h2> Question 29❓ </h2>
       <p>Q: How can we know the path name of page where are we standing now?{useLocation}  </p>
     </div>
   <!----- answers ----->
@@ -1630,7 +1675,7 @@ export default Navbar;
 <!------- question 9 completed ----- -->
  <!----------------------------------- Question No 10 ---------------------->
     <div class="card question-card">
-      <h2> Question 10❓ </h2>
+      <h2> Question 30❓ </h2>
       <p>Q: what is dynamic routing in reactjs? </p>
     </div>
   <!----- answers ----->
@@ -1737,7 +1782,7 @@ export default IdPage;
 <!------- question 11 completed ----- -->
  <!----------------------------------- Question No 12 ---------------------->
     <div class="card question-card">
-      <h2> Question 12❓ </h2>
+      <h2> Question 31❓ </h2>
       <p>Q: Make a responsive navbar by reactjs tailwind css?  </p>
     </div>
   <!----- answers ----->
@@ -1786,7 +1831,7 @@ export default IdPage;
 <!------- question 12 completed ----- -->
  <!----------------------------------- Question No 13 ---------------------->
     <div class="card question-card">
-      <h2> Question 13❓ </h2>
+      <h2> Question 132❓ </h2>
       <p>Q: use of loading in finally?  </p>
     </div>
   <!----- answers ----->
@@ -1863,7 +1908,7 @@ export default About;
 <!------- question 13 completed ----- -->
  <!----------------------------------- Question No 14 ---------------------->
     <div class="card question-card">
-      <h2> Question 14❓ </h2>
+      <h2> Question 33❓ </h2>
       <p>Q:  </p>
     </div>
   <!----- answers ----->
