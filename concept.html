@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Class 1 – Introduction to JavaScript</title>
+  <title>react concepts</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="class-page">
@@ -14,13 +14,53 @@
      
     </div>
 <!------ Write Topic Name here ------->
-    <h1 class="lecture-heading">Structure page</h1>
+    <h1 class="lecture-heading">react all concepts</h1>
 
     <!-- Topics Covered -->
     <div class="card topics-card">
       <h2>📋 Topics Covered</h2>
       <ul>
-        <li>write here first question that you are studying in this file</li>
+        <li>1. component of react?</li>
+        <li>2. routes.jsx?</li>
+        <li>3. navbar.jsx?</li>
+        <li>4.  Example of useState( )?</li>
+        <li>5. cleanup in reactJs?</li>
+        <li>6. apicall and show data on dom by fetch?</li>
+        <li>7. apicall by axios and show data on dom?</li>
+        <li>8. use of loading/loader in apicall?</li>
+        <li>9. Throw on pagenotfound if enters wrong path?</li>
+        <li>10. come back on home page auto and by button if user enter wrong path?</li>
+        <li>11. Get pathname of page on which you are now?</li>
+        <li>12. Get the data of an object by click on view user button?</li>
+        <li>13. show dynamic id of an object on another page:</li>
+        <li>14. Make props( ) in header and receive in home?</li>
+        <li>15.  Get input in console and apply onfocus( ) on input?</li>
+        <li>17.  Stunning Annimation? </li>
+        <li>18. footer setting in reactjs?</li>
+        <li>19.  filter search input in react?</li>
+        <li>20.  useMemo hook and example:</li>
+        <li>21.   what is useRef hook?
+and how can we apply focus on input?</li>
+        <li>22.  what is memo( )?</li>
+        <li>23. what is controlled component in reactJs?</li>
+        <li>24. what is uncontrolled components?</li>
+        <li>25. If in one component we are accessing dom by usestate and also by useRef or getElementById than what is called this component?</li>
+        <li>26. what is useNavigate( ) and conditional navigation?</li>
+        <li>27.  what is useLocation( ) hook?</li>
+        <li>28. what is props?</li>
+        <li>29. How can we know the path name of page where are we standing now?{useLocation}</li>
+        <li>30. what is dynamic routing in reactjs?</li>
+        <li>31.  Make a responsive navbar by reactjs tailwind css?</li>
+        <li>32. use of loading in finally?</li>
+        <li>33. why we keep empty array [ ] in useState during api calling?</li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
         
         </ul>
     </div>
@@ -883,66 +923,7 @@ export default About;
     </div>
 <!------- question 15 completed ----- -->
  <!----------------------------------- Question No 16 ---------------------->
-    <div class="card question-card">
-      <h2> Question 16❓ </h2>
-      <p>Q: what is usememo?  </p>
-    </div>
-  <!----- answers ----->
-    <div class="card answer-card">
-      <h2>✅ Answer</h2>
-      <p>
-       If we have a function and we have two states, normally when any state changes the function runs again. But we don’t want the function to run on every state change because this affects performance.
-So we wrap the function inside useMemo.
-Now the function will run only when the states inside the dependency array change, and it will not run on other state changes.
-      </p>
-    </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-        <xmp>
-        import React, { useState,useMemo } from "react";
-const users = [
-    {id: 1, name : 'john'},
-    {id: 2 , name : 'ahmed'},
-    {id: 3 , name : 'skhi'},
-    {id: 4, name : 'abid'},
-    {id: 5 , name : 'Munawar'}
-]
-const About = ()=>{
-    const [searchInput,setSearchInput] = useState("");
-    const filetered = useMemo(()=>{
-         console.log('hello')
-return(users?.filter((item)=>{
-       
-        return(item.name.toLowerCase().includes(searchInput.toLocaleLowerCase()))
-    }))
-
-    },[searchInput,users])
-    return(
-    <div>
-        <h1>search bar in react</h1>
-        <input type="text" placeholder="search" name="" id=""
-        value={searchInput}
-        onChange={(e)=>{setSearchInput(e.target.value)}} />
-        <ul>
-            {filetered.map((item,key)=>{
-                return(
-                    <li key={item.id}>{item.name}</li>
-                )
-            })}
-        </ul>
-    </div>
-)
-}
-
-
-export default About;
-       </xmp>
-
-
-            </code></pre>
-    </div>
+   
 <!------- question 16 completed ----- -->
  <!----------------------------------- Question No 17 ---------------------->
     <div class="card question-card">
@@ -1535,6 +1516,7 @@ export default UseState;
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
+        <h1>Note :  import Location component in App.jsx inside return on top</h1>
        useNavigate( ) is a hook of react-router-dom and it is used for the navigation among pages. <br> 
        first we import useNavigate( ) from react-router-dom and than save it in variable and than use.
       </p>
@@ -1577,6 +1559,12 @@ export default Contact;
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
+      <h3>Note : import Location component in App.jsx inside return on top</h3>
+      first we create a component to handle location , we import useLocation hook from 
+      react router dom in our component and in componet berfore return we create a variable to store useLocation hook 
+      and now we can console our variable to know that on which page we are standing now and it give us object now we can take exact 
+      path by location.pathname  <br>
+
       <p>
 useLocation( ) is a react-router-dom hook and it is used to know that path of page on which we are standing.
       </p>
@@ -1909,20 +1897,29 @@ export default About;
  <!----------------------------------- Question No 14 ---------------------->
     <div class="card question-card">
       <h2> Question 33❓ </h2>
-      <p>Q:  </p>
+      <p>Q: Why we define empty array [ ] inside useState during api calling?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       We use an empty array [] as the initial state because:<br>
+
+API data usually comes in array format <br>
+The component renders before the API response arrives <br>
+
+Calling .map() on an empty array does NOT throw an error<br>
+
+This prevents runtime crashes while data is loading
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        const [data,setData] = useState([]);
+       </xmp>
 
             </code></pre>
     </div>
