@@ -53,8 +53,8 @@ and how can we apply focus on input?</li>
         <li>31.  Make a responsive navbar by reactjs tailwind css?</li>
         <li>32. use of loading in finally?</li>
         <li>33. why we keep empty array [ ] in useState during api calling?</li>
-        <li></li>
-        <li></li>
+        <li>34. Call API by axios after one minute page rendering?</li>
+        <li>35. why we use clean up in react?</li>
         <li></li>
         <li></li>
         <li></li>
@@ -305,39 +305,51 @@ function Home(){
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       <xmp>import React, { useEffect, useState } from "react";
-const Home = ()=>{
-    const [datat,setData] = useState([]);
-    
-    const apiCall = async ()=>{
-        const apiUrl = 'https://jsonplaceholder.typicode.com/users';
-        try{const get = await fetch(apiUrl);
-            const jsonData = await get?.json();
-            console.log(jsonData);
-            setData(jsonData)
-           
-         }
-        catch(error){console.log(error.name)}
+      <xmp>
+        import '../components/css/apicalling.css'
 
+const ApiCalling = ()=>{
+    const [data,setData] = useState([]);
+    const [loading,setLoading] = useState(true);
+    const [error,setError] = useState(null)
+    // function for api callign 
+    const fnct = async ()=>{
+         const apiUrl = 'https://jsonplaceholder.typicode.com/users';
+         try{
+            const get = await fetch(apiUrl);
+            const jsonData = await get?.json();
+            // upadte state 
+            setData(jsonData)
+         }
+         catch(error){setError('some thing went wrong')
+            console.log(error)}
+         finally{setLoading(false)}
     }
-    // useeffect 
+    // use effect for calling funciton 
     useEffect(()=>{
-        apiCall();
-        
-    },[])
+        fnct();
+    },
+[])
+// loading
+if(loading)return <h2>data is loaidng</h2>
+if(error) return <h2>{error}</h2>
     return(
-        <div>
-            <ul>
-                {datat.map((item,index)=>{
-                    return(
-                        <li key={index}>{item.id} : {item.name}</li>
-                    )
-                })}
-            </ul>
-        </div>
+        <>
+        <h1>Normal Api calling </h1>
+        <ul>
+            {data.map((item,index)=>{
+                return(
+                    <li key={item.id} className="users">
+                        {`${item.id}      ${item.name} ${item.email}`}
+                    </li>
+                )
+            })}
+        </ul>
+        </>
     )
 }
-export default Home;</xmp>
+export default ApiCalling;
+      </xmp>
 
             </code></pre>
     </div>
@@ -360,39 +372,47 @@ export default Home;</xmp>
       <pre><code>
        
 <xmp>
-  import React, { useEffect, useState } from "react";
+  
+// api calling by axios
 import axios from "axios";
-const Home = ()=>{
-    // create use state for showing data in dom 
-    const [list,setList] = useState([])
-    const apiCall = async ()=>{
-        const apiUrl = 'https://jsonplaceholder.typicode.com/users';
-        try{const data  = await axios.get(apiUrl);
-           
-            console.log(data);
-            setList(data.data)
+import { useEffect, useState } from "react";
+
+const AxiosApiCalling = ()=>{
+    const [data,setData] = useState([]);
+    // state for loader 
+    const [loading,setLoading] = useState(true);
+    // function for api calling 
+    const apiCallingFunction = async ()=>{
+        const apiUrl = "https://jsonplaceholder.typicode.com/users"
+        try{
+            const response = await axios.get(apiUrl);
+            // set data in usestate 
+            setData(response.data);
         }
         catch(error){console.log(error)}
+        finally{setLoading(false)}
     }
-
-    // useEffect 
+    // calling fuction 
     useEffect(()=>{
-        apiCall();
+        apiCallingFunction();
     },[])
+    // show loader
+    if(loading) return <h1>data is loading....</h1>
+
     return(
-        <div>
-        <h1>User List by axios</h1>
+        <>
+        <h1>Api calling by axios</h1>
         <ul>
-            {list.map((item,index)=>{
+            {data.map((item,index)=>{
                 return(
-                    <li key={index}>{item.name}</li>
+                    <li key={item.id}>{item.id}{item.name}</li>
                 )
             })}
         </ul>
-        </div>
+        </>
     )
 }
-export default Home;
+export default AxiosApiCalling;
 </xmp>
             </code></pre>
     </div>
@@ -1819,7 +1839,7 @@ export default IdPage;
 <!------- question 12 completed ----- -->
  <!----------------------------------- Question No 13 ---------------------->
     <div class="card question-card">
-      <h2> Question 132❓ </h2>
+      <h2> Question 32❓ </h2>
       <p>Q: use of loading in finally?  </p>
     </div>
   <!----- answers ----->
@@ -1926,8 +1946,8 @@ This prevents runtime crashes while data is loading
 <!------- question 14 completed ----- -->
  <!----------------------------------- Question No 15 ---------------------->
     <div class="card question-card">
-      <h2> Question 15❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 34❓ </h2>
+      <p>Q: call API by axios after one minute page rendering?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
@@ -1940,21 +1960,73 @@ This prevents runtime crashes while data is loading
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        import axios from "axios";
+import { use, useEffect, useState } from "react";
+
+const AxiosApiCalling = ()=>{
+    const [data,setData] = useState([]);
+    // loader handling usestate
+    const [loading,isLoading] = useState(true);
+    // function for calling api
+    const func = async ()=>{
+        const apiUrl = "https://jsonplaceholder.typicode.com/users"
+        try{
+            const get = await axios.get(apiUrl);
+            // update useState
+            setData(get.data);
+            console.log(get)
+        }
+        catch(error){
+            console.log(error)
+        }
+        finally{isLoading(false)}
+    }
+    // useEffect for calling funciton 
+   useEffect(()=>{
+   const timer =  setTimeout(() => {
+        func();
+        
+    }, 60000);
+    // clear
+    return ()=>clearTimeout(timer);
+   },[])
+
+    // show loader 
+    if(loading) return <h1>data is loding....</h1>
+
+    return(
+        <>
+        <h1>Api Calling Normal</h1>
+        <ul>
+            {data.map((item,index)=>{
+                return(
+                    <li key={item.index}>{item.name}{item.email}</li>
+                )
+            })}
+        </ul>
+        </>
+    )
+}
+export default AxiosApiCalling;
+       </xmp>
 
             </code></pre>
     </div>
 <!------- question 15 completed ----- -->
  <!----------------------------------- Question No 15 ---------------------->
     <div class="card question-card">
-      <h2> Question 15❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 35❓ </h2>
+      <p>Q: Why we use cleanup in react?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       When a page uses setTimeout and the user navigates to another page before the time completes, the timeout still runs and the API call happens even though the page is gone.
+       <br>
+
+Cleanup is used to remove the previous page’s activities (like timers or listeners) when the component unmounts, so unnecessary API calls don’t happen and app performance stays fast.
       </p>
     </div>
 <!-------- example -------->
