@@ -787,7 +787,8 @@ const Home = ()=>{
             {
                 list.map((item,index)=>{
                     return(
-                        <li key={index}>{item.name} <button style={{marginLeft:10}} onClick={()=>viewUser(item)}>view user</button></li>
+                        <li key={index}>{item.name} <button style={{marginLeft:10}} 
+                          onClick={()=>viewUser(item)}>view user</button></li>
                     )
                 })
             }
