@@ -709,26 +709,24 @@ export default Home;
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       when i click on  view user button i must go to another page ,and i must see written 
-       id of user on another page dynamic like1,2,/3 etc<br> 
-       first make a new folder and a new file in new folder <br>
-       make a route of this file <br> 
-       <pre><Route path='/newpage/:id' element= {<Newpage/>}/></pre><br>
-       import useNavigate in apilist from react-router<br>
-       make<br>
-       const navigate = useNavigate();
-       <br>
-       pass this navigate in viewUser function<br>
+     In the first component, we call an API and store the response data in state using useState.<br>
+After getting the data, we display it on the screen using the map() method.<br>
+Inside the mapped data, we create a View User button for each list item.<br>
+On the button, we use the onClick event and pass a callback function.<br>
+Inside this callback function, we call the viewUser function and pass the current user data as a parameter.<br>
+Now we create the viewUser function and receive the data in its parameter.<br>
+Inside the viewUser function, we use the navigate() function from react-router-dom.<br>
+In the navigate() function, we use backticks and pass the dynamic path along with the user id like /newpage/${data.id}.<br>
+When the button is clicked, React Router navigates to a new page with a dynamic URL.<br>
+Now we go to the page where we want to show the dynamic id.<br>
+On this page, we import the useParams() hook from react-router-dom.<br>
+We destructure the id directly from useParams().<br>
+The useParams() hook reads the dynamic value from the URL.<br>
+we go in routes and the route the page where we have to show dynamic id write like 
+path='/page:id'<br>
+Finally, we display the dynamic id in JSX using {id}.<br>
+In this way, dynamic routing works in React and the dynamic id is successfully shown on the page.<br>
 
-       show dynamic id on dom <br>
-       import useParams in newpage from react-router <br>
-       make a hook <br>
-       const {id} = useParams()<br>
-       console.log(id);
-       return<br>
-       <pre><h1>{id}</h1></pre>
-       <br> 
-       see details in example:
 
       </p>
     </div>
