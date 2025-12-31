@@ -839,6 +839,56 @@ const MyRoutes = ()=>{
 export default MyRoutes;
       </xmp>
 
+
+      <xmp>
+        show data of object on view user button click on new page 
+
+        // extra.page.jsx
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+const ExtraPage = ()=>{
+ const {id} = useParams();
+ const [list,setList] = useState(null);
+ const [loading,isLoading] = useState(true)
+//  api calling funcin 
+const apiCalling = async()=>{
+    const apiUrl = `https://jsonplaceholder.typicode.com/users/${id}`;
+    try{
+        const response = await axios.get(apiUrl);
+        setList(response.data)
+
+    }
+    catch(error){
+        console.log(error)
+    }
+    finally{
+        isLoading(false)
+    }
+}
+// useeffection for function calling 
+useEffect(()=>{
+    apiCalling();
+},[id])
+ 
+ if(loading) {
+    return <h1>data is loading......</h1>
+ }
+    return(
+        <>
+        <h1>User Detail Page</h1>
+      <p><b>ID:</b> {list.id}</p>
+      <p><b>Name:</b> {list.name}</p>
+      <p><b>Email:</b> {list.email}</p>
+      <p><b>Phone:</b> {list.phone}</p>
+      <p><b>City:</b> {list.address.city}</p>
+        </>
+    )
+}
+export default ExtraPage; 
+
+
+      </xmp>
             </code></pre>
     </div>
 <!------- question 14 completed ----- -->
