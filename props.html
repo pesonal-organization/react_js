@@ -38,6 +38,137 @@
        It is used to transfer data from one component to another.<br> 
        data sender component is called parent component and data receiver component is called child component.<br>
        we can not modify or change data of props but only we can use it.
+       <h1>note</h1>
+       data can be also transferred from children component to parent components by call back. 
+
+       <xmp>
+        simple props 
+        // parent.jsx 
+import React from "react";
+import ChildComponent from "./child";
+const ParentComponent =  ()=>{
+    const name = 'Aziz';
+    const age = 24
+    return(
+        <>
+        <h1>i am parent component</h1>
+        <ChildComponent name = {name} age = {age}/>
+        </>
+    )
+}
+export default ParentComponent; 
+______________________________ 
+child file 
+
+// child.jsx 
+import React from "react";
+const ChildComponent = ({name,age})=>{
+    return(
+        <>
+        <h1>i am childComponent</h1>
+        <h2>{name}</h2>
+        <h3>My age is : {age}</h3>
+        </>
+    )
+}
+export default ChildComponent;
+______________________________
+passing as an object data into props 
+
+// parent.jsx 
+import React from "react";
+import ChildComponent from "./child";
+const ParentComponent =  ()=>{
+    const name = 'Aziz';
+    const age = 24
+    return(
+        <>
+        <h1>i am parent component</h1>
+        <ChildComponent person={{name: 'Aziz',age : 23, designation: 'developer'}}/>
+        </>
+    )
+}
+export default ParentComponent; 
+
+receiver file 
+
+// child.jsx 
+import React from "react";
+const ChildComponent = ({person})=>{
+    return(
+        <>
+        <h1>i am childComponent</h1>
+        <h1>My name is {person.name}</h1>
+        <h1>My age is {person.age}</h1>
+        <h1>My designation is {person.designation}</h1>
+        </>
+    )
+}
+export default ChildComponent;
+______________________________
+passing array as props 
+
+// parent.jsx 
+import React from "react";
+import ChildComponent from "./child";
+const ParentComponent =  ()=>{
+    const name = 'Aziz';
+    const age = 24
+    return(
+        <>
+        <h1>i am parent component</h1>
+        <ChildComponent fruits={['apple','orange','mango']}/>
+        </>
+    )
+}
+export default ParentComponent; 
+
+receiver component 
+
+// child.jsx 
+import React from "react";
+const ChildComponent = ({fruits})=>{
+    return(
+        <>
+        <h1>i am childComponent</h1>
+        <h3>first fruit is {fruits[0]}</h3>
+        <h3>second fruit is {fruits[1]}</h3>
+        </>
+    )
+}
+export default ChildComponent;
+______________________________ 
+real example of array 
+
+// parent.jsx 
+import React from "react";
+import ChildComponent from "./child";
+const ParentComponent =  ()=>{
+    const hobby = ['cricket','football','hockey','badminton']
+    return(
+        <>
+        <h1>i am parent component</h1>
+        <ChildComponent hobby = {hobby}/>
+        </>
+    )
+}
+export default ParentComponent; 
+
+receiver component 
+
+// child.jsx 
+import React from "react";
+const ChildComponent = ({hobby})=>{
+    return(
+        <>
+        <h1>i am childComponent</h1>
+        <h2>{hobby.join(' , ')}</h2>
+        </>
+    )
+}
+export default ChildComponent;
+
+       </xmp>
       </p>
     </div>
 
