@@ -466,20 +466,78 @@ export default About;
  <!----------------------------------- Question No 4 ---------------------->
     <div class="card question-card">
       <h2> Question 4❓ </h2>
-      <p>Q:  </p>
+      <p>Q: passing more than one files in value in Provider in App.jsx?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       see in example code:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        data file have three data 
+
+        // datafile.js 
+const data = {
+    homeheading : 'I am home heading',
+    aboutHeading : 'I am about heading',
+    contactHeading : 'I am contact Heading'
+}
+// second data file 
+const secondDatafile = {
+    status :'failed'
+}
+// third file 
+const thirdDataFile = {
+    district : 'Mianwali'
+}
+export {data,secondDatafile,thirdDataFile}
+______________________________________________________________________________
+App.jsx file (Provider)
+
+import React from "react";
+import createcontex from "./createcontext";
+import {data,secondDatafile} from "./datafile";
+import { BrowserRouter } from "react-router-dom";
+import Navbar from "./pages/routes/navbar/navbar";
+import MyRoutes from "./pages/routes/routes";
+import { thirdDataFile } from "./datafile";
+
+const App = ()=>{
+  return(
+    <createcontex.Provider value={{data,secondDatafile,thirdDataFile}}>
+    <BrowserRouter>
+    <Navbar/>
+<MyRoutes/>
+    </BrowserRouter>
+    </createcontex.Provider>
+  )
+}
+export default App;
+______________________________________________________________ 
+using data in contact file 
+
+import React from "react";
+import { useContext } from "react";
+import createcontex from "../createcontext";
+const Contact = ()=>{
+    let {data,secondDatafile,thirdDataFile} = useContext(createcontex)
+    return(
+        <>
+        <h1>contact page</h1>
+        <p>{data.contactHeading}</p>
+        <h1>I am {secondDatafile.status}</h1>
+        <h2>I belong to {thirdDataFile.district}</h2>
+        </>
+    )
+}
+export default Contact;
+       </xmp>
 
             </code></pre>
     </div>
