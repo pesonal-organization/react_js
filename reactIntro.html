@@ -42,6 +42,10 @@
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
+        <h3>Framework is bounded and have some restrictions and we have to 
+          work according its given frame like bootstrap we can not makes change by ourselves in 
+          framework but In Libraray we can do all thing we can import any code npm etc
+        </h3>
        React is not a framework. React is a JavaScript libraray for building user interfaces. <br>
 
       </p>
@@ -88,26 +92,38 @@
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       App.jsx is the main component file of React application.<br>
-       App.jsx contains a component called App(usually written a function)<br>
-       This component is the root component of our application.<br>
-       All other components (like Header,Footer,Navbar,ProductList,etc)
-are usually imported and used in App.      </p>
+       app.jsx is the main components of our application.<br>
+      think of it is the main room of house where we can keep everty thing<br>
+    Inside app.jsx we keep <br>
+  <li>navbar</li>
+  <li>hero section </li>
+  <li>cards</li>
+  <li>footer</li>
+  <li>others required components</li> 
+<h4>main.jsx runs first</h4>
+<h4>main.jsx calls app.jsx</h4>
+<h4>app.jsx shows every thing on the screen</h4>
+<h2>app.jsx is called the root component of application 
+  <br>
+  usually others all components are added here
+</h2>
+
+    </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
-      <pre><code>
-       import React from "react";
-       import Header from "./components/header/header";
-       const MyReactComponent = ()=>{
-        return(<div>
-          <h1>I am App.jsx</h1>
-          <Header />
-        </div>)
-       }
-export default MyReactComponent;
-            </code></pre>
+      <xmp>
+       function App() {
+  return (
+    <div>
+      <Navbar />
+      <Hero />
+      <Footer />
+    </div>
+  )
+}
+      </xmp>
     </div>
 <!------- question 5 completed ----- -->
  <!----------------------------------- Question No 6 ---------------------->
@@ -119,20 +135,13 @@ export default MyReactComponent;
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       main.jsx is the starting point of a React Project made with Vite<br>
-       It takes our App.jsx(main component) and shows it inside index.html.<br> 
-       Understand it like <br>
-       index.html has an empty box
-       <pre><div id='root'></div></pre>
+       main.jsx is the starting file of reactJs application. <br>
+       it connects react to browser when we run comman npm run dev 
        <br>
-       main.jsx finds that box<br>
-       main.jsx puts 
-       <pre><App /></pre>
-       (from App.jsx) inside that box.<br>
-       Now whatever you write in App.jsx appears in the browser.<br> 
-       Note:<br> 
-       main.jsx connects App.jsx with index.html and than react app can appear in browser.
-
+       It calls app.jsx <br>
+       it shows or renders the app.jsx on the webpage
+       <h3>main.jsx react application ko start/render krti hy</h3>
+     
       </p>
     </div>
 <!-------- example -------->
