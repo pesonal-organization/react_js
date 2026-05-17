@@ -14,13 +14,17 @@
      
     </div>
 <!------ Write Topic Name here ------->
-    <h1 class="lecture-heading">Dynamic Routing</h1>
+    <h1 class="lecture-heading">Dynamic Routing ,useParam hook,useNavigate Hook,conditional rendering</h1>
 
     <!-- Topics Covered -->
     <div class="card topics-card">
       <h2>📋 Topics Covered</h2>
       <ul>
-        <li>write here first question that you are studying in this file</li>
+        <li>dynamic routing</li>
+        <li>useParam Hook</li>
+        <li>use Navigate Hook</li>
+        <li>conditional rendering</li>
+        <li>conditional rendering</li>
         
         </ul>
     </div>
@@ -469,62 +473,81 @@ export default jsonUsers;
  <!----------------------------------- Question No 2 ---------------------->
     <div class="card question-card">
       <h2> Question 2❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is useParam hook?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+useParam hook is used to draw id from url during dynamic routing. <br>
+see example of question 1.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 2 completed ----- -->
  <!----------------------------------- Question No 3 ---------------------->
     <div class="card question-card">
       <h2> Question 3❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is useNavigate hook?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+useNavigate hook is used in react for moving one page to another , inside this hook 
+we define path of page where we have to go.<br>
+see useNavigate use in example of question no 1.
       </p>
     </div>
 <!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
-
-            </code></pre>
-    </div>
+ 
 <!------- question 3 completed ----- -->
  <!----------------------------------- Question No 4 ---------------------->
     <div class="card question-card">
       <h2> Question 4❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is conditional rendering?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       update ui on the base of condition is called conditional rendering.
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       example of conditional rendering 
+       <xmp>
+        import React from "react";
+const Team = ()=>{
+
+    const age = 64;
+    return(
+        <div>
+            <h1>i am team page</h1>
+        {
+            (age > 50)?(<h2>you are over age</h2>) :(<h2>welcome </h2>)
+            
+        }
+        </div>
+    )
+}
+export default Team ;
+       </xmp>
+       example two 
+       <xmp>
+        let isLogin = true;
+
+return(
+  <div>
+    {
+      isLogin ? <h1>Welcome</h1> : <h1>Please Login</h1>
+    }
+  </div>
+)
+       </xmp>
 
             </code></pre>
     </div>
