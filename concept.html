@@ -56,8 +56,8 @@ and how can we apply focus on input?</li>
         <li>34. Call API by axios after one minute page rendering?</li>
         <li>35. why we use clean up in react?</li>
         <li>36. what is React Developer Tool?</li>
-        <li></li>
-        <li></li>
+        <li>37. why we write value attribute in input?</li>
+        <li>38. what is Logical And(&&) Rendering?</li>
         <li></li>
         <li></li>
         <li></li>
@@ -242,48 +242,66 @@ export default Home;
       <h2>💡 Example</h2>
       <pre><code>
        <xmp>
-        Example One 
+       // watch.jsx
 
-        import React, { useEffect, useState } from "react";
-function Home(){
-    
-    useEffect(() => {
-  const timer = setInterval(() => {
-    console.log("running...");
-  }, 1000);
+import React, { useEffect, useState } from "react";
+import "./watch.css";
 
-  return () => clearInterval(timer); // cleanup
-}, []);
-}
-       
-export default Home;
-        ______________________
-        Example Two 
+const Watch = () => {
 
-        import React, { useEffect, useState } from "react";
-function Home(){
-    const [count,setCount] = useState(0);
-    useEffect(()=>{
-        console.log('timer started');
-        const timer = setInterval(() => {
-            
-            setCount(count + 1)
-        }, 1000);
-        // cleanup runs when page mounts 
-        return()=>{
-            console.log('timer stopped');
-            clearInterval(timer)
-        }
-    },[])
-    return(
-        <div>
-            <h1>
-                Timer
-            </h1>
-            <h2>{count}</h2>
-        </div>
-    )
-}
+  const [time, setTime] = useState(
+    new Date().toLocaleTimeString()
+  );
+
+  const [date, setDate] = useState(
+    new Date().toDateString()
+  );
+
+  useEffect(() => {
+
+    let interval = setInterval(() => {
+
+      setTime(new Date().toLocaleTimeString());
+
+      setDate(new Date().toDateString());
+
+    }, 1000);
+//clear interval
+    return () => {
+      clearInterval(interval);
+    };
+
+  }, []);
+
+  return (
+
+    <div className="watchContainer">
+
+      <div className="watchCard">
+
+        <div className="glow1"></div>
+        <div className="glow2"></div>
+
+        <h2 className="watchTitle">
+          Digital Clock
+        </h2>
+
+        <h1 className="watchTime">
+          {time}
+        </h1>
+
+        <p className="watchDate">
+          {date}
+        </p>
+
+      </div>
+
+    </div>
+
+  );
+};
+
+export default Watch;
        </xmp>
 
             </code></pre>
@@ -2132,21 +2150,24 @@ Is ke zariye hum state aur props inspect kar sakte hain aur errors ko easily fin
 <!------- question 17 completed ----- -->
  <!----------------------------------- Question No 18 ---------------------->
     <div class="card question-card">
-      <h2> Question 18❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 38❓ </h2>
+      <p>Q: what is Logical And(&&) Rendering?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       if this than do this<br>
+       is logical && rendering.
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        (isAdult) && <h1>You are adult</h1>
+       </xmp>
 
             </code></pre>
     </div>
