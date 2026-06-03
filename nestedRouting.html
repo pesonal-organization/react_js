@@ -100,13 +100,13 @@ export default About;
  <!----------------------------------- Question No 2 ---------------------->
     <div class="card question-card">
       <h2> Question 2❓ </h2>
-      <p>Q:  </p>
+      <p>Q: Nested routing example two ?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       see in example : 
       </p>
     </div>
 <!-------- example -------->
@@ -114,7 +114,109 @@ export default About;
       <h2>💡 Example</h2>
       <pre><code>
        
+<xmp>
+  app.jsx 
 
+
+  import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import AppRouts from "./utils/routes/routes";
+
+const App = ()=>{
+ 
+  return(
+   <BrowserRouter>
+   <AppRouts/>
+   </BrowserRouter>
+  )
+}
+export default App; 
+_____________________________________
+routes.jsx 
+
+import React from "react";
+import {Routes,Route} from 'react-router-dom';
+import DahboarLayout from "../../screen/dashboard/dashboard";
+import Contact from "../../screen/dashboard/contact/contact";
+import Profile from "../../screen/dashboard/profile/profile";
+const AppRouts = ()=>{
+    return(
+        <Routes>
+            <Route path="/dashboard" element={<DahboarLayout/>}>
+            <Route path="contact" element={<Contact/>}/>
+            <Route path="profile" element={<Profile/>}/>
+
+
+            </Route>
+        </Routes>
+    )
+}
+export default AppRouts; 
+
+_____________________________________ 
+navbar.jsx 
+
+//navbar.jsx
+import React from "react";
+import { Link,Outlet } from "react-router-dom";
+const Navbar = ()=>{
+    return(
+        <div>
+            <ul>
+                <li>
+                    <Link to={'profile'}>Profile</Link>
+                </li>
+                <li>
+                    <Link to={'contact'}>Contact</Link>
+                </li>
+            </ul>
+        </div>
+    )
+}
+export default Navbar; 
+
+_____________________________________
+profile.jsx 
+
+//profile.jsx
+import React from "react";
+const Profile = ()=>{
+    return(
+        <h1>i am profile page</h1>
+    )
+}
+export default Profile;
+_____________________________________
+
+contact.jsx 
+
+//contact.jsx
+import React from "react";
+const Contact = ()=>{
+    return(
+        <h1>i am contact page</h1>
+    )
+}
+export default Contact;
+_____________________________________
+dashboard.jsx 
+
+import React from "react";
+import { Link,Outlet } from "react-router-dom";
+import Navbar from "../../components/navbar/navbar";
+const DahboarLayout = ()=>{
+    return(
+<div>
+            <h1>dashboard main screen</h1>
+            <Navbar/>
+            <hr/>
+            <Outlet/>
+
+   
+</div>    )
+}
+export default DahboarLayout;
+</xmp>
             </code></pre>
     </div>
 <!------- question 2 completed ----- -->
