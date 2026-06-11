@@ -60,6 +60,13 @@ and how can we apply focus on input?</li>
         <li>38. what is Logical And(&&) Rendering?</li>
         <li>39. useRef Hook?</li>
         <li>40. class components</li>
+        <li>41. Difference b/w class and functional components in react Js?</li>
+        <li>42. create a counter using class Component?</li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
         <li></li>
         
         </ul>
@@ -2300,33 +2307,67 @@ export default Today
 10. Recommended and preferred in modern React development.<br>
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 1 completed ----- -->
  <!----------------------------------- Question No 2 ---------------------->
     <div class="card question-card">
-      <h2> Question 2❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 42❓ </h2>
+      <p>Q: create a counter by class component?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       see in example:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        import React, { Component } from "react";
 
+class Today extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      count: 0,
+    };
+  }
+
+  increase = () => {
+    this.setState({
+      count: this.state.count + 1,
+    });
+  };
+
+  decrease = () => {
+    this.setState({
+      count: this.state.count - 1,
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>Count: {this.state.count}</h1>
+
+        <button onClick={this.increase}>
+          Increase
+        </button>
+
+        <button onClick={this.decrease}>
+          Decrease
+        </button>
+      </div>
+    );
+  }
+}
+
+export default Today;
+       </xmp>
             </code></pre>
     </div>
 <!------- question 2 completed ----- -->
