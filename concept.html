@@ -62,7 +62,7 @@ and how can we apply focus on input?</li>
         <li>40. class components</li>
         <li>41. Difference b/w class and functional components in react Js?</li>
         <li>42. create a counter using class Component?</li>
-        <li></li>
+        <li>43. catch all routes(handling error 404)</li>
         <li></li>
         <li></li>
         <li></li>
@@ -2373,21 +2373,115 @@ export default Today;
 <!------- question 2 completed ----- -->
  <!----------------------------------- Question No 3 ---------------------->
     <div class="card question-card">
-      <h2> Question 3❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 43❓ </h2>
+      <p>Q: catch all routes(error 404 handling)  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       when we are deploying on vercel we add this file vecel.json after package.json file
+       <xmp>
+        {
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+
+       </xmp>
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        // //routes.jsx
+// import React from "react";
+// import {Routes,Route} from 'react-router-dom';
+// import SignUp from "../../pages/sign-up/sign-up";
+// import LogIn from "../../pages/log-in/login";
+// import Home from "../../pages/home/home";
+// import About from "../../pages/about/about";
+// import Contact from "../../pages/contact/contact";
+// import PublicRoutes from "../public-routes/public-routes";
+// import ProtectedRoutes from "../protected-routes/protected-routes";
+// const AppRoutes = ()=>{
+//     return(
+//         <Routes>
+//             {/* public-routes */}
+//             <Route element={<PublicRoutes/>}>
+//             <Route path="/sign-up" element={<SignUp/>}/>
+//             <Route path="/login" element={<LogIn/>}/>
+
+//             </Route>
+//             {/* protected-routes */}
+//             <Route element={<ProtectedRoutes/>}>
+//  <Route path="/" element={<Home/>}/>
+//             <Route path="/about" element={<About/>}/>
+//             <Route path="/contact" element={<Contact/>}/>
+//             </Route>
+            
+//         </Routes>
+//     )
+// }
+// export default AppRoutes;
+
+
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+
+// Pages
+import SignUp from "../../pages/sign-up/sign-up";
+import LogIn from "../../pages/log-in/login";
+import Home from "../../pages/home/home";
+import About from "../../pages/about/about";
+import Contact from "../../pages/contact/contact";
+
+// Route Guards
+import PublicRoutes from "../public-routes/public-routes";
+import ProtectedRoutes from "../protected-routes/protected-routes";
+
+const AppRoutes = () => {
+  const isLoggedIn = localStorage.getItem("user");
+
+  return (
+    <Routes>
+
+      {/* PUBLIC ROUTES (only for non-logged users) */}
+      <Route element={<PublicRoutes />}>
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/login" element={<LogIn />} />
+      </Route>
+
+      {/* PROTECTED ROUTES (only for logged users) */}
+      <Route element={<ProtectedRoutes />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Route>
+
+      {/* ✅ CATCH-ALL ROUTE (IMPORTANT FIX) */}
+      <Route
+        path="*"
+        element={
+          isLoggedIn ? (
+            <Navigate to="/" replace />
+          ) : (
+            <Navigate to="/login" replace />
+          )
+        }
+      />
+
+    </Routes>
+  );
+};
+
+export default AppRoutes;
+       </xmp>
 
             </code></pre>
     </div>
