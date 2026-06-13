@@ -63,8 +63,8 @@ and how can we apply focus on input?</li>
         <li>41. Difference b/w class and functional components in react Js?</li>
         <li>42. create a counter using class Component?</li>
         <li>43. catch all routes(handling error 404)</li>
-        <li></li>
-        <li></li>
+        <li>44. useMemo hook (behave like useEffect)</li>
+        <li>45. Difference b/w useEffect and useMemo</li>
         <li></li>
         <li></li>
         <li></li>
@@ -2488,35 +2488,89 @@ export default AppRoutes;
 <!------- question 3 completed ----- -->
  <!----------------------------------- Question No 4 ---------------------->
     <div class="card question-card">
-      <h2> Question 4❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 44❓ </h2>
+      <p>Q: what is useMemo?like useEffect </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       i have three useState in my component and i have a function in my component 
+       when my any useState update or changed , function is rendering, rendering of 
+       function on every state changing is dangerous for web performance, i need only when my specific state 
+       change , my function should render, so this purpose we use a react hook that is called useMemo.
+       i write functionality in useMemo hook and store useMemo hook in a variable, and useMemo hook has a dependecy array like 
+       useEffect, i write the name of state on which changing i want to render my function now when only this state 
+       change that i have passed in the dependecy array of useMemo , my function render not render on any state change
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        without useMemo
+import React, { useMemo, useState } from "react";
+const About = ()=>{
+    const [add,setAdd] = useState(0);
+    const [minus,setMinus] = useState(100)
+    const multi = ()=>{
+        console.log('********')
+        return add*10
+    }
+    
+    return(
+        <>
+        <button onClick={()=>setAdd(add + 1)}>add</button>{add}<br/>
+        {multi()}
+        <button onClick={()=>setMinus(minus - 1)}>minus</button>{minus}
+        </>
+
+    )
+}
+export default About
+_____________________________________________ 
+//with useMemo
+import React, { useMemo, useState } from "react";
+const About = ()=>{
+    const [add,setAdd] = useState(0);
+    const [minus,setMinus] = useState(100)
+    const multi = useMemo(()=>{
+        console.log('*******')
+        return add*10
+    },[add])
+    
+    return(
+        <>
+        <button onClick={()=>setAdd(add + 1)}>add</button>{add}<br/>
+        {multi}
+        <button onClick={()=>setMinus(minus - 1)}>minus</button>{minus}
+        </>
+
+    )
+}
+export default About
+       </xmp>
 
             </code></pre>
     </div>
 <!------- question 4 completed ----- -->
  <!----------------------------------- Question No 5 ---------------------->
     <div class="card question-card">
-      <h2> Question 5❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 45❓ </h2>
+      <p>Q: Difference b/w useEffect and useMemo?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       <h1>useEffect</h1>
+       <li>useEffect mai hm api call kr stkty hain, timer lga skty hain , console laga skty hain mgr vo values jsx mai nhe daikh skty</li>
+       <li>useEffect mai function specific state py chlta hy</li>
+       <li>useEffect mai hm jo bhe krain os ka result hm jsx main nhe daikh skty</li>
+      <h2>useMemo</h2>
+      <li>useMemo mai hm functionality likhty hain</li>
+      <li>useMemo hmain hmar requirement return krta hay aor hm jsx mai daikh skty hain</li>
       </p>
     </div>
 <!-------- example -------->
