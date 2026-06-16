@@ -67,6 +67,13 @@ and how can we apply focus on input?</li>
         <li>45. Difference b/w useEffect and useMemo</li>
         <li>46. Getting pathname when on page using in app.jsx</li>
         <li>47. page not found logic in routes</li>
+        <li>48. get pathname of component/page on which we are now using app.jsx</li>
+        <li>49. memo in react Js</li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
         <li></li>
         
         </ul>
@@ -2665,21 +2672,53 @@ export default App;
 <!------- question 7 completed ----- -->
  <!----------------------------------- Question No 8 ---------------------->
     <div class="card question-card">
-      <h2> Question 8❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 48❓ </h2>
+      <p>Q: what is memo?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       memo is used to control rerendering of a component again and again, if we are passing props in a 
+       component and props is not changing and we are updating any state in component in which we are 
+       passing prop, in every update props component is rendering again and again , it is 
+       bad for web performance, we conroll it by memo we pass our component in memo and than our component not render on every state updating.
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        component one 
+
+        import React, { useEffect } from "react";
+import { memo } from "react";
+const Prop  = ({name})=>{
+   console.log('component is rendering')
+    
+    return(
+        <p>My name is {name}</p>
+    )
+}
+export default memo(Prop);
+______________________
+component two 
+
+import React, { useState } from "react";
+import Prop from "../../components/props/prop";
+const Home = ()=>{
+  const [count,setCount] = useState(0)
+  return(
+   <>
+   <Prop name= 'home page' />
+   <h1>{count}</h1>
+   <button onClick={()=>setCount(count + 2)}>increment</button>
+   </>
+  )
+}
+export default Home;
+       </xmp>
 
             </code></pre>
     </div>
