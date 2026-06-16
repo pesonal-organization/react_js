@@ -1521,67 +1521,101 @@ export default Use;
       <h2>💡 Example</h2>
       <pre><code>
         <xmp>
-        import {useRef}from 'react'
-
-const Use = ()=>{
-    const myRef = useRef(null)
-     
-    function myForm(e){
-        e.preventDefault();
-        console.log('My first input ' + myRef?.current?.value);
-       let val = document.getElementById('dom').value;
-        console.log('second input ' + val)
-
-    }
-    
-    return(
-        <>
-        <h1>UnControlled Components</h1>
-        <form action="" onSubmit={myForm}>
-<input type="text" ref={myRef} />
-<input type="text" id='dom' />
-<button>submit</button>
-
-
-        </form>
+          controlling by useRef( ) hook
         
-        </>
-    )
-}
-export default Use;
+import React, { useEffect, useState } from 'react';
+import { useRef } from 'react';
+
+const SignUp = () => {
+  const nameInput = useRef();
+  const emailInput = useRef();
+  //function 
+  const myFn = ()=>{
+  const  obj = {
+      name : nameInput.current.value,
+      email : emailInput.current.value,
+    }
+    console.log(obj.email)
+    nameInput.current.value = '';
+    emailInput.current.value = '';
+   
+   
+  }
+  //apply focus
+  useEffect(()=>{
+     nameInput.current.focus()
+  },[])
+ 
+  return (
+    <div>
+      <h1>Sign Up Page</h1>
+
+      <input
+        type="text"
+        placeholder="Enter your name"
+        ref={nameInput}
+        
+      />
+      <br/>
+
+      <input
+        type="email"
+       ref={emailInput}
+        placeholder="Enter email"
+      />
+<br/>
+      <button onClick={myFn}>Sign Up</button>
+    </div>
+  )}
+
+
+export default SignUp;
 ______________________
 example 2 
  by id 
 
- import React from "react";
-import { useRef } from "react";
-const UseState  = ()=>{
-    const first = useRef();
-    const second = useRef();
-    // functon 
-    const myForm = ()=>{
-        event.preventDefault();
-        let inputOne = document.getElementById('firstInput').value;
-        let inputTwo = document.getElementById('secondInput').value;
-        console.log(inputOne);
-        console.log(inputTwo);
-        first.current.value = '';
-        second.current.value = '';
-        first.current.focus();
-        second.current.focus();
-    }
+ import React, { useEffect, useState } from 'react';
+import { useRef } from 'react';
 
-    return(
-        <>
-        <form action="" onSubmit={myForm}>
-            <input type="text" id='firstInput' ref={first} /><br/>
-            <input type="text" id= 'secondInput' ref={second}/><br/>
-            <button>submit</button>
-        </form>
-        </>
-    )
-}
-export default UseState;
+const SignUp = () => {
+  
+  const myFn = ()=>{
+    const nameInput = document.getElementById('nameInput').value;
+    const emailInput = document.getElementById('emailInput').value;
+    console.log(nameInput)
+    console.log(emailInput)
+    document.getElementById('nameInput').value = '';
+    document.getElementById('emailInput').value = ''
+    document.getElementById('nameInput').focus() 
+  }
+ useEffect(()=>{
+ nameInput.focus()
+  
+ },[])
+  return (
+    <div>
+      <h1>Sign Up Page</h1>
+
+      <input
+        type="text"
+        placeholder="Enter your name"
+        id='nameInput'
+        
+      />
+      <br/>
+
+      <input
+        type="email"
+        id='emailInput'
+        placeholder="Enter email"
+      />
+<br/>
+      <button onClick={myFn}>Sign Up</button>
+    </div>
+  )}
+
+
+export default SignUp;
        </xmp>
 
             </code></pre>
