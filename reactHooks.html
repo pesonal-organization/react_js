@@ -305,49 +305,92 @@ const Counter2 = ()=>{
 }
 export default Counter2;
         __________________________________
-        Example 2 
+        Example 2 (real use of custom hooks)
         __________________________________
-        import React from "react"; 
-import useToggle from "./customhooks";
-const Contact = ()=>{
-  const [data,toggle] = useToggle();
-  return(
+       import React, { useEffect, useState } from "react";
+const useFetch = (url)=>{
+    const [data,setData] = useState(null)
+    const [loading,setLoading] = useState(true)
+    const [error,setError] = useState(null)
+
+    useEffect(()=>{
+        fetch(url)
+        .then((res)=>{
+            if(!res.ok){
+                throw new Errow ('something went wrong')
+            }
+            else{
+              return  res.json()
+            }
+
+        })
+        .then((jsonData)=>{
+            setData(jsonData)
+        })
+        .catch((error)=>{
+            setError(error.message)
+        })
+        .finally(()=>{
+           setTimeout(() => {
+             setLoading(false)
+            
+           }, 3000);
+        })
+
+    },[url])
+    return [data,loading,error]
+}
+export default useFetch
+______________________
+import React, { useEffect, useMemo, useState } from "react";
+import useFetch from "../api/api";
+const About = ()=>{
+    let url = 'https://jsonplaceholder.typicode.com/users'
+    const [data,loading,error] = useFetch(url)
+    if(loading){
+        return <h1>data is loading.....</h1>
+    }
+    if(error){
+        return <p>error is comign : {error}</p>
+    }
     
-    
-    <div>
-<button onClick={toggle}>Toggle Data</button>
-<button onClick={()=>toggle(true)}>show Data</button>
-<button onClick={()=>toggle(false)}>hide Data</button>
-<h1>{data ? 'yes visible' : null}</h1>
-    </div>
-    
-   
+    return(
+        <ul>
+            {data.map((item,index)=>{
+                return ( <li key={index}>{item.name}</li>)
+            })}
+        </ul>
+        
+    )
+}
+export default About
+______________________
+import React from 'react'
+import useFetch from '../api/api'
+
+const SignIn = () => {
+  const [data,loading,error] = useFetch('https://jsonplaceholder.typicode.com/users')
+  if(loading){
+    return <h1>data is loading......</h1>
+  }
+  if(error){
+    return <p>error is coming</p>
+  }
+  return (
+    <>
+    <h1>custom hook practice</h1>
+    <ul>
+      {
+        data?.map((item,index)=>{
+          return(<li key={index}>{item.name}</li>)
+        })
+      }
+    </ul>
+    </>
   )
 }
-export default Contact; 
 
-
-__________________________________
-
-import React, { useState } from "react";
-const useToggle = ()=>{
-    const [data,setData] = useState(true);
-    function toggle(val){
-        // if(typeof val === 'boolean'){
-        //     setData(val)
-        // }
-        // else{setData(!data)}
-        if(val === true)
-        {setData(true)}
-        else if(val === false){
-            setData(false)
-        }
-        else{setData(!data)}
-    }
-    return [data,toggle]
-
-}
-export default useToggle;
+export default SignIn
        </xmp>
 
             </code></pre>

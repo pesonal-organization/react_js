@@ -545,18 +545,112 @@ export default Contact;
  <!----------------------------------- Question No 5 ---------------------->
     <div class="card question-card">
       <h2> Question 5❓ </h2>
-      <p>Q:  </p>
+      <p>Q: create a counter using context api?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       see code in example:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
+      <xmp>
+        first we make data.js filer where we create counter function and export it 
+        ______________________
+        data.js 
+        import { useState } from "react";
+
+const useCounter = () => {
+    const [countt, setCount] = useState(0)
+    //increase
+    const increasee = () => setCount(countt + 1)
+    //decrease 
+    const decrease = ()=>{setCount(countt -1)}
+    //reset
+    const reset = ()=>{
+        setCount(0)
+    }
+    return { countt, increasee,decrease,reset }
+    
+}
+
+export default useCounter;
+______________________
+now we make createContext file 
+
+import { createContext } from "react";
+const dataFile = createContext(null);
+export default dataFile;
+______________________
+now we go in our app.jsx file and make Provider 
+
+import React, { useContext } from "react";
+import { BrowserRouter } from "react-router-dom";
+import Navbar from "./components/navbar/navbar";
+import AppRoutes from "./utils/routes/routes";
+import useCounter from "./components/navbar/data/data";
+import dataFile from "./components/navbar/data/dataContextFile";
+
+const App = () => {
+  const { countt, increasee,decrease,reset } = useCounter()
+  return (
+    <dataFile.Provider value={{ countt, increasee,decrease,reset }}>
+      <BrowserRouter>
+        <Navbar />
+        <AppRoutes />
+      </BrowserRouter>
+    </dataFile.Provider>
+  )
+}
+
+export default App;
+______________________
+now we use our counter in about.jsx file 
+
+import React from "react";
+import { useContext } from "react";
+import dataFile from "../../components/navbar/data/dataContextFile";
+
+const About = () => {
+    const { countt, increasee,decrease,reset } = useContext(dataFile)
+    return (
+        <>
+            <h1>count: {countt}</h1>
+            <button onClick={increasee}>increment</button>
+            <button onClick={decrease}>decrement</button>
+            <button onClick={reset}>reset</button>
+           
+        </>
+    )
+}
+
+export default About;
+______________________
+we are using same counter in our home page also 
+
+import React from 'react'
+import { useContext } from 'react'
+import dataFile from '../../components/navbar/data/dataContextFile'
+
+const Home = () => {
+  const {countt,decrease,reset} = useContext(dataFile)
+ 
+  return (
+    <div>
+      <h1>counter</h1>
+      <h2>{countt}</h2>
+      <button onClick={decrease}>decrease</button>
+      <button onClick={reset}>reset</button>
+    </div>
+    
+  )
+}
+
+export default Home
+      </xmp>
       <pre><code>
        
 
