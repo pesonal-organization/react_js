@@ -1792,80 +1792,136 @@ and now we show id in return.      </p>
       <h2>💡 Example</h2>
       <pre><code>
        <xmp>
-        home.jsx(apicall page)
+      home page 
 
-        import React, { useEffect, useState } from "react";
+      //home.jsx
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 const Home = ()=>{
-    const navigate = useNavigate()
-    const [list,setList] = useState([])
-    const apiCall = async ()=>{
-        const apiUrl = 'https://jsonplaceholder.typicode.com/users';
-        try{const data = await fetch(apiUrl);
-            const jsonData = await data.json();
-            console.log(jsonData);
-           if(jsonData){setList(jsonData)}
-        }
-        catch(error){console.log(error)}
-    }
-    // view user 
-    const viewUserFunction = (item)=>{
-        console.log(item);
-        navigate(`/idpage/${item?.id}`)
+    const [data,setData] = useState([]);
+    const [error,setError] = useState('');
+    const [loading,setLoading] = useState(true);
+    const navigate  = useNavigate()
+    //function for api calling
+    const myFunction = async()=>{
+        const apiUrl = 'https://jsonplaceholder.typicode.com/users'
+        try{
+            const res = await fetch(apiUrl);
+            const jsonData = await res.json();
+            setTimeout(() => {
+                setData(jsonData);
+                console.log(jsonData);
+                setLoading(false)
+            }, 1000);
 
+        }
+
+    catch(error){
+        setError('some thing went wrong')
+    }
     }
     useEffect(()=>{
-apiCall()
+        myFunction()
     },[])
+    //viewUserHandler function
+    const userHandler = (item)=>{
+        navigate(`/about/${item.id}`)
+    }
     return(
         <>
         <h1>Home page</h1>
-        <ul>
-            {list.map((item)=>{
+        {loading && <h1>data is loading....</h1>}
+        {error && <h2>{error}</h2>}
+        {
+            data.map((item,index)=>{
                 return(
-                    <li>{item?.name}{' '}
-                    <button onClick={()=>viewUserFunction(item)}>view user</button></li>
+                    <li key={index}>{item.name} <button onClick={()=>userHandler(item)}>view user</button></li>
                 )
-            })}
-        </ul>
+            })
+        }
         </>
     )
 }
 export default Home;
 ______________________
-routes.jsx 
+about page 
 
-import {Routes,Route}from 'react-router-dom';
-import Home from '../pages/home';
-import About from '../pages/about';
-import Contact from '../pages/contact';
-import IdPage from '../pages/idpage';
-const MyRoutes = ()=>{
+//about.jsx
+import React from "react";
+import { useState,useEffect} from "react";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+const About = (item)=>{
+const {id} = useParams();
+const [data,setData] = useState([]);
+    const [error,setError] = useState('');
+    const navigate  = useNavigate()
+    //function for api calling
+    const myFunction = async()=>{
+        const apiUrl = 'https://jsonplaceholder.typicode.com/users'
+        try{
+            const res = await fetch(apiUrl);
+            const jsonData = await res.json();
+            setTimeout(() => {
+                setData(jsonData);
+                console.log(jsonData);
+            }, 1000);
+
+        }
+
+    catch(error){
+        setError('some thing went wrong')
+    }
+    }
+    useEffect(()=>{
+        myFunction()
+       
+    },[])
+    //viewUserHandler function
+    let requiredUser = data.find((item)=> item.id == id)
+    console.log(requiredUser)
+    
+    return(
+        <div>
+            <h1>about page</h1>
+         
+            {
+                requiredUser && (
+                    <>
+                    <h1>{requiredUser.id}</h1>
+                    <h1>{requiredUser.name}</h1>
+                    <h1>{requiredUser.email}</h1>
+                    </>
+                )
+            }
+        
+        </div>
+    )
+}
+export default About; 
+
+______________________
+routes file 
+
+//routes.jsx
+import React from "react";
+import Home from "../../pages/home/home";
+import About from "../../pages/about/about";
+import Contact from "../../pages/contact/contact";
+import {Routes,Route} from 'react-router-dom';
+import NotFound from "../../pages/notfound/notfound";
+const AppRoutes = ()=>{
     return(
         <Routes>
-            <Route path='/' element={<Home/>}/>
-            <Route path='/about' element={<About/>}/>
-            <Route path='/contact' element={<Contact/>}/>
-            <Route path='/idpage/:id' element={<IdPage/>}/>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/about/:id" element={<About/>}/>
+            <Route path="/contact" element={<Contact/>}/>
+            <Route path="*" element={<NotFound/>}/>
         </Routes>
-    )
-}
-export default MyRoutes;
---___________________________
-userid page 
 
-import React from "react";
-import { useParams } from "react-router-dom";
-const IdPage = ()=>{
-    const {id} = useParams()
-    return(
-        <>
-        <h1>user id page</h1>
-        <h2>{id}</h2>
-        </>
     )
 }
-export default IdPage;
+export default AppRoutes;
        </xmp>
 
             </code></pre>
