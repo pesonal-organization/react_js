@@ -249,66 +249,36 @@ export default Home;
       <h2>💡 Example</h2>
       <pre><code>
        <xmp>
-       // watch.jsx
-
+      
 import React, { useEffect, useState } from "react";
-import "./watch.css";
-
-const Watch = () => {
-
-  const [time, setTime] = useState(
-    new Date().toLocaleTimeString()
-  );
-
-  const [date, setDate] = useState(
-    new Date().toDateString()
-  );
-
-  useEffect(() => {
-
-    let interval = setInterval(() => {
-
-      setTime(new Date().toLocaleTimeString());
-
-      setDate(new Date().toDateString());
-
+const About = ()=>{
+   
+    const [time,setTime] = useState(new Date().toLocaleTimeString())
+    const [date,setDate] = useState(new Date().toLocaleDateString())
+const timer = ()=>{
+    setInterval(() => {
+        setTime(new Date().toLocaleTimeString())
+        
     }, 1000);
-//clear interval
-    return () => {
-      clearInterval(interval);
-    };
+}
+     
+useEffect(()=>{
+    const a = timer();
+   return()=>{
+    clearInterval(a);
+    console.log('interval has closed')
+   }
+},[])
 
-  }, []);
 
-  return (
-
-    <div className="watchContainer">
-
-      <div className="watchCard">
-
-        <div className="glow1"></div>
-        <div className="glow2"></div>
-
-        <h2 className="watchTitle">
-          Digital Clock
-        </h2>
-
-        <h1 className="watchTime">
-          {time}
-        </h1>
-
-        <p className="watchDate">
-          {date}
-        </p>
-
-      </div>
-
-    </div>
-
-  );
-};
-
-export default Watch;
+    return(
+        <>
+        <h1>clean up concept</h1>
+        <h1>{time}</h1>
+        </>
+    )
+}
+export default About;
        </xmp>
 
             </code></pre>
