@@ -65,8 +65,8 @@ and how can we apply focus on input?</li>
         <li>43. catch all routes(handling error 404)</li>
         <li>44. useMemo hook (behave like useEffect)</li>
         <li>45. Difference b/w useEffect and useMemo</li>
-        <li></li>
-        <li></li>
+        <li>46. Getting pathname when on page using in app.jsx</li>
+        <li>47. page not found logic in routes</li>
         <li></li>
         
         </ul>
@@ -2610,21 +2610,55 @@ export default About
 <!------- question 6 completed ----- -->
  <!----------------------------------- Question No 7 ---------------------->
     <div class="card question-card">
-      <h2> Question 7❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 47❓ </h2>
+      <p>Q: Getting pathname of every page/component in website?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       import useLocation hook in your app.jsx and create a component inside app.jsx and code for 
+       accessing every page location when go to any component/page 
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        import React, { useContext, useEffect } from "react";
+import { BrowserRouter } from "react-router-dom";
+import Navbar from "./components/navbar/navbar";
+import AppRoutes from "./utils/routes/routes";
+import counterLogic from "./components/navbar/data/data";
+import counterDataFile from "./components/navbar/data/dataContextFile";
+import { useLocation } from "react-router-dom";
+
+const Logg = ()=>{
+  const location = useLocation();
+  useEffect(()=>{
+    console.log(location.pathname)
+  },[location])
+  return null
+}
+const App = () => {
+  // const {theme,toggleTheme} = useTheme() 
+  const {count,increase,decrement} = counterLogic()
+  
+  
+  return (
+    <counterDataFile.Provider value={{count,increase,decrement}}>
+      <BrowserRouter>
+      <Logg/>
+        <Navbar />
+        <AppRoutes />
+      </BrowserRouter>
+    </counterDataFile.Provider>
+  )
+}
+
+export default App;
+       </xmp>
 
             </code></pre>
     </div>
