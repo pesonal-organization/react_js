@@ -301,49 +301,47 @@ export default About;
       <h2>💡 Example</h2>
       <pre><code>
       <xmp>
-        import '../components/css/apicalling.css'
-
-const ApiCalling = ()=>{
+       import React, { useEffect, useState } from "react";
+const About = ()=>{
     const [data,setData] = useState([]);
-    const [loading,setLoading] = useState(true);
-    const [error,setError] = useState(null)
-    // function for api callign 
-    const fnct = async ()=>{
-         const apiUrl = 'https://jsonplaceholder.typicode.com/users';
-         try{
-            const get = await fetch(apiUrl);
-            const jsonData = await get?.json();
-            // upadte state 
+    const [error,setError] = useState('');
+    const [loading,setLoading] = useState(true)
+    //function for api calling
+    const myFn = async()=>{
+        const apiUrl = 'https://jsonplaceholder.typicode.com/users';
+        try{
+const res = await fetch(apiUrl);
+        const  jsonData = await res.json();
+        setTimeout(() => {
             setData(jsonData)
-         }
-         catch(error){setError('some thing went wrong')
-            console.log(error)}
-         finally{setLoading(false)}
+            console.log(jsonData)
+            setLoading(false)
+            
+        }, 3000);
+       
+        }
+        catch(error){
+            setError('some thing went wrong')
+        }
     }
-    // use effect for calling funciton 
-    useEffect(()=>{
-        fnct();
-    },
-[])
-// loading
-if(loading)return <h2>data is loaidng</h2>
-if(error) return <h2>{error}</h2>
+
+ useEffect(()=>{
+        myFn()
+    },[])
     return(
         <>
-        <h1>Normal Api calling </h1>
-        <ul>
-            {data.map((item,index)=>{
-                return(
-                    <li key={item.id} className="users">
-                        {`${item.id}      ${item.name} ${item.email}`}
-                    </li>
-                )
-            })}
-        </ul>
+        <h1>api call practice</h1>
+        {loading && <h1>data is loading.....</h1>}
+        {error && <p>{error}</p>}
+        {
+            data?.map((item,index)=>{
+                return(<li key={index}>{item.name}</li>)
+            })
+        }
         </>
     )
 }
-export default ApiCalling;
+export default About;
       </xmp>
 
             </code></pre>
