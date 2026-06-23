@@ -97,118 +97,109 @@ export default Header
  <!----------------------------------- Question No 2 ---------------------->
     <div class="card question-card">
       <h2> Question 2❓ </h2>
-      <p>Q:  </p>
+      <p>Q: types of components in nextjs?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       two types of components are in nextjs <br/>
+       <li>server components</li>
+       <li>client component</li>
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 2 completed ----- -->
  <!----------------------------------- Question No 3 ---------------------->
     <div class="card question-card">
       <h2> Question 3❓ </h2>
-      <p>Q:  </p>
+      <p>Q:  what is server components?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       server components are components that render on server side and the html we write in server components , is send to browser but 
+       the JavaScript that we write in server components is not sent to browser and user only see html code output and he can not see
+       JavaScript code out put on browser.
+       <br/>
+       <h4>all app routes components of next js are server components.</h4>
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 3 completed ----- -->
  <!----------------------------------- Question No 4 ---------------------->
     <div class="card question-card">
       <h2> Question 4❓ </h2>
-      <p>Q:  </p>
+      <p>Q: client side components in next js?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       client side components are rendered on browser and their JavaScript code also send to browser and 
+       user can see the output/functionality of JavaScript code also on browser.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 4 completed ----- -->
  <!----------------------------------- Question No 5 ---------------------->
     <div class="card question-card">
       <h2> Question 5❓ </h2>
-      <p>Q:  </p>
+      <p>Q: how can we make server component to client component?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       in the top of component write 'use client' <br/>
+       the server component is converted from server to client component.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 5 completed ----- -->
  <!----------------------------------- Question No 6 ---------------------->
     <div class="card question-card">
       <h2> Question 6❓ </h2>
-      <p>Q:  </p>
+      <p>Q: when we need to make server component to client component?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
+       <li>when we use any hook in our component like<br/>
+      useEffect,useState,useRef,useContext etc</li>
+       <li>when we use onclick handlers like<br/>
+      onclick,onChange,onSubmit </li>
+       <li>when we create any thing that can give response on user action</li>
+       <li>Add to cart button</li>
+       <li>Image slider</li>
+       <li>login/sign up form</li>
+       <li>cart count page that updates</li>
        
       </p>
-    </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
-
-            </code></pre>
     </div>
 <!------- question 6 completed ----- -->
  <!----------------------------------- Question No 7 ---------------------->
     <div class="card question-card">
       <h2> Question 7❓ </h2>
-      <p>Q:  </p>
+      <p>Q: when we use server component?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       we use server components when 
+       <h3>Data Fetching</h3>
+       when we are fetching data by api calling
+       <h3>Static/not dynamic needed</h3>
+       when we have to shown only data/ui not need any event like click etc
+       <h3>secret and sensitive data</h3>
+       apiKeys,token, secret data keep only on server component
+       <h3>Prouducts listing page</h3>
+       when we only need to show all Prouducts
+       <h3>Proudct details page dikhana ho</h3>
+       <h3>Navbar only links</h3>
       </p>
     </div>
 <!-------- example -------->
