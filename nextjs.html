@@ -21,6 +21,26 @@
       <h2>📋 Topics Covered</h2>
       <ol>
         <li>using typesscript in react Js</li>
+        <li>types of components in nextjs?</li>
+        <li>what is server components?</li>
+        <li> client side components in next js?</li>
+        <li>how can we make server component to client component?</li>
+        <li>when we need to make server component to client component?</li>
+        <li>when we use server component?</li>
+        <li> not-found page functionality in next Js?</li>
+        <li>we use useNavigation hook in react for going one page to another in nextjs what hook is used in next js for this purpose?</li>
+        <li>what what extensions of images are supported in next Js?</li>
+        <li>The process of image putting in next js?</li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
         
         </ol>
     </div>
@@ -202,32 +222,49 @@ export default Header
        <h3>Navbar only links</h3>
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 7 completed ----- -->
  <!----------------------------------- Question No 8 ---------------------->
     <div class="card question-card">
       <h2> Question 8❓ </h2>
-      <p>Q:  </p>
+      <p>Q: not-found page functionality in next Js?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       we keep the file name not-found.tsx and keep it file 
+       in main directory in app folder.<br/>
+       except not-found.tsx another name of file is not acceptable.
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        'use client'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+
+const NotFound = () => {
+    const routin = useRouter();
+    useEffect(()=>{
+       setTimeout(()=>{
+        routin.push('/')
+       },2000)
+
+    },[])
+  return (
+    <>
+    <h1>Not found page</h1>
+
+    </>
+  )
+}
+
+export default NotFound
+       </xmp>
 
             </code></pre>
     </div>
@@ -235,13 +272,14 @@ export default Header
  <!----------------------------------- Question No 9 ---------------------->
     <div class="card question-card">
       <h2> Question 9❓ </h2>
-      <p>Q:  </p>
+      <p>Q: we use useNavigation hook in react for going one page to another in nextjs 
+        what hook is used in next js for this purpose?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       useRouter hook is used for navigation in next js and we import it from next/navigation.
       </p>
     </div>
 <!-------- example -------->
@@ -249,48 +287,91 @@ export default Header
       <h2>💡 Example</h2>
       <pre><code>
        
+<xmp>
+  'use client'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
+const NotFound = () => {
+    const routin = useRouter();
+    useEffect(()=>{
+       setTimeout(()=>{
+        routin.push('/')
+       },2000)
+
+    },[])
+  return (
+    <>
+    <h1>Not found page</h1>
+
+    </>
+  )
+}
+
+export default NotFound
+</xmp>
             </code></pre>
     </div>
 <!------- question 9 completed ----- -->
  <!----------------------------------- Question No 10 ---------------------->
     <div class="card question-card">
       <h2> Question 10❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what what extensions of images are supported in next Js?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       the following extensions of images are acceptable in next js 
+       <ol>
+        <li>.jpg / .jpeg</li>
+        <li>.png</li>
+        <li>.webp</li>
+        <li>.avif</li>
+        <li>.gif</li>
+        <li>.svg (but not recommended)</li>
+       </ol>
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 11 completed ----- -->
  <!----------------------------------- Question No 12 ---------------------->
     <div class="card question-card">
       <h2> Question 12❓ </h2>
-      <p>Q:  </p>
+      <p>Q: The process of image putting in next js?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       we can not use img in next js but we import Image from next/image , see in code
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        import React from 'react'
+import Image from 'next/image';
+import lion from '@/app/about/images/lion.jpg'
+
+const AboutPage = () => {
+  return (
+    <div>
+      <h1>about page</h1>
+      <Image 
+      alt='image'
+      // height={300}
+      // width={300}
+      src={lion} 
+      priority={true}/>
+    </div>
+  )
+}
+
+export default AboutPage
+       </xmp>
 
             </code></pre>
     </div>
