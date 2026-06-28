@@ -61,7 +61,98 @@ usecontext and inside usecontext parameter we keep createdcontext file and use d
       <h2>💡 Example</h2>
       <pre><code>
        <xmp>
-        Detailed example of usecontex API 
+        context api example one 
+        ______________________
+         Example one 
+        ______________________
+        createContext file 
+
+        //createContextFile
+import { createContext } from "react";
+const createContextVariable = createContext(null);
+export default createContextVariable; 
+
+
+createContextProvider file 
+
+//contextProviderFile.jsx;
+import React, { Children, useState } from "react";
+import createContextVariable from "../createContexFolder/createContextFilde";
+const ContextProviderFile = ({children})=>{
+    const [count,setCount] = useState(0);
+    //increment
+    const increment = ()=>{
+        setCount(count + 1)
+    }
+    //decrement
+    const decrement = ()=>{
+        setCount(count - 1)
+    }
+    //reset
+    const reset = ()=>{
+        setCount(0)
+    }
+
+    return(
+        <createContextVariable.Provider value={{count,increment,decrement,reset}}>
+            {children}
+        </createContextVariable.Provider>
+
+    )
+}
+export default ContextProviderFile;
+
+
+App.jsx file 
+
+
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './uitls/routes/routes';
+import Navbar from './components/navbar/navbar';
+import createContextVariable from './contextApiFolder/createContexFolder/createContextFilde';
+import ContextProviderFile from './contextApiFolder/contextProviderFolder/contextProviderFile';
+const App = () => {
+  return (
+    <ContextProviderFile>
+      <BrowserRouter>
+    <Navbar/>
+    <AppRoutes/>
+    </BrowserRouter>
+    </ContextProviderFile>
+  )
+}
+
+export default App;
+
+import React, { useState } from 'react'
+import HeaderComponent from '../../components/header/header'
+import { useContext } from 'react'
+import createContextVariable from '../../contextApiFolder/createContexFolder/createContextFilde'
+const HomePage = () => {
+  const {count,increment,decrement,reset}= useContext(createContextVariable)
+    
+  return (
+    <div>
+        <HeaderComponent screenName='Home'/>
+        <h2>{count}</h2>
+        <button onClick={increment}>Increment</button>
+        <button onClick={decrement}>decrement</button>
+        <button onClick={reset}>reset</button>
+    </div>
+  )
+}
+
+export default HomePage
+
+
+
+
+
+
+
+        ______________________
+        context api example two
 
         first we create a data file where data is kept 
 
@@ -333,6 +424,7 @@ see in example:
       <h2>💡 Example</h2>
       <pre><code>
        <xmp>
+      
         first createContext 
 
         // createcontexfile.js
