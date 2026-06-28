@@ -1271,6 +1271,35 @@ Now the function will run only when the states inside the dependency array chang
       <h2>💡 Example</h2>
       <pre><code>
 <xmp>
+  Exmaple one 
+  ______________________
+import React, { useMemo, useState } from 'react'
+
+const UseMemoHookConcept = () => {
+    const [count,setCount] = useState(0)
+    const [data,setData] = useState(2)
+    const handler = useMemo(()=>{
+        console.log('hello');
+        return count *5
+    },[count])
+    
+  return (
+    <div>
+        <h1>useMemo Hook concept</h1>
+        <h1>{count}</h1>
+        <h1>{data}</h1>
+        <h2>{handler}</h2>
+        <button onClick={()=>setCount(count + 1)}>increment</button>
+        <button onClick={()=>setData(data*10)}>data handle</button>
+    </div>
+
+  )
+}
+
+export default UseMemoHookConcept
+  ______________________
+  Example two 
+  ______________________
  import { useMemo, useState } from "react";
 
 function UseMemo() {
