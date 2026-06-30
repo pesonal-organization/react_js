@@ -19,29 +19,104 @@
     <!-- Topics Covered -->
     <div class="card topics-card">
       <h2>📋 Topics Covered</h2>
-      <ul>
-        <li>write here first question that you are studying in this file</li>
+      <ol>
+        <li>authentication in firebase with email,password</li>
+        <li>what is initializeApp in firebase?</li>
+        <li>what is firebaseConfig</li>
+        <li>what is createUserWithEmailAndPassword</li>
+        <li>what is getAuth</li>
         
-        </ul>
+        </ol>
     </div>
    
     <!----------------------------------- Question No 1 ---------------------->
     <div class="card question-card">
       <h2> Question 1❓ </h2>
-      <p>Q:  </p>
+      <p>Q: authentication in firebase with emial,password?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       see in exmaple:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        first we install firebase in  our project with(npm i firebase)
+        ______________________
+
+
+        than we create a firebase.js file in our project 
+
+        // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+const firebaseConfig = {
+  apiKey: "AIzaSyA_Fe9zwgZu9nyJ07MiEj-nvAUWKq7VEO8",
+  authDomain: "authentication-1bdd0.firebaseapp.com",
+  projectId: "authentication-1bdd0",
+  storageBucket: "authentication-1bdd0.firebasestorage.app",
+  messagingSenderId: "435361077014",
+  appId: "1:435361077014:web:b455b1f47b5d4b62ff6237"
+};
+
+// Initialize Firebase
+ const auth = getAuth(app)
+export {auth,app}
+______________________
+
+
+
+than we import it in our required component where needed 
+
+import React, { useState } from 'react'
+import { app,auth } from '../../uitls/routes/firebase/firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+
+const SignUpPage = () => {
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+    const [message,setMessage] = useState('');
+
+    const signUpHandler = async ()=>{
+        if(!email || !password){
+            alert('please fill all fields');
+            return;
+        }
+        try{
+            const userCredential = await createUserWithEmailAndPassword(auth,email,password);
+            console.log('user has stored');
+            alert('signup successful!');
+            setEmail('');
+            setPassword('');
+        }
+        catch(error){
+            console.log(error.message);
+            setMessage(error.message);
+        }
+    }
+
+  return (
+    <div>
+        <h1>signup page</h1>
+        <input type="email" placeholder='enter your email'
+        onChange={(e)=>setEmail(e.target.value)} value={email}
+        autoComplete='new-email' /><br/>
+        <input type="password" placeholder='enter your password' 
+        onChange={(e)=>setPassword(e.target.value)} value={password}
+        autoComplete='new-password'/>
+        <button onClick={signUpHandler}>signup</button>
+        {message && <p>{message}</p>}
+    </div>
+  )
+}
+
+export default SignUpPage
+       </xmp>
 
             </code></pre>
     </div>
@@ -49,20 +124,43 @@
  <!----------------------------------- Question No 2 ---------------------->
     <div class="card question-card">
       <h2> Question 2❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is this <br/>
+      mport { initializeApp } from "firebase/app";<br/>
+    initializeApp what is ?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       This is a function of firebase that connects our project to firebase and we keep 
+       the configuration of our project that we receive from firebase in parameter of initializeApp like <br/>
+       const app = initializeApp(firebaseConfig);
+<br/>
+it tells firebase that in which project we are working it just creates a connection of our project with firebase.
+
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+const firebaseConfig = {
+  apiKey: "AIzaSyA_Fe9zwgZu9nyJ07MiEj-nvAUWKq7VEO8",
+  authDomain: "authentication-1bdd0.firebaseapp.com",
+  projectId: "authentication-1bdd0",
+  storageBucket: "authentication-1bdd0.firebasestorage.app",
+  messagingSenderId: "435361077014",
+  appId: "1:435361077014:web:b455b1f47b5d4b62ff6237"
+};
+
+// Initialize Firebase
+ const auth = getAuth(app)
+export {auth,app}
+       </xmp>
 
             </code></pre>
     </div>
@@ -70,41 +168,101 @@
  <!----------------------------------- Question No 3 ---------------------->
     <div class="card question-card">
       <h2> Question 3❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is <br/>
+    <xmp>
+      what is this (
+
+```html
+const firebaseConfig = {
+  apiKey: "AIzaSyA_Fe9zwgZu9nyJ07MiEj-nvAUWKq7VEO8",
+  authDomain: "authentication-1bdd0.firebaseapp.com",
+  projectId: "authentication-1bdd0",
+  storageBucket: "authentication-1bdd0.firebasestorage.app",
+  messagingSenderId: "435361077014",
+  appId: "1:435361077014:web:b455b1f47b5d4b62ff6237"
+};
+```
+    </xmp>  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       This is a configuration object that has importat information of our firebase project like apiKey, projectId,appId etc.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 3 completed ----- -->
  <!----------------------------------- Question No 4 ---------------------->
     <div class="card question-card">
       <h2> Question 4❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is <br/>
+      import { createUserWithEmailAndPassword } from 'firebase/auth';
+  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       this is a firebase funtion that is used for signup purpose, we send inside it (auth,email and password),if our auth,emial and 
+       password is correct it stores in firebase if any error it give error,like email already in use etc,<br/>
+       <h1>Note</h1>
+       we can not send object in it but we can send email,password.
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        import React, { useState } from 'react'
+import { app,auth } from '../../uitls/routes/firebase/firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+
+const SignUpPage = () => {
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+    const [message,setMessage] = useState('');
+
+    const signUpHandler = async ()=>{
+        if(!email || !password){
+            alert('please fill all fields');
+            return;
+        }
+        try{
+            const userCredential = await createUserWithEmailAndPassword(auth,email,password);
+            console.log('user has stored');
+            alert('signup successful!');
+            setEmail('');
+            setPassword('');
+        }
+        catch(error){
+            console.log(error.message);
+            setMessage(error.message);
+        }
+    }
+
+  return (
+    <div>
+        <h1>signup page</h1>
+        <input type="email" placeholder='enter your email'
+        onChange={(e)=>setEmail(e.target.value)} value={email}
+        autoComplete='new-email' /><br/>
+        <input type="password" placeholder='enter your password' 
+        onChange={(e)=>setPassword(e.target.value)} value={password}
+        autoComplete='new-password'/>
+        <button onClick={signUpHandler}>signup</button>
+        {message && <p>{message}</p>}
+    </div>
+  )
+}
+
+export default SignUpPage
+       </xmp>
+
+            </code></pre>
+    </div>
+       </xmp>
 
             </code></pre>
     </div>
@@ -112,20 +270,24 @@
  <!----------------------------------- Question No 5 ---------------------->
     <div class="card question-card">
       <h2> Question 5❓ </h2>
-      <p>Q:  </p>
+      <p>Q: what is getAuth?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       getAuth is a function of firebase that deals functions like signup,login,logout,and current user etc.
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
             </code></pre>
     </div>

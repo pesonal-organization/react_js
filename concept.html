@@ -69,7 +69,7 @@ and how can we apply focus on input?</li>
         <li>47. page not found logic in routes</li>
         <li>48. get pathname of component/page on which we are now using app.jsx</li>
         <li>49. memo in react Js</li>
-        <li></li>
+        <li>50. apply focus on input when page renders</li>
         <li></li>
         <li></li>
         <li></li>
@@ -2810,14 +2810,14 @@ export default Home;
 <!------- question 8 completed ----- -->
  <!----------------------------------- Question No 9 ---------------------->
     <div class="card question-card">
-      <h2> Question 9❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 50❓ </h2>
+      <p>Q: apply focus when page renders?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       we apply focus() using useRef hook
       </p>
     </div>
 <!-------- example -------->
@@ -2825,7 +2825,58 @@ export default Home;
       <h2>💡 Example</h2>
       <pre><code>
        
+<xmp>
+  import React, { useEffect, useState } from 'react'
+import { useRef } from 'react';
 
+const ControlledComponents = () => {
+    const [name,setName] = useState('');
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('')
+    const refer = useRef(null)
+    //
+    const formHandler = ()=>{
+       let obj = {
+        name  : name,
+        email : email,
+        password : password
+       }
+       setName('');
+       setEmail('');
+       setPassword('')
+       console.log(obj)
+    }
+    useEffect(()=>{
+        refer.current.focus()
+
+    },[])
+
+  return (
+    <div>
+        <h1>controlled components</h1>
+        <input type="text" 
+        placeholder='Enter your name'
+        onChange={(e)=>setName(e.target.value)}
+        value={name}
+        ref={refer} /><br/>
+        
+        <input type="text" 
+        placeholder='Enter your email'
+        onChange={(e)=>setEmail(e.target.value)}
+        value={email} /><br/>
+
+        <input type="text" 
+        placeholder='Enter your password'
+        onChange={(e)=>setPassword(e.target.value)}
+        value={password} /><br/>
+
+        <button onClick={formHandler}>submit</button>
+    </div>
+  )
+}
+
+export default ControlledComponents
+</xmp>
             </code></pre>
     </div>
 <!------- question 9 completed ----- -->
