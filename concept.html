@@ -2718,34 +2718,41 @@ export default About
       <h2>💡 Example</h2>
       <pre><code>
        <xmp>
-        import React, { useContext, useEffect } from "react";
-import { BrowserRouter } from "react-router-dom";
-import Navbar from "./components/navbar/navbar";
-import AppRoutes from "./utils/routes/routes";
-import counterLogic from "./components/navbar/data/data";
-import counterDataFile from "./components/navbar/data/dataContextFile";
-import { useLocation } from "react-router-dom";
+        first create locationChecker page 
+        ______________________
+        import React, { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
-const Logg = ()=>{
-  const location = useLocation();
-  useEffect(()=>{
-    console.log(location.pathname)
-  },[location])
-  return null
-}
-const App = () => {
-  // const {theme,toggleTheme} = useTheme() 
-  const {count,increase,decrement} = counterLogic()
-  
-  
+const LocationChecker = () => {
+    const location = useLocation()
+    useEffect(()=>{
+        console.log(location.pathname)
+    },[location])
   return (
-    <counterDataFile.Provider value={{count,increase,decrement}}>
+   null
+  )
+}
+
+export default LocationChecker
+______________________
+than we import in our App.jsx folder 
+
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './uitls/routes/routes';
+import Navbar from './components/navbar/navbar';
+import LocationChecker from './pages/locationFolder/locationFolder';
+import createContextVariable from './contextApiFolder/createContexFolder/createContextFilde';
+import ContextProviderFile from './contextApiFolder/contextProviderFolder/contextProviderFile';
+const App = () => {
+  return (
+    <ContextProviderFile>
       <BrowserRouter>
-      <Logg/>
-        <Navbar />
-        <AppRoutes />
-      </BrowserRouter>
-    </counterDataFile.Provider>
+      <LocationChecker/>
+    <Navbar/>
+    <AppRoutes/>
+    </BrowserRouter>
+    </ContextProviderFile>
   )
 }
 
