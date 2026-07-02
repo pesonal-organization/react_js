@@ -25,6 +25,16 @@
         <li>what is firebaseConfig</li>
         <li>what is createUserWithEmailAndPassword</li>
         <li>what is getAuth</li>
+        <li>what is getFiresStore?</li>
+        <li>what is collection?</li>
+        <li>what is addDoc?</li>
+        <li>storing a user in firebase Store?</li>
+        <li>what is signInWithEmailAndPassword?</li>
+        <li>Difference b/w createUserWithEmailAndPassword and signInWithEmailAndPassword?</li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
         
         </ol>
     </div>
@@ -293,235 +303,271 @@ const auth = getAuth(app);
     </div>
 <!------- question 5 completed ----- -->
  <!----------------------------------- Question No 6 ---------------------->
-    <div class="card question-card">
-      <h2> Question 6❓ </h2>
-      <p>Q:  </p>
-    </div>
-  <!----- answers ----->
-    <div class="card answer-card">
-      <h2>✅ Answer</h2>
-      <p>
-       
-      </p>
-    </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
-
-            </code></pre>
-    </div>
-<!------- question 6 completed ----- -->
- <!----------------------------------- Question No 7 ---------------------->
-    <div class="card question-card">
-      <h2> Question 7❓ </h2>
-      <p>Q:  </p>
-    </div>
-  <!----- answers ----->
-    <div class="card answer-card">
-      <h2>✅ Answer</h2>
-      <p>
-       
-      </p>
-    </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
-
-            </code></pre>
-    </div>
-<!------- question 7 completed ----- -->
- <!----------------------------------- Question No 8 ---------------------->
-    <div class="card question-card">
-      <h2> Question 8❓ </h2>
-      <p>Q:  </p>
-    </div>
-  <!----- answers ----->
-    <div class="card answer-card">
-      <h2>✅ Answer</h2>
-      <p>
-       
-      </p>
-    </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
-
-            </code></pre>
-    </div>
-<!------- question 8 completed ----- -->
- <!----------------------------------- Question No 9 ---------------------->
-    <div class="card question-card">
-      <h2> Question 9❓ </h2>
-      <p>Q:  </p>
-    </div>
-  <!----- answers ----->
-    <div class="card answer-card">
-      <h2>✅ Answer</h2>
-      <p>
-       
-      </p>
-    </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
-
-            </code></pre>
-    </div>
-<!------- question 9 completed ----- -->
- <!----------------------------------- Question No 10 ---------------------->
-    <div class="card question-card">
-      <h2> Question 10❓ </h2>
-      <p>Q:  </p>
-    </div>
-  <!----- answers ----->
-    <div class="card answer-card">
-      <h2>✅ Answer</h2>
-      <p>
-       
-      </p>
-    </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
-
-            </code></pre>
-    </div>
-<!------- question 11 completed ----- -->
- <!----------------------------------- Question No 12 ---------------------->
-    <div class="card question-card">
-      <h2> Question 12❓ </h2>
-      <p>Q:  </p>
-    </div>
-  <!----- answers ----->
-    <div class="card answer-card">
-      <h2>✅ Answer</h2>
-      <p>
-       
-      </p>
-    </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
-
-            </code></pre>
-    </div>
-<!------- question 12 completed ----- -->
  <!----------------------------------- Question No 13 ---------------------->
     <div class="card question-card">
-      <h2> Question 13❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 6❓ </h2>
+      <p>Q: what is getFiresStore?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       getFiresStore is a function of firebase that create a connection b/w our project and firebase data base/store
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCLL5imlYrwTFYfNVQzWHbB6AbCRJHxFIQ",
+  authDomain: "nextjs-authentication-9716d.firebaseapp.com",
+  projectId: "nextjs-authentication-9716d",
+  storageBucket: "nextjs-authentication-9716d.firebasestorage.app",
+  messagingSenderId: "369628881238",
+  appId: "1:369628881238:web:366361eb3934e490f0f6f7"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app)
+const db = getFirestore(app)
+export {auth,db}
+       </xmp>
 
             </code></pre>
     </div>
 <!------- question 13 completed ----- -->
  <!----------------------------------- Question No 14 ---------------------->
     <div class="card question-card">
-      <h2> Question 14❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 7❓ </h2>
+      <p>Q: what is collection?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
-      </p>
+"collection Firebase Firestore ka ek function hai jo kisi specific collection (jaise 'Users', 'Products') ka reference return karta hai. Ye reference phir addDoc, getDocs jaise functions ke saath use hota hai us collection ke andar data add/read karne ke liye — isse data logically alag-alag groups mein organized rehta hai."      </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+<xmp>
+  // Sirf reference banaya, koi data operation nahi hua
+const usersRef = collection(db, 'Users');
+
+// Ab is reference ko use kar ke actual kaam hota hai
+addDoc(usersRef, obj);      // add karna
+getDocs(usersRef);          // read karna
+</xmp>
 
             </code></pre>
     </div>
 <!------- question 14 completed ----- -->
  <!----------------------------------- Question No 15 ---------------------->
     <div class="card question-card">
-      <h2> Question 15❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 8❓ </h2>
+      <p>Q: what is addDoc?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       addDoc ek function hai jo kisi collection mein naya document add karta hai, aur Firestore khud us document ke liye unique ID generate kar deta hai.
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+<xmp>
+  const obj = { uid: "abc123", email: "ali@gmail.com" }
+
+const result = await addDoc(collection(db, 'Users'), obj);
+console.log(result.id);  // Firestore ki generated document ID, jaise "kX9pQz7Yab"
+</xmp>
 
             </code></pre>
     </div>
 <!------- question 15 completed ----- -->
  <!----------------------------------- Question No 15 ---------------------->
     <div class="card question-card">
-      <h2> Question 15❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 9❓ </h2>
+      <p>Q: storing a user in firebase Store?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+see in exmaple:
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
+       first we create a file of firebase.tsx 
+       ______________________
+       <xmp>
+        // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCLL5imlYrwTFYfNVQzWHbB6AbCRJHxFIQ",
+  authDomain: "nextjs-authentication-9716d.firebaseapp.com",
+  projectId: "nextjs-authentication-9716d",
+  storageBucket: "nextjs-authentication-9716d.firebasestorage.app",
+  messagingSenderId: "369628881238",
+  appId: "1:369628881238:web:366361eb3934e490f0f6f7"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app)
+const db = getFirestore(app)
+export {auth,db}
+       </xmp>
+       ______________________
+       now second process see here 
+
+       <xmp>
+        
+        
+'use client'
+import React, { useState } from "react";
+import {auth,db} from "@/src/firebase/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { addDoc,collection } from "firebase/firestore";
+const SignUpPage = ()=>{
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+    const signupHandler = async()=>{
+        try{
+            const userCredential = await createUserWithEmailAndPassword(auth,email,password)
+            console.log('user has saved ', userCredential )
+            
+            //storing user in firebase storage
+            const obj = {
+                uid : userCredential?.user?.uid,
+                email : email,
+                password : btoa(password)
+            }
+            //saving data in DB 
+            if(userCredential){
+                const saveUser = await addDoc(collection(db,'Users'),obj)
+                console.log('users save ',saveUser)
+            }
+            setEmail('');
+            setPassword('')
+
+        }
+        catch(error){
+            console.log(error)
+        }
        
+    }
+    return(
+        <div>
+            <h1>Sign up Now</h1>
+            <input type="email" placeholder="enter your email"
+            onChange={(e)=>setEmail(e.target.value)} autoComplete="new-email"
+            value={email} /><br/>
+            <input type="password" placeholder="enter your password" 
+            onChange={(e)=>setPassword(e.target.value)} autoComplete="new-password"
+            value={password}/><br/>
+            <button onClick={signupHandler}>sign up</button>
+        </div>
+    )
+}
+export default SignUpPage;
+       </xmp>
 
             </code></pre>
     </div>
 <!------- question 15 completed ----- -->
  <!----------------------------------- Question No 16 ---------------------->
     <div class="card question-card">
-      <h2> Question 16❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 10❓ </h2>
+      <p>Q: what is signInWithEmailAndPassword?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+        signInWithEmailAndPassword Firebase Auth ka function hai jo existing user ko login karwata hai email aur password ke through — matlab ye check karta hai ki user pehle se registered hai ya nahi, aur agar credentials sahi hain to login kar deta hai.
+      
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
+        <xmp>
+        'use client'
+import React, { useState } from "react";
+import {auth} from "@/src/firebase/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+const LogIn = ()=>{
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+    const logInHandler = async()=>{
+        try{
+            const userCredential = await signInWithEmailAndPassword(auth,email,password)
+           alert('login successfully')
+            setEmail('');
+            setPassword('')
+        }
+        catch(error){
+            console.log(error.message)
+        }
        
+    }
+    return(
+        <div>
+            <h1>Log In</h1>
+            <input type="email" placeholder="enter your email"
+            onChange={(e)=>setEmail(e.target.value)} autoComplete="new-email"
+            value={email} /><br/>
+            <input type="password" placeholder="enter your password" 
+            onChange={(e)=>setPassword(e.target.value)} autoComplete="new-password"
+            value={password}/><br/>
+            <button onClick={logInHandler}>login</button>
+        </div>
+    )
+}
+export default LogIn;
+       </xmp>
 
             </code></pre>
     </div>
+<!------- question 16 completed ----- -->
+ <!----------------------------------- Question No 17 ---------------------->
+    <div class="card question-card">
+      <h2> Question 11❓ </h2>
+      <p>Q: Difference b/w createUserWithEmailAndPassword and signInWithEmailAndPassword?  </p>
+    </div>
+  <!----- answers ----->
+    <div class="card answer-card">
+      <h2>✅ Answer</h2>
+      <p>
+       createUserWithEmailAndPassword <br/>
+       creates a new user and is used in sign up component<br/>
+       signInWithEmailAndPassword<br/>
+       is used for logging in existed user that is already signed up.
+      </p>
+    </div>
+
+<!------- question 17 completed ----- -->
+   
 <!------- question 16 completed ----- -->
  <!----------------------------------- Question No 17 ---------------------->
     <div class="card question-card">
