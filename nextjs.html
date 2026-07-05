@@ -544,21 +544,73 @@ export default proxy;
 <!------- question 9 completed ----- -->
  <!----------------------------------- Question No 10 ---------------------->
     <div class="card question-card">
-      <h2> Question 10❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 17❓ </h2>
+      <p>Q: what is setCookie?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       setCookie is a method of cookie that is used to store  token in cookie storage<br/>
+       we import it from 'cookies-next'<br/>
+       to import it first we have to install 'cookies-next' in our project by using following comman <br/>
+       npm i cookies-next
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        'use client'
+import React, { useState } from 'react'
+import {auth} from '@/src/utils/firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import {setCookie} from 'cookies-next'
+const LogInPage = () => {
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('')
+  //logInHandler
+  const logInHandler = async()=>{
+    try{
+      const saveUser = await signInWithEmailAndPassword(auth,email,password)
+      alert('sign in successfully')
+      console.log(saveUser)
+      //get tokeId
+      const tokenVal = await saveUser.user.getIdToken();
+      console.log('token ',tokenVal)
+      //storing tokenVal in cookies
+      setCookie('myToken',tokenVal,{maxAge: 60*60*3})
+
+      window.location.reload()
+     
+
+    }
+    catch(error){
+      console.log(error)
+    }
+    
+  }
+  return (
+    <>
+    <h1>Login</h1>
+    <input type="email" placeholder='enter your email'
+    autoComplete='new-email'
+    onChange={(e)=>setEmail(e.target.value)}
+    value={email} />
+<br/>
+    <input type="password" placeholder='enter your password'
+    autoComplete='new-password'
+    onChange={(e)=>setPassword(e.target.value)}
+    value={password} />
+    <br/>
+    <button onClick={logInHandler}>Login</button>
+    </>
+  )
+}
+
+export default LogInPage
+       </xmp>
 
             </code></pre>
     </div>
