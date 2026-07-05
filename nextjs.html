@@ -377,35 +377,39 @@ export default AboutPage
     </div>
 <!------- question 12 completed ----- -->
   <div class="card question-card">
-      <h2> Question 6❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 13❓ </h2>
+      <p>Q: what is NextRequest and NextResponse?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       we import NextRequest and NextResponse from next/server 
+       <h1>NextRequest</h1>
+       in website when user want to access private or publicroutes, the user request 
+       for getting private/public routes, users request goes through NextRequest that is defined in 
+       proxy.ts file to the server , server checks the requirement for giving respose for the request of user if requirements are fullfilled
+       than server give respose by <h1>NextResponse</h1> to the user.
+       This all process are handled by proxy or middleware
+       <h1>NextResponse</h1>
+       the answer that comes from server after sending request from browser using NextRequest is called 
+       NextResponse.
       </p>
     </div>
-<!-------- example -------->
-    <div class="card example1-card">
-      <h2>💡 Example</h2>
-      <pre><code>
-       
 
-            </code></pre>
-    </div>
 <!------- question 6 completed ----- -->
  <!----------------------------------- Question No 7 ---------------------->
     <div class="card question-card">
-      <h2> Question 7❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 14❓ </h2>
+      <p>Q: what is req.nextUrl.pathname?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       give us location on which we are now / give us current route name on which 
+       we are standing now like <br/>
+       /about, /conatct, / etc
       </p>
     </div>
 <!-------- example -------->
@@ -413,48 +417,127 @@ export default AboutPage
       <h2>💡 Example</h2>
       <pre><code>
        
+<xmp>
+  //proxy.ts
+import { NextRequest,NextResponse } from "next/server";
+import { publicRoutes,privateRoutes } from "./src/routes/routes";
 
+const proxy = (req:NextRequest)=>{
+    const cookiesVal = req.cookies.get('myToken')?.value;
+    console.log('cookies value ',cookiesVal)
+    const path = req.nextUrl.pathname;
+    console.log('checking ',req.nextUrl.pathname)
+    console.log('path ',path);
+    console.log('full url ',req.url)
+    if(cookiesVal && publicRoutes.includes(path)){
+        console.log('public routes are accessing')
+        return NextResponse.redirect(new URL('/',req.url))
+    }
+if(!cookiesVal && privateRoutes.includes(path)){
+    console.log('accessing private routes')
+    return NextResponse.redirect(new URL('/login',req.url))
+}
+    
+}
+export default proxy;
+</xmp>
             </code></pre>
     </div>
 <!------- question 7 completed ----- -->
  <!----------------------------------- Question No 8 ---------------------->
     <div class="card question-card">
-      <h2> Question 8❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 15❓ </h2>
+      <p>Q: what is req.url?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       .url give us complete url <br/>
+       like
+       <br/>
+       http://localhost:3000/contact?id=5 
+       <br/>
+       protocal = http:// or https:// <br/>
+       domain of website : localhost:3000 <br/>
+       path : /contact?id=5
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        //proxy.ts
+import { NextRequest,NextResponse } from "next/server";
+import { publicRoutes,privateRoutes } from "./src/routes/routes";
+
+const proxy = (req:NextRequest)=>{
+    const cookiesVal = req.cookies.get('myToken')?.value;
+    console.log('cookies value ',cookiesVal)
+    const path = req.nextUrl.pathname;
+    console.log('checking ',req.nextUrl.pathname)
+    console.log('path ',path);
+    console.log('full url ',req.url)
+    if(cookiesVal && publicRoutes.includes(path)){
+        console.log('public routes are accessing')
+        return NextResponse.redirect(new URL('/',req.url))
+    }
+if(!cookiesVal && privateRoutes.includes(path)){
+    console.log('accessing private routes')
+    return NextResponse.redirect(new URL('/login',req.url))
+}
+    
+}
+export default proxy;
+       </xmp>
 
             </code></pre>
     </div>
 <!------- question 8 completed ----- -->
  <!----------------------------------- Question No 9 ---------------------->
     <div class="card question-card">
-      <h2> Question 9❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 16❓ </h2>
+      <p>Q: what is newUrl( )?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       newUrl( ) is a function of JavaScript that is used to create complete url 
+       newURL('/','req.url') or <br/>
+       newURL('/', 'https://localhost:3000')<br/>
+       new url is this(https://localhost:3000/)
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        //proxy.ts
+import { NextRequest,NextResponse } from "next/server";
+import { publicRoutes,privateRoutes } from "./src/routes/routes";
+
+const proxy = (req:NextRequest)=>{
+    const cookiesVal = req.cookies.get('myToken')?.value;
+    console.log('cookies value ',cookiesVal)
+    const path = req.nextUrl.pathname;
+    console.log('checking ',req.nextUrl.pathname)
+    console.log('path ',path);
+    console.log('full url ',req.url)
+    if(cookiesVal && publicRoutes.includes(path)){
+        console.log('public routes are accessing')
+        return NextResponse.redirect(new URL('/',req.url))
+    }
+if(!cookiesVal && privateRoutes.includes(path)){
+    console.log('accessing private routes')
+    return NextResponse.redirect(new URL('/login',req.url))
+}
+    
+}
+export default proxy;
+       </xmp>
 
             </code></pre>
     </div>
