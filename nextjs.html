@@ -617,42 +617,114 @@ export default LogInPage
 <!------- question 11 completed ----- -->
  <!----------------------------------- Question No 12 ---------------------->
     <div class="card question-card">
-      <h2> Question 12❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 18❓ </h2>
+      <p>Q: what is server actions?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+       when we call an api in client component , we can see our api Key and any one can access our api key and 
+       he can use our key and every server on which we deploy our backend data , give us only request limits 
+       for accessing our data, <br/>
+       when our key is shown in network tab , any one can access it and he can use it and he can finish our api request limit, <h3>Now 
+        it is question that how can we hide our api key that anyone can not access it???
+       </h3>
+       it problem is solved by next js by server actions when we call any api using sever actions , next js hide our api key by default and 
+       give a dummy api key so our key is not accessible to any one.
+       <h2>using of server actions</h2>
+       we create a file actions.ts in our app folder main directory with layout.tsx file , we can't keep this file name 
+       except actions.ts any another. <br/>
+        we make an async await function in actions.ts file and call an api and return api data when api come and 
+        we export this function  and in page we need to use api  we import this functions and 
+        we create an async await function inside our component  and we store this export funciton in variable that we define 
+        in componets' s  function  and we can use it.
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        //actions.ts
+'use server'
+const fetchAllNewUseres = async()=>{
+    const apiUrl = 'https://jsonplaceholder.typicode.com/users';
+    const res = await fetch(apiUrl);
+    const jsonData = await res.json();
+    return jsonData;
+}
+export {fetchAllNewUseres} 
+______________________ 
+we use this api in our page 
+see following code 
+
+'use client'
+import React, { useEffect } from "react";
+import { fetchAllNewUseres } from "../actions";
+const NewPage = ()=>{
+    const getUsers = async()=>{
+        const geti = await fetchAllNewUseres();
+        console.log('users by action file ', geti)
+    }
+      
+    
+    useEffect(()=>{
+       getUsers()
+    },[])
+
+    return(
+        <>
+        <h1>I am new Page</h1>
+        </>
+    )
+}
+export default NewPage;
+       </xmp>
 
             </code></pre>
     </div>
 <!------- question 12 completed ----- -->
  <!----------------------------------- Question No 13 ---------------------->
     <div class="card question-card">
-      <h2> Question 13❓ </h2>
-      <p>Q:  </p>
+      <h2> Question 19❓ </h2>
+      <p>Q: actual use of server actions?  </p>
     </div>
   <!----- answers ----->
     <div class="card answer-card">
       <h2>✅ Answer</h2>
       <p>
-       
+we make the component async await for actual server actions use
       </p>
     </div>
 <!-------- example -------->
     <div class="card example1-card">
       <h2>💡 Example</h2>
       <pre><code>
-       
+       <xmp>
+        import React from "react";
+const NewPage =async()=>{
+    const apiUrl = 'https://jsonplaceholder.typicode.com/users';
+    const data = await fetch(apiUrl);
+    const jsonData = await data.json();
+    console.log(jsonData)
+
+    return(
+        <>
+        <h1>I am new Page</h1>
+        
+           <ul>
+             {jsonData?.map((item : any,index : number)=>{
+                return(<li>{item.name} <button>click me</button></li>)
+
+            })}
+           </ul>
+        
+        </>
+    )
+}
+export default NewPage;
+       </xmp>
 
             </code></pre>
     </div>
