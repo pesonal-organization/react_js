@@ -260,35 +260,35 @@ export default Home;
       <pre><code>
        <xmp>
       
-import React, { useEffect, useState } from "react";
-const About = ()=>{
-   
-    const [time,setTime] = useState(new Date().toLocaleTimeString())
-    const [date,setDate] = useState(new Date().toLocaleDateString())
-const timer = ()=>{
-    setInterval(() => {
-        setTime(new Date().toLocaleTimeString())
-        
+import React, { useEffect, useState } from 'react'
+
+const AboutPage = () => {
+  const [time,setTime] = useState(new Date().toLocaleTimeString())
+  const [date,setDate] = useState(new Date().toLocaleDateString())
+  //we use useEffect for cleanup purpose
+  useEffect(()=>{
+    let int = setInterval(() => {
+      setTime(new Date().toLocaleTimeString())
+      setDate(new Date().toLocaleDateString())
+      
     }, 1000);
-}
-     
-useEffect(()=>{
-    const a = timer();
-   return()=>{
-    clearInterval(a);
-    console.log('interval has closed')
-   }
-},[])
+    return ()=>{
+      clearInterval(int)
+      console.log('interval has closed')
+    }
+  },[])
+ 
+  return (
+    <div>
+      <h1>About page</h1>
+      <h1>{time}</h1>
+      <h2>{date}</h2>
 
-
-    return(
-        <>
-        <h1>clean up concept</h1>
-        <h1>{time}</h1>
-        </>
-    )
+    </div>
+  )
 }
-export default About;
+
+export default AboutPage 
        </xmp>
 
             </code></pre>
