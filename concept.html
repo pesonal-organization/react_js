@@ -265,7 +265,9 @@ import React, { useEffect, useState } from 'react'
 const AboutPage = () => {
   const [time,setTime] = useState(new Date().toLocaleTimeString())
   const [date,setDate] = useState(new Date().toLocaleDateString())
+  
   //we use useEffect for cleanup purpose
+
   useEffect(()=>{
     let int = setInterval(() => {
       setTime(new Date().toLocaleTimeString())
@@ -277,7 +279,8 @@ const AboutPage = () => {
       console.log('interval has closed')
     }
   },[])
- 
+
+  
   return (
     <div>
       <h1>About page</h1>
